@@ -118,6 +118,14 @@
       "nativeSpeaker": "Ana dili",
       "tutorCategories": "Öğretmen kategorileri"
     },
+    "languages": {
+      "English": "İngilizce",
+      "Spanish": "İspanyolca",
+      "French": "Fransızca",
+      "German": "Almanca",
+      "Italian": "İtalyanca",
+      "Japanese": "Japonca"
+    },
     "sort": {
       "topPicks": "En iyi seçimlerimiz",
       "priceLowHigh": "Fiyat: düşükten yükseğe",

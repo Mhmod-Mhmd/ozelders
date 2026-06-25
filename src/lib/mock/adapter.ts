@@ -116,6 +116,7 @@ const routes: Route[] = [
     handler: ({ query }) => {
       const filtered = filterTutors(TUTORS, {
         category: asString(query.category),
+        subject: asString(query.subject),
         search: asString(query.search),
         minPrice: asNumber(query.minPrice),
         maxPrice: asNumber(query.maxPrice),

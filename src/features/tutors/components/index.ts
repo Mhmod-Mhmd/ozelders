@@ -3,6 +3,7 @@ export { StudentTutorCard } from './StudentTutorCard';
 export { VideoPromoCard } from './VideoPromoCard';
 export { FilterSidebar } from './FilterSidebar';
 export { SortDropdown } from './SortDropdown';
+export { LearnFilter } from './LearnFilter';
 export { ProfileHeader } from './ProfileHeader';
 export { VideoPlaceholder } from './VideoPlaceholder';
 export { AvailabilityCalendar } from './AvailabilityCalendar';

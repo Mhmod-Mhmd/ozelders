@@ -118,6 +118,14 @@
       "nativeSpeaker": "Native speaker",
       "tutorCategories": "Tutor categories"
     },
+    "languages": {
+      "English": "English",
+      "Spanish": "Spanish",
+      "French": "French",
+      "German": "German",
+      "Italian": "Italian",
+      "Japanese": "Japanese"
+    },
     "sort": {
       "topPicks": "Our top picks",
       "priceLowHigh": "Price: low to high",

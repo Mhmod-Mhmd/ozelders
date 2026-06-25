@@ -130,6 +130,14 @@
       "nativeSpeaker": "متحدث أصلي",
       "tutorCategories": "فئات المعلّمين"
     },
+    "languages": {
+      "English": "الإنجليزية",
+      "Spanish": "الإسبانية",
+      "French": "الفرنسية",
+      "German": "الألمانية",
+      "Italian": "الإيطالية",
+      "Japanese": "اليابانية"
+    },
     "sort": {
       "topPicks": "أفضل اختياراتنا",
       "priceLowHigh": "السعر: من الأقل إلى الأعلى",

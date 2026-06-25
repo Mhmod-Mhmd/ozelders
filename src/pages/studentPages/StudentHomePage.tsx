@@ -5,6 +5,7 @@ import { Container } from '@/components/ui/Container';
 import { TutorCardSkeleton } from '@/components/ui/Skeleton';
 import { ErrorState } from '@/components/ui/ErrorState';
 import {
+  LearnFilter,
   StudentTutorCard,
   VideoPromoCard,
 } from '@/features/tutors/components';
@@ -104,9 +105,13 @@ const SORT_OPTION_KEYS = [
 export function StudentHomePage() {
   const { t } = useTranslation();
   const [search, setSearch] = useState('');
+  const [learn, setLearn] = useState('English');
   const debouncedSearch = useDebounce(search.trim(), 350);
 
-  const tutorsQuery = useTutors({ search: debouncedSearch || undefined });
+  const tutorsQuery = useTutors({
+    subject: learn,
+    search: debouncedSearch || undefined,
+  });
   const tutors = tutorsQuery.data?.data ?? [];
   const total = tutorsQuery.data?.meta.total ?? 0;
   const featured = tutors[0];
@@ -116,15 +121,29 @@ export function StudentHomePage() {
 
   return (
     <div className="bg-gray-50">
+      {/* Heading */}
+      <Container className="px-3.75 pt-8 pb-2 sm:px-3.75 lg:px-3.75">
+        <div className="flex items-center justify-between gap-4">
+          <h1 className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">
+            {t('student.heading')}
+          </h1>
+          <span aria-hidden className="hidden text-4xl sm:block">
+            📈
+          </span>
+        </div>
+        <p className="mt-2 text-sm font-medium text-gray-600">
+          {tutorsQuery.isLoading
+            ? t('common.loading')
+            : t('tutors.availableCount', { count: total })}
+        </p>
+      </Container>
+
       {/* Filter bar */}
       <div className="border-b border-gray-100 bg-white">
         <Container className="px-3.75 py-5 sm:px-3.75 lg:px-3.75">
           {/* Top row: labelled dropdowns */}
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            <FilterField
-              label={t('student.filters.learn')}
-              value={t('student.filters.learnValue')}
-            />
+            <LearnFilter value={learn} onChange={setLearn} />
             <FilterField
               label={t('student.filters.price')}
               value={t('student.filters.priceValue')}
@@ -172,23 +191,6 @@ export function StudentHomePage() {
           </div>
         </Container>
       </div>
-
-      {/* Heading */}
-      <Container className="px-3.75 pt-8 pb-2 sm:px-3.75 lg:px-3.75">
-        <div className="flex items-center justify-between gap-4">
-          <h1 className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">
-            {t('student.heading')}
-          </h1>
-          <span aria-hidden className="hidden text-4xl sm:block">
-            📈
-          </span>
-        </div>
-        <p className="mt-2 text-sm font-medium text-gray-600">
-          {tutorsQuery.isLoading
-            ? t('common.loading')
-            : t('tutors.availableCount', { count: total })}
-        </p>
-      </Container>
 
       {/* Results + rail */}
       <Container className="px-3.75 py-6 sm:px-3.75 lg:px-3.75">

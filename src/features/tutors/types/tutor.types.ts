@@ -56,6 +56,8 @@ export type SortKey = 'top-rated' | 'price-asc' | 'price-desc' | 'most-reviews';
 /** Active filters for the tutor listing page. */
 export interface TutorFilters {
   category?: string;
+  /** Subject/language the student wants to learn, e.g. "English". */
+  subject?: string;
   search?: string;
   minPrice?: number;
   maxPrice?: number;

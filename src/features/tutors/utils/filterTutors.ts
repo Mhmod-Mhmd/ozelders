@@ -8,6 +8,8 @@ import {
 export function filterTutors(tutors: Tutor[], f: TutorFilters): Tutor[] {
   return tutors.filter((t) => {
     if (f.category && t.category !== f.category) return false;
+    if (f.subject && t.subject.toLowerCase() !== f.subject.toLowerCase())
+      return false;
 
     if (f.search) {
       const q = f.search.toLowerCase();
