@@ -28,11 +28,11 @@ const ACCOUNT = {
 
 const MENU_ITEMS: MenuItem[] = [
   { key: 'home', to: paths.studentFindTutor },
-  { key: 'messages', to: '#' },
-  { key: 'myLessons', to: '#' },
-  { key: 'savedTutors', to: '#' },
+  { key: 'messages', to: paths.studentMessages },
+  { key: 'myLessons', to: paths.studentLessons },
+  { key: 'savedTutors', to: paths.studentSaved },
   { key: 'referFriend', to: '#' },
-  { key: 'settings', to: '#' },
+  { key: 'settings', to: paths.studentSettings },
   { key: 'help', to: '#', divider: true },
   // TODO: clear the session token and redirect once auth is wired up.
   { key: 'logout', onSelect: () => {}, divider: true },

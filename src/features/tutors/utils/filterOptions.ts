@@ -126,3 +126,14 @@ export interface AvailabilitySelection {
 }
 
 export const EMPTY_AVAILABILITY: AvailabilitySelection = { slots: [], days: [] };
+
+/** Tutor-category toggles backing the `superTutor` / `professional` filters. */
+export interface TutorCategorySelection {
+  superTutor: boolean;
+  professional: boolean;
+}
+
+export const EMPTY_CATEGORIES: TutorCategorySelection = {
+  superTutor: false,
+  professional: false,
+};

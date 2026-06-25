@@ -2,6 +2,9 @@
   "common": {
     "loading": "Loading…",
     "search": "Search",
+    "cancel": "Cancel",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
     "error": {
       "title": "Something went wrong",
       "body": "We couldn't load this right now. Please try again.",
@@ -62,7 +65,162 @@
   },
   "settings": {
     "title": "Settings",
-    "comingSoon": "Your account settings will appear here."
+    "comingSoon": "This section is coming soon.",
+    "sectionsLabel": "Settings sections",
+    "sections": {
+      "account": "Account",
+      "password": "Password",
+      "email": "Email",
+      "paymentMethods": "Payment methods",
+      "paymentHistory": "Payment history",
+      "autoconfirmation": "Autoconfirmation",
+      "calendar": "Calendar",
+      "notifications": "Notifications",
+      "deleteAccount": "Delete account"
+    },
+    "account": {
+      "title": "Account Settings",
+      "required": "Required",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "timezone": "Timezone",
+      "save": "Save changes",
+      "saved": "Changes saved",
+      "avatar": {
+        "label": "Profile image",
+        "upload": "Upload photo",
+        "edit": "Edit",
+        "maxSize": "Maximum size – 2MB",
+        "formats": "JPG or PNG format",
+        "errorType": "Please choose a JPG or PNG image.",
+        "errorSize": "The image must be 2MB or smaller.",
+        "errorGeneric": "We couldn't upload that image. Please try again."
+      },
+      "phone": {
+        "label": "Phone number",
+        "placeholder": "Phone number",
+        "countryLabel": "Country dial code"
+      },
+      "social": {
+        "title": "Social networks",
+        "connect": "Connect",
+        "disconnect": "Disconnect",
+        "connectedAs": "Connected as {{name}}",
+        "notConnected": {
+          "facebook": "Not connected to Facebook account",
+          "google": "Not connected to Google account"
+        }
+      },
+      "errors": {
+        "firstNameRequired": "First name is required.",
+        "phoneInvalid": "Enter a valid phone number."
+      }
+    },
+    "password": {
+      "title": "Create Password",
+      "current": "Current password",
+      "forgot": "Forgot your password?",
+      "new": "New password",
+      "verify": "Verify password",
+      "hint": "Use at least 8 characters.",
+      "saved": "Password updated",
+      "errors": {
+        "currentRequired": "Enter your current password.",
+        "newTooShort": "Password must be at least 8 characters.",
+        "confirmRequired": "Re-enter your new password.",
+        "mismatch": "Passwords don't match."
+      }
+    },
+    "email": {
+      "label": "Email",
+      "saved": "Email updated",
+      "errors": {
+        "invalid": "Enter a valid email address."
+      }
+    },
+    "autoconfirm": {
+      "title": "Lesson autoconfirmation",
+      "intro": "We automatically confirm your lessons so your tutor can get paid. Here's how the autoconfirmation timing works:",
+      "insideTitle": "Lessons completed in the classroom",
+      "insideBody": "are autoconfirmed 15 minutes after completion.",
+      "outsideTitle": "Lessons completed outside the platform",
+      "outsideBody": "are autoconfirmed 72 hours after the original scheduled end time.",
+      "choose": "Choose your settings for lessons that take place outside the platform:",
+      "options": {
+        "scheduled": "Only lessons scheduled by you or rescheduled by your tutor on your behalf",
+        "all": "Autoconfirm all my lessons, including weekly lessons and lessons scheduled or rescheduled by my tutor."
+      },
+      "help": "If you have any problems with your lessons, please let us know as soon as possible and we'll help you find a solution."
+    },
+    "calendar": {
+      "title": "Google Calendar",
+      "description": "Connect your Google Calendar and synchronize all your lessons with your personal schedule",
+      "connect": "Connect Google Calendar",
+      "disconnect": "Disconnect Google Calendar"
+    },
+    "notifications": {
+      "title": "Notification Preferences",
+      "subtitle": "Manage how and when you hear from us.",
+      "push": {
+        "title": "Mobile push notifications",
+        "disabled": "Notifications are disabled in your device settings. Turn them on so you never miss a thing.",
+        "scan": "Scan the QR code to open your device's notification settings"
+      },
+      "email": {
+        "title": "Email notifications",
+        "subtitle": "Manage the emails you receive from us.",
+        "alwaysActive": "Always active",
+        "transactional": {
+          "title": "Transactional",
+          "body": "Important updates about your account and activity."
+        },
+        "tips": {
+          "title": "Tips and discounts",
+          "body": "Get learning resources and exclusive offers to support your progress."
+        },
+        "surveys": {
+          "title": "Surveys and interviews",
+          "body": "Take part in research studies to help us improve."
+        }
+      }
+    },
+    "delete": {
+      "title": "Delete account",
+      "warning": "Deleting your account is permanent and all your account information will be deleted along with it. If you're sure you want to proceed, enter your email address below.",
+      "button": "Delete account",
+      "doneTitle": "Your account has been deleted",
+      "doneBody": "We're sorry to see you go. You can create a new account anytime."
+    }
+  },
+  "payments": {
+    "creditOrDebit": "Credit or debit card",
+    "addCard": "Add card",
+    "saveCard": "Save card",
+    "removeCard": "Remove card",
+    "cardholder": "Cardholder name",
+    "cardNumber": "Card number",
+    "expMonth": "Month",
+    "expYear": "Year",
+    "cvc": "CVC",
+    "expires": "Expires {{month}}/{{year}}",
+    "encryptionNote": "We use industry-standard encryption to protect your information.",
+    "updateBilling": "Update billing info",
+    "downloadAll": "Download all",
+    "historyEmpty": "You don't have any payments yet.",
+    "table": {
+      "date": "Date",
+      "subject": "Subject",
+      "tutor": "Tutor",
+      "hours": "Hours",
+      "amount": "Amount"
+    },
+    "errors": {
+      "holderRequired": "Cardholder name is required.",
+      "numberInvalid": "Enter a valid card number.",
+      "monthInvalid": "Invalid month.",
+      "yearInvalid": "Invalid year.",
+      "cvcInvalid": "Enter a valid CVC."
+    }
   },
   "language": {
     "label": "Language",
@@ -135,7 +293,52 @@
       "maxPrice": "Maximum price",
       "clearPrice": "Clear price filter",
       "clearCountry": "Clear country filter",
-      "clearAvailability": "Clear availability filter"
+      "clearAvailability": "Clear availability filter",
+      "moreSpecialties": "More specialties",
+      "allLanguages": "All languages"
+    },
+    "nativeSpeaker": {
+      "description": "View only native speaker tutors of the language you're learning"
+    },
+    "categories": {
+      "superTutor": {
+        "title": "Super Tutor",
+        "description": "Only show highly rated and reliable tutors"
+      },
+      "professional": {
+        "title": "Professional Tutor",
+        "description": "Highly qualified tutors with verified teaching certificates"
+      }
+    },
+    "specialties": {
+      "Conversational": "Conversational",
+      "Business English": "Business English",
+      "IELTS": "IELTS",
+      "DELE prep": "DELE prep",
+      "Travel Spanish": "Travel Spanish",
+      "Grammar": "Grammar",
+      "Pronunciation": "Pronunciation",
+      "Beginner-friendly": "Beginner-friendly",
+      "Algebra": "Algebra",
+      "Calculus": "Calculus",
+      "SAT Math": "SAT Math",
+      "Kids": "Kids",
+      "Culture": "Culture",
+      "Beginner": "Beginner",
+      "JLPT": "JLPT",
+      "Writing": "Writing",
+      "Python": "Python",
+      "JavaScript": "JavaScript",
+      "Interview prep": "Interview prep",
+      "Physics": "Physics",
+      "Chemistry": "Chemistry",
+      "Exam prep": "Exam prep",
+      "Guitar": "Guitar",
+      "Music theory": "Music theory",
+      "Business German": "Business German",
+      "GMAT": "GMAT",
+      "Business strategy": "Business strategy",
+      "Interview": "Interview"
     },
     "availability": {
       "times": "Times",
@@ -165,13 +368,20 @@
       "French": "French",
       "German": "German",
       "Italian": "Italian",
-      "Japanese": "Japanese"
+      "Japanese": "Japanese",
+      "Mandarin": "Mandarin",
+      "Hindi": "Hindi",
+      "Portuguese": "Portuguese",
+      "Russian": "Russian",
+      "Urdu": "Urdu"
     },
     "sort": {
       "topPicks": "Our top picks",
-      "priceLowHigh": "Price: low to high",
-      "priceHighLow": "Price: high to low",
-      "mostReviews": "Most reviews"
+      "priceLowHigh": "Price: lowest first",
+      "priceHighLow": "Price: highest first",
+      "popularity": "Popularity",
+      "mostReviews": "Number of reviews",
+      "bestRating": "Best rating"
     },
     "promo": {
       "title": "Let's Talk {{subject}}!",

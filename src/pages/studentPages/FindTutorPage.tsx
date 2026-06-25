@@ -1,26 +1,34 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { BadgeCheck, ChevronDown, Search } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 import { TutorCardSkeleton } from '@/components/ui/Skeleton';
 import { ErrorState } from '@/components/ui/ErrorState';
 import {
+  AlsoSpeaksFilter,
   AvailabilityFilter,
   CountryFilter,
   LearnFilter,
+  NativeSpeakerFilter,
   PriceFilter,
+  SortFilter,
+  SpecialtiesFilter,
   StudentTutorCard,
+  TutorCategoriesFilter,
   VideoPromoCard,
 } from '@/features/tutors/components';
 import {
   type AvailabilitySelection,
   DEFAULT_PRICE,
   EMPTY_AVAILABILITY,
+  EMPTY_CATEGORIES,
   PRICE_MAX,
   PRICE_MIN,
   type PriceRange,
+  type TutorCategorySelection,
   slotsToPeriods,
 } from '@/features/tutors/utils/filterOptions';
+import { type SortKey } from '@/features/tutors/types/tutor.types';
 import {
   useSavedTutorIds,
   useToggleSavedTutor,
@@ -33,57 +41,11 @@ const NO_SAVED = new Set<string>();
 
 /**
  * Find-a-tutor page shown right after login: a Preply-style discovery view with
- * a live filter bar (language, price, country of birth, availability), a list of
- * tutor cards, and a promo/video rail. Every filter feeds the `GET /tutors`
+ * a live filter bar (language, price, country, availability, specialties, spoken
+ * languages, native-speaker and tutor-category toggles, plus sort), a list of
+ * tutor cards, and a promo/video rail. Every control feeds the `GET /tutors`
  * query, so changing one re-runs the request and re-renders the results.
  */
-
-/* -------------------------------------------------------------------------- */
-/* Filter pills (second row)                                                  */
-/* -------------------------------------------------------------------------- */
-
-interface FilterPillProps {
-  label: string;
-  /** Numeric badge (count of active sub-filters). */
-  count?: number;
-  /** Render a check badge instead of a chevron (toggle is on). */
-  checked?: boolean;
-}
-
-/** Compact pill control (second row of the filter bar). */
-function FilterPill({ label, count, checked }: FilterPillProps) {
-  return (
-    <button
-      type="button"
-      className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-3.5 py-2 text-sm font-medium text-gray-800 transition-colors hover:border-gray-300"
-    >
-      {label}
-      {count !== undefined && (
-        <span className="grid h-5 min-w-5 place-items-center rounded-full bg-gray-900 px-1 text-xs font-semibold text-white">
-          {count}
-        </span>
-      )}
-      {checked ? (
-        <span className="grid h-5 w-5 place-items-center rounded-full bg-gray-900 text-white">
-          <BadgeCheck className="h-3.5 w-3.5" />
-        </span>
-      ) : (
-        <ChevronDown className="h-4 w-4 text-gray-500" />
-      )}
-    </button>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
-/* Page                                                                       */
-/* -------------------------------------------------------------------------- */
-
-const SORT_OPTION_KEYS = [
-  'topPicks',
-  'priceLowHigh',
-  'priceHighLow',
-  'mostReviews',
-] as const;
 
 export function FindTutorPage() {
   const { t } = useTranslation();
@@ -94,6 +56,12 @@ export function FindTutorPage() {
   const [countries, setCountries] = useState<string[]>([]);
   const [availability, setAvailability] =
     useState<AvailabilitySelection>(EMPTY_AVAILABILITY);
+  const [specialties, setSpecialties] = useState<string[]>([]);
+  const [languages, setLanguages] = useState<string[]>([]);
+  const [nativeOnly, setNativeOnly] = useState(false);
+  const [categories, setCategories] =
+    useState<TutorCategorySelection>(EMPTY_CATEGORIES);
+  const [sort, setSort] = useState<SortKey>('top-rated');
   const [search, setSearch] = useState('');
   const debouncedSearch = useDebounce(search.trim(), 350);
 
@@ -101,12 +69,18 @@ export function FindTutorPage() {
 
   const tutorsQuery = useTutors({
     subject: learn,
+    sort,
     search: debouncedSearch || undefined,
     minPrice: price.min > PRICE_MIN ? price.min : undefined,
     maxPrice: price.max < PRICE_MAX ? price.max : undefined,
     countries: countries.length ? countries : undefined,
     availability: periods.length ? periods : undefined,
     days: availability.days.length ? availability.days : undefined,
+    specialties: specialties.length ? specialties : undefined,
+    languages: languages.length ? languages : undefined,
+    nativeOnly: nativeOnly || undefined,
+    superTutor: categories.superTutor || undefined,
+    professional: categories.professional || undefined,
   });
   const tutors = tutorsQuery.data?.data ?? [];
   const total = tutorsQuery.data?.meta.total ?? 0;
@@ -134,8 +108,10 @@ export function FindTutorPage() {
         </p>
       </Container>
 
-      {/* Filter bar */}
-      <div className="border-b border-gray-100 bg-white">
+      {/* Filter bar — pins to the top of the viewport on scroll (the header
+          slides away to make room, see StudentNavbar). */}
+      <div className="sticky top-0 z-40 border-b border-gray-100 bg-white shadow-sm">
+
         <Container className="px-3.75 py-5 sm:px-3.75 lg:px-3.75">
           {/* Top row: labelled dropdown filters */}
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -150,20 +126,12 @@ export function FindTutorPage() {
 
           {/* Second row: pills + search */}
           <div className="mt-3 flex flex-wrap items-center gap-2.5">
-            <FilterPill label={t('student.filters.specialties')} count={1} />
-            <FilterPill label={t('student.filters.alsoSpeaks')} count={2} />
-            <FilterPill label={t('student.filters.nativeSpeaker')} checked />
-            <FilterPill label={t('student.filters.tutorCategories')} />
+            <SpecialtiesFilter value={specialties} onChange={setSpecialties} />
+            <AlsoSpeaksFilter value={languages} onChange={setLanguages} />
+            <NativeSpeakerFilter value={nativeOnly} onChange={setNativeOnly} />
+            <TutorCategoriesFilter value={categories} onChange={setCategories} />
 
-            <label className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-3.5 py-2 text-sm font-medium text-gray-800">
-              <span className="text-gray-500">{t('student.sortBy')}</span>
-              <select className="cursor-pointer appearance-none bg-transparent font-semibold text-gray-900 focus:outline-none">
-                {SORT_OPTION_KEYS.map((key) => (
-                  <option key={key}>{t(`student.sort.${key}`)}</option>
-                ))}
-              </select>
-              <ChevronDown className="h-4 w-4 text-gray-500" />
-            </label>
+            <SortFilter value={sort} onChange={setSort} />
 
             <div className="relative ms-auto w-full sm:w-64">
               <Search className="absolute top-1/2 start-3 h-4 w-4 -translate-y-1/2 text-gray-400" />

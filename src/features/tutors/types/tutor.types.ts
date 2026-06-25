@@ -29,6 +29,8 @@ export interface Tutor {
   isNativeSpeaker: boolean;
   /** Highlighted "super tutor" badge. */
   superTutor: boolean;
+  /** Vetted professional with verified teaching certificates. */
+  professional: boolean;
   rating: number; // 0–5
   reviewsCount: number;
   pricePerHour: number; // USD
@@ -51,7 +53,13 @@ export interface Review {
 }
 
 /** Sort options for the tutor listing page. */
-export type SortKey = 'top-rated' | 'price-asc' | 'price-desc' | 'most-reviews';
+export type SortKey =
+  | 'top-rated'
+  | 'price-asc'
+  | 'price-desc'
+  | 'popularity'
+  | 'most-reviews'
+  | 'best-rating';
 
 /** Active filters for the tutor listing page. */
 export interface TutorFilters {
@@ -63,11 +71,27 @@ export interface TutorFilters {
   maxPrice?: number;
   minRating?: number;
   nativeOnly?: boolean;
+  /** Only "super tutors". */
+  superTutor?: boolean;
+  /** Only vetted professional tutors. */
+  professional?: boolean;
+  /** Specialty tags to include (OR-matched against `Tutor.tags`). */
+  specialties?: string[];
+  /** Spoken languages to include (OR-matched against `Tutor.speaks`). */
+  languages?: string[];
   /** Countries of birth to include (OR-matched). */
   countries?: string[];
   availability?: AvailabilityPeriod[];
   /** Weekdays the tutor must be available on (OR-matched). */
   days?: Weekday[];
+}
+
+/** Facet values available for the filter bar, derived from the catalog. */
+export interface TutorFacets {
+  /** Distinct specialty tags, most common first. */
+  specialties: string[];
+  /** Distinct spoken languages, most common first. */
+  languages: string[];
 }
 
 /** Full query for the `GET /tutors` endpoint: filters + sort + pagination. */

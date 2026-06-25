@@ -3,6 +3,7 @@ import { type Paginated } from '@/types';
 import {
   getSavedTutors,
   getTutorById,
+  getTutorFacets,
   getTutorReviews,
   getTutors,
   saveTutor,
@@ -23,6 +24,7 @@ export const tutorKeys = {
   detail: (id: string) => [...tutorKeys.details(), id] as const,
   reviews: (id: string) => [...tutorKeys.detail(id), 'reviews'] as const,
   saved: () => [...tutorKeys.all, 'saved'] as const,
+  facets: () => [...tutorKeys.all, 'facets'] as const,
 };
 
 /** List tutors with optional filters, sort and pagination. */
@@ -30,6 +32,19 @@ export function useTutors(params: TutorListParams = {}) {
   return useQuery({
     queryKey: tutorKeys.list(params),
     queryFn: () => getTutors(params),
+  });
+}
+
+/**
+ * Available filter-bar facets (specialties, spoken languages). Rarely changes,
+ * so it's cached aggressively — the filter dropdowns read from here instead of
+ * hard-coding catalog values.
+ */
+export function useTutorFacets() {
+  return useQuery({
+    queryKey: tutorKeys.facets(),
+    queryFn: () => getTutorFacets(),
+    staleTime: 5 * 60 * 1000,
   });
 }
 

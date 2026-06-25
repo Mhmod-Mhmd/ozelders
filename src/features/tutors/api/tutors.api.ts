@@ -3,6 +3,7 @@ import { type Paginated } from '@/types';
 import {
   type Review,
   type Tutor,
+  type TutorFacets,
   type TutorListParams,
 } from '../types/tutor.types';
 
@@ -13,6 +14,12 @@ export async function getTutors(
   params: TutorListParams = {},
 ): Promise<Paginated<Tutor>> {
   const { data } = await httpClient.get<Paginated<Tutor>>(RESOURCE, { params });
+  return data;
+}
+
+/** Fetch the available filter facets (specialties, spoken languages). */
+export async function getTutorFacets(): Promise<TutorFacets> {
+  const { data } = await httpClient.get<TutorFacets>(`${RESOURCE}/facets`);
   return data;
 }
 

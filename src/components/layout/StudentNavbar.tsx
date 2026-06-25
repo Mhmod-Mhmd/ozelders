@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Heart, HelpCircle, Menu, X } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 import { Avatar } from '@/components/ui/Avatar';
 import { MessageMenu } from '@/features/messages';
+import { useScrolledPast } from '@/hooks';
 import { paths } from '@/router/paths';
 import { cn } from '@/utils/cn';
 import { Logo } from './Logo';
@@ -69,9 +70,20 @@ function IconButton({
 export function StudentNavbar() {
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
+  const { pathname } = useLocation();
+
+  // On the find-tutor page the filter bar pins to the top, so the header slides
+  // out of the way once the student scrolls down (and returns near the top).
+  const hideOnScroll = pathname === paths.studentFindTutor;
+  const hidden = useScrolledPast(80, hideOnScroll) && !open;
 
   return (
-    <header className="sticky top-0 z-50 border-b border-gray-100 bg-white/95 backdrop-blur">
+    <header
+      className={cn(
+        'sticky top-0 z-50 border-b border-gray-100 bg-white/95 backdrop-blur transition-transform duration-300',
+        hidden && '-translate-y-full',
+      )}
+    >
       <Container>
         <div className="flex h-16 items-center justify-between gap-4">
           {/* Left: logo + primary nav */}

@@ -2,6 +2,9 @@
   "common": {
     "loading": "Yükleniyor…",
     "search": "Ara",
+    "cancel": "İptal",
+    "showPassword": "Parolayı göster",
+    "hidePassword": "Parolayı gizle",
     "error": {
       "title": "Bir şeyler ters gitti",
       "body": "Bunu şu anda yükleyemedik. Lütfen tekrar deneyin.",
@@ -62,7 +65,162 @@
   },
   "settings": {
     "title": "Ayarlar",
-    "comingSoon": "Hesap ayarlarınız burada görünecek."
+    "comingSoon": "Bu bölüm yakında geliyor.",
+    "sectionsLabel": "Ayar bölümleri",
+    "sections": {
+      "account": "Hesap",
+      "password": "Parola",
+      "email": "E-posta",
+      "paymentMethods": "Ödeme yöntemleri",
+      "paymentHistory": "Ödeme geçmişi",
+      "autoconfirmation": "Otomatik onay",
+      "calendar": "Takvim",
+      "notifications": "Bildirimler",
+      "deleteAccount": "Hesabı sil"
+    },
+    "account": {
+      "title": "Hesap Ayarları",
+      "required": "Zorunlu",
+      "firstName": "Ad",
+      "lastName": "Soyad",
+      "timezone": "Saat dilimi",
+      "save": "Değişiklikleri kaydet",
+      "saved": "Değişiklikler kaydedildi",
+      "avatar": {
+        "label": "Profil resmi",
+        "upload": "Fotoğraf yükle",
+        "edit": "Düzenle",
+        "maxSize": "Maksimum boyut – 2MB",
+        "formats": "JPG veya PNG formatı",
+        "errorType": "Lütfen JPG veya PNG bir görsel seçin.",
+        "errorSize": "Görsel en fazla 2MB olmalıdır.",
+        "errorGeneric": "Görsel yüklenemedi. Lütfen tekrar deneyin."
+      },
+      "phone": {
+        "label": "Telefon numarası",
+        "placeholder": "Telefon numarası",
+        "countryLabel": "Ülke arama kodu"
+      },
+      "social": {
+        "title": "Sosyal ağlar",
+        "connect": "Bağlan",
+        "disconnect": "Bağlantıyı kes",
+        "connectedAs": "{{name}} olarak bağlı",
+        "notConnected": {
+          "facebook": "Facebook hesabına bağlı değil",
+          "google": "Google hesabına bağlı değil"
+        }
+      },
+      "errors": {
+        "firstNameRequired": "Ad zorunludur.",
+        "phoneInvalid": "Geçerli bir telefon numarası girin."
+      }
+    },
+    "password": {
+      "title": "Parola Oluştur",
+      "current": "Mevcut parola",
+      "forgot": "Parolanızı mı unuttunuz?",
+      "new": "Yeni parola",
+      "verify": "Parolayı doğrula",
+      "hint": "En az 8 karakter kullanın.",
+      "saved": "Parola güncellendi",
+      "errors": {
+        "currentRequired": "Mevcut parolanızı girin.",
+        "newTooShort": "Parola en az 8 karakter olmalıdır.",
+        "confirmRequired": "Yeni parolanızı tekrar girin.",
+        "mismatch": "Parolalar eşleşmiyor."
+      }
+    },
+    "email": {
+      "label": "E-posta",
+      "saved": "E-posta güncellendi",
+      "errors": {
+        "invalid": "Geçerli bir e-posta adresi girin."
+      }
+    },
+    "autoconfirm": {
+      "title": "Ders otomatik onayı",
+      "intro": "Öğretmeninizin ödeme alabilmesi için derslerinizi otomatik olarak onaylıyoruz. Otomatik onay zamanlaması şöyle çalışır:",
+      "insideTitle": "Sınıf içinde tamamlanan dersler",
+      "insideBody": "tamamlandıktan 15 dakika sonra otomatik onaylanır.",
+      "outsideTitle": "Platform dışında tamamlanan dersler",
+      "outsideBody": "planlanan bitiş saatinden 72 saat sonra otomatik onaylanır.",
+      "choose": "Platform dışında gerçekleşen dersler için ayarınızı seçin:",
+      "options": {
+        "scheduled": "Yalnızca sizin planladığınız veya öğretmeninizin sizin adınıza yeniden planladığı dersler",
+        "all": "Haftalık dersler ve öğretmenimin planladığı veya yeniden planladığı dersler dahil tüm derslerimi otomatik onayla."
+      },
+      "help": "Derslerinizle ilgili herhangi bir sorun yaşarsanız lütfen en kısa sürede bize bildirin, çözüm bulmanıza yardımcı olalım."
+    },
+    "calendar": {
+      "title": "Google Takvim",
+      "description": "Google Takvim'inizi bağlayın ve tüm derslerinizi kişisel programınızla senkronize edin",
+      "connect": "Google Takvim'i bağla",
+      "disconnect": "Google Takvim bağlantısını kes"
+    },
+    "notifications": {
+      "title": "Bildirim Tercihleri",
+      "subtitle": "Sizinle nasıl ve ne zaman iletişim kuracağımızı yönetin.",
+      "push": {
+        "title": "Mobil anlık bildirimler",
+        "disabled": "Bildirimler cihaz ayarlarınızda devre dışı. Hiçbir şeyi kaçırmamak için açın.",
+        "scan": "Cihazınızın bildirim ayarlarını açmak için QR kodu tarayın"
+      },
+      "email": {
+        "title": "E-posta bildirimleri",
+        "subtitle": "Bizden aldığınız e-postaları yönetin.",
+        "alwaysActive": "Her zaman etkin",
+        "transactional": {
+          "title": "İşlemsel",
+          "body": "Hesabınız ve etkinliğiniz hakkında önemli güncellemeler."
+        },
+        "tips": {
+          "title": "İpuçları ve indirimler",
+          "body": "İlerlemenizi desteklemek için öğrenme kaynakları ve özel teklifler alın."
+        },
+        "surveys": {
+          "title": "Anketler ve görüşmeler",
+          "body": "Bizi geliştirmemize yardımcı olmak için araştırma çalışmalarına katılın."
+        }
+      }
+    },
+    "delete": {
+      "title": "Hesabı sil",
+      "warning": "Hesabınızı silmek kalıcıdır ve tüm hesap bilgileriniz onunla birlikte silinir. Devam etmek istediğinizden eminseniz e-posta adresinizi aşağıya girin.",
+      "button": "Hesabı sil",
+      "doneTitle": "Hesabınız silindi",
+      "doneBody": "Ayrıldığınız için üzgünüz. İstediğiniz zaman yeni bir hesap oluşturabilirsiniz."
+    }
+  },
+  "payments": {
+    "creditOrDebit": "Kredi veya banka kartı",
+    "addCard": "Kart ekle",
+    "saveCard": "Kartı kaydet",
+    "removeCard": "Kartı kaldır",
+    "cardholder": "Kart sahibinin adı",
+    "cardNumber": "Kart numarası",
+    "expMonth": "Ay",
+    "expYear": "Yıl",
+    "cvc": "CVC",
+    "expires": "Son kullanma {{month}}/{{year}}",
+    "encryptionNote": "Bilgilerinizi korumak için sektör standardı şifreleme kullanıyoruz.",
+    "updateBilling": "Fatura bilgilerini güncelle",
+    "downloadAll": "Tümünü indir",
+    "historyEmpty": "Henüz herhangi bir ödemeniz yok.",
+    "table": {
+      "date": "Tarih",
+      "subject": "Konu",
+      "tutor": "Öğretmen",
+      "hours": "Saat",
+      "amount": "Tutar"
+    },
+    "errors": {
+      "holderRequired": "Kart sahibinin adı zorunludur.",
+      "numberInvalid": "Geçerli bir kart numarası girin.",
+      "monthInvalid": "Geçersiz ay.",
+      "yearInvalid": "Geçersiz yıl.",
+      "cvcInvalid": "Geçerli bir CVC girin."
+    }
   },
   "language": {
     "label": "Dil",
@@ -135,7 +293,52 @@
       "maxPrice": "Azami fiyat",
       "clearPrice": "Fiyat filtresini temizle",
       "clearCountry": "Ülke filtresini temizle",
-      "clearAvailability": "Uygunluk filtresini temizle"
+      "clearAvailability": "Uygunluk filtresini temizle",
+      "moreSpecialties": "Diğer uzmanlıklar",
+      "allLanguages": "Tüm diller"
+    },
+    "nativeSpeaker": {
+      "description": "Yalnızca öğrendiğin dilin ana dili olan öğretmenleri göster"
+    },
+    "categories": {
+      "superTutor": {
+        "title": "Süper Öğretmen",
+        "description": "Yalnızca yüksek puanlı ve güvenilir öğretmenleri göster"
+      },
+      "professional": {
+        "title": "Profesyonel Öğretmen",
+        "description": "Onaylı öğretmenlik sertifikalı, yüksek nitelikli öğretmenler"
+      }
+    },
+    "specialties": {
+      "Conversational": "Konuşma",
+      "Business English": "İş İngilizcesi",
+      "IELTS": "IELTS",
+      "DELE prep": "DELE hazırlık",
+      "Travel Spanish": "Seyahat İspanyolcası",
+      "Grammar": "Dil bilgisi",
+      "Pronunciation": "Telaffuz",
+      "Beginner-friendly": "Başlangıç dostu",
+      "Algebra": "Cebir",
+      "Calculus": "Kalkülüs",
+      "SAT Math": "SAT Matematik",
+      "Kids": "Çocuklar",
+      "Culture": "Kültür",
+      "Beginner": "Başlangıç",
+      "JLPT": "JLPT",
+      "Writing": "Yazma",
+      "Python": "Python",
+      "JavaScript": "JavaScript",
+      "Interview prep": "Mülakat hazırlığı",
+      "Physics": "Fizik",
+      "Chemistry": "Kimya",
+      "Exam prep": "Sınav hazırlığı",
+      "Guitar": "Gitar",
+      "Music theory": "Müzik teorisi",
+      "Business German": "İş Almancası",
+      "GMAT": "GMAT",
+      "Business strategy": "İş stratejisi",
+      "Interview": "Mülakat"
     },
     "availability": {
       "times": "Saatler",
@@ -165,13 +368,20 @@
       "French": "Fransızca",
       "German": "Almanca",
       "Italian": "İtalyanca",
-      "Japanese": "Japonca"
+      "Japanese": "Japonca",
+      "Mandarin": "Mandarin",
+      "Hindi": "Hintçe",
+      "Portuguese": "Portekizce",
+      "Russian": "Rusça",
+      "Urdu": "Urduca"
     },
     "sort": {
       "topPicks": "En iyi seçimlerimiz",
-      "priceLowHigh": "Fiyat: düşükten yükseğe",
-      "priceHighLow": "Fiyat: yüksekten düşüğe",
-      "mostReviews": "En çok değerlendirme"
+      "priceLowHigh": "Fiyat: önce en düşük",
+      "priceHighLow": "Fiyat: önce en yüksek",
+      "popularity": "Popülerlik",
+      "mostReviews": "Değerlendirme sayısı",
+      "bestRating": "En yüksek puan"
     },
     "promo": {
       "title": "Hadi {{subject}} konuşalım!",

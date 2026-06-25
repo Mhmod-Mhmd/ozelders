@@ -12,3 +12,31 @@ export { SUBJECTS, getSubjectByKey } from './subjects';
 export { getReviewsForTutor } from './reviews';
 export { TESTIMONIALS } from './testimonials';
 export { CONVERSATIONS } from './conversations';
+export {
+  getAccount,
+  updateAccount,
+  setAccountAvatar,
+  connectSocial,
+  disconnectSocial,
+  updateEmail,
+  verifyPassword,
+  setPassword,
+  updateNotificationPrefs,
+  updateAutoconfirm,
+  setCalendarConnected,
+} from './account';
+export type {
+  AccountRecord,
+  SocialProvider,
+  SocialConnection,
+  AutoconfirmMode,
+  NotificationPrefs,
+} from './account';
+export {
+  getCards,
+  addCard,
+  removeCard,
+  getPaymentHistory,
+  detectBrand,
+} from './payments';
+export type { PaymentCard, PaymentTransaction, CardBrand } from './payments';

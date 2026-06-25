@@ -26,9 +26,23 @@ export function filterTutors(tutors: Tutor[], f: TutorFilters): Tutor[] {
     if (f.maxPrice !== undefined && t.pricePerHour > f.maxPrice) return false;
     if (f.minRating !== undefined && t.rating < f.minRating) return false;
     if (f.nativeOnly && !t.isNativeSpeaker) return false;
+    if (f.superTutor && !t.superTutor) return false;
+    if (f.professional && !t.professional) return false;
 
     if (f.countries && f.countries.length > 0 && !f.countries.includes(t.country))
       return false;
+
+    if (
+      f.specialties &&
+      f.specialties.length > 0 &&
+      !f.specialties.some((s) => t.tags.includes(s))
+    )
+      return false;
+
+    if (f.languages && f.languages.length > 0) {
+      const spoken = new Set(t.speaks.map((s) => s.language));
+      if (!f.languages.some((lang) => spoken.has(lang))) return false;
+    }
 
     // Availability is matched per-day: the tutor must offer at least one of the
     // selected periods on at least one of the selected days. When only days are
@@ -57,12 +71,24 @@ export function sortTutors(tutors: Tutor[], sort: SortKey): Tutor[] {
       return copy.sort((a, b) => a.pricePerHour - b.pricePerHour);
     case 'price-desc':
       return copy.sort((a, b) => b.pricePerHour - a.pricePerHour);
+    case 'popularity':
+      return copy.sort(
+        (a, b) => b.studentsCount - a.studentsCount || b.lessonsCount - a.lessonsCount,
+      );
     case 'most-reviews':
       return copy.sort((a, b) => b.reviewsCount - a.reviewsCount);
-    case 'top-rated':
-    default:
+    case 'best-rating':
       return copy.sort(
         (a, b) => b.rating - a.rating || b.reviewsCount - a.reviewsCount,
+      );
+    case 'top-rated':
+    default:
+      // "Our top picks": super tutors first, then rating and review volume.
+      return copy.sort(
+        (a, b) =>
+          Number(b.superTutor) - Number(a.superTutor) ||
+          b.rating - a.rating ||
+          b.reviewsCount - a.reviewsCount,
       );
   }
 }

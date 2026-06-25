@@ -1,5 +1,6 @@
-import { type ReactNode, useEffect, useId, useRef, useState } from 'react';
+import { type ReactNode } from 'react';
 import { ChevronDown, X } from 'lucide-react';
+import { usePopover } from '@/hooks';
 import { cn } from '@/utils/cn';
 
 /**
@@ -35,29 +36,7 @@ export function FilterDropdown({
   panelClassName,
   children,
 }: FilterDropdownProps) {
-  const [open, setOpen] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const panelId = useId();
-
-  useEffect(() => {
-    if (!open) return;
-
-    function handlePointer(event: MouseEvent) {
-      if (!containerRef.current?.contains(event.target as Node)) {
-        setOpen(false);
-      }
-    }
-    function handleKey(event: KeyboardEvent) {
-      if (event.key === 'Escape') setOpen(false);
-    }
-
-    document.addEventListener('mousedown', handlePointer);
-    document.addEventListener('keydown', handleKey);
-    return () => {
-      document.removeEventListener('mousedown', handlePointer);
-      document.removeEventListener('keydown', handleKey);
-    };
-  }, [open]);
+  const { open, setOpen, containerRef, panelId } = usePopover();
 
   return (
     <div ref={containerRef} className="relative">

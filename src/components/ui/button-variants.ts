@@ -5,7 +5,8 @@ export type ButtonVariant =
   | 'secondary'
   | 'outline'
   | 'ghost'
-  | 'white';
+  | 'white'
+  | 'danger';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
 const base =
@@ -18,6 +19,7 @@ const variants: Record<ButtonVariant, string> = {
   outline: 'border border-gray-300 bg-white text-gray-800 hover:bg-gray-50',
   ghost: 'text-gray-700 hover:bg-gray-100',
   white: 'bg-white text-brand-700 shadow-sm hover:bg-gray-50',
+  danger: 'bg-red-500 text-white hover:bg-red-600',
 };
 
 const sizes: Record<ButtonSize, string> = {
