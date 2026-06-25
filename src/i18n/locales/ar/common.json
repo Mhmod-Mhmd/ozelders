@@ -70,6 +70,9 @@
     "tr": "Türkçe",
     "ar": "العربية"
   },
+  "currency": {
+    "label": "العملة"
+  },
   "tutors": {
     "availableCount_zero": "لا يوجد معلّمون متاحون",
     "availableCount_one": "معلّم واحد متاح",

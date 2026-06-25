@@ -4,6 +4,7 @@ import { BadgeCheck, Globe, Heart, ShieldCheck } from 'lucide-react';
 import { Avatar } from '@/components/ui/Avatar';
 import { Badge } from '@/components/ui/Badge';
 import { buttonVariants } from '@/components/ui/button-variants';
+import { useCurrency, formatPrice } from '@/currency';
 import { paths } from '@/router/paths';
 import { cn } from '@/utils/cn';
 import { type Tutor } from '../types/tutor.types';
@@ -12,23 +13,6 @@ import { type Tutor } from '../types/tutor.types';
  * Rich tutor row used across the logged-in student area (discovery list, saved
  * tutors): avatar, badges, languages, price and the three headline stats.
  */
-
-/** Believable per-lesson price in Turkish lira derived from the USD hourly rate. */
-const LIRA_PER_USD = 46;
-
-/** Format the price in the active locale, keeping the ₺ symbol everywhere. */
-function formatLira(amount: number, locale: string): string {
-  return new Intl.NumberFormat(locale, {
-    style: 'currency',
-    currency: 'TRY',
-    currencyDisplay: 'narrowSymbol',
-    maximumFractionDigits: 0,
-  }).format(amount);
-}
-
-function lessonPrice(tutor: Tutor): number {
-  return Math.round(tutor.pricePerHour * LIRA_PER_USD);
-}
 
 function Stat({ value, label }: { value: string; label: string }) {
   return (
@@ -53,6 +37,7 @@ export function StudentTutorCard({
   onToggleSave,
 }: StudentTutorCardProps) {
   const { t, i18n } = useTranslation();
+  const { currency } = useCurrency();
   const locale = i18n.language;
   const profile = paths.tutorProfile(tutor.id);
   const speaks = tutor.speaks
@@ -144,7 +129,7 @@ export function StudentTutorCard({
         <div className="flex shrink-0 flex-col items-stretch gap-4 border-t border-gray-100 pt-4 sm:w-52 sm:border-t-0 sm:border-s sm:pt-0 sm:ps-5">
           <div className="text-center sm:text-start">
             <p className="text-2xl font-extrabold text-gray-900">
-              {formatLira(lessonPrice(tutor), locale)}
+              {formatPrice(tutor.pricePerHour, currency, locale)}
             </p>
             <p className="text-xs text-gray-500">{t('tutors.lessonDuration')}</p>
           </div>

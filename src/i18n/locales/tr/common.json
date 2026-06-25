@@ -70,6 +70,9 @@
     "tr": "Türkçe",
     "ar": "العربية"
   },
+  "currency": {
+    "label": "Para birimi"
+  },
   "tutors": {
     "availableCount_one": "{{count}} öğretmen mevcut",
     "availableCount_other": "{{count}} öğretmen mevcut",

@@ -70,6 +70,9 @@
     "tr": "Türkçe",
     "ar": "العربية"
   },
+  "currency": {
+    "label": "Currency"
+  },
   "tutors": {
     "availableCount_one": "{{count}} tutor available",
     "availableCount_other": "{{count}} tutors available",
