@@ -63,7 +63,11 @@ export interface TutorFilters {
   maxPrice?: number;
   minRating?: number;
   nativeOnly?: boolean;
+  /** Countries of birth to include (OR-matched). */
+  countries?: string[];
   availability?: AvailabilityPeriod[];
+  /** Weekdays the tutor must be available on (OR-matched). */
+  days?: Weekday[];
 }
 
 /** Full query for the `GET /tutors` endpoint: filters + sort + pagination. */

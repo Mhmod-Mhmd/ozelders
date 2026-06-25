@@ -112,6 +112,15 @@
     "emptyBody": "انقر على القلب لدى أي معلّم لحفظه هنا لوقت لاحق.",
     "browseTutors": "تصفّح المعلّمين"
   },
+  "weekdays": {
+    "Mon": "الإثنين",
+    "Tue": "الثلاثاء",
+    "Wed": "الأربعاء",
+    "Thu": "الخميس",
+    "Fri": "الجمعة",
+    "Sat": "السبت",
+    "Sun": "الأحد"
+  },
   "student": {
     "heading": "معلّمو الإنجليزية الذين يساعدونك على التطور مهنيًا",
     "searchPlaceholder": "ابحث بالاسم أو الكلمة المفتاحية",
@@ -128,7 +137,39 @@
       "specialties": "التخصصات",
       "alsoSpeaks": "يتحدث أيضًا",
       "nativeSpeaker": "متحدث أصلي",
-      "tutorCategories": "فئات المعلّمين"
+      "tutorCategories": "فئات المعلّمين",
+      "anyCountry": "أي دولة",
+      "anyTime": "أي وقت",
+      "countrySearch": "اكتب للبحث...",
+      "popular": "الأكثر شيوعًا",
+      "moreCountries": "دول أخرى",
+      "minPrice": "أدنى سعر",
+      "maxPrice": "أعلى سعر",
+      "clearPrice": "مسح فلتر السعر",
+      "clearCountry": "مسح فلتر الدولة",
+      "clearAvailability": "مسح فلتر التوفر"
+    },
+    "availability": {
+      "times": "الأوقات",
+      "daytime": "النهار",
+      "eveningNight": "المساء والليل",
+      "morning": "الصباح",
+      "days": "الأيام"
+    },
+    "countries": {
+      "United States": "الولايات المتحدة",
+      "United Kingdom": "المملكة المتحدة",
+      "Türkiye": "تركيا",
+      "France": "فرنسا",
+      "Germany": "ألمانيا",
+      "Spain": "إسبانيا",
+      "Italy": "إيطاليا",
+      "Japan": "اليابان",
+      "China": "الصين",
+      "India": "الهند",
+      "Russia": "روسيا",
+      "Brazil": "البرازيل",
+      "Pakistan": "باكستان"
     },
     "languages": {
       "English": "الإنجليزية",

@@ -13,7 +13,7 @@ interface SubNavItem {
 }
 
 const ITEMS: SubNavItem[] = [
-  { key: 'home', to: paths.studentHome, end: true },
+  { key: 'home', to: paths.studentFindTutor, end: true },
   { key: 'messages', to: paths.studentMessages },
   { key: 'myLessons', to: paths.studentLessons },
   { key: 'settings', to: paths.studentSettings },

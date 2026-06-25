@@ -27,7 +27,7 @@ const ACCOUNT = {
 } as const;
 
 const MENU_ITEMS: MenuItem[] = [
-  { key: 'home', to: paths.studentHome },
+  { key: 'home', to: paths.studentFindTutor },
   { key: 'messages', to: '#' },
   { key: 'myLessons', to: '#' },
   { key: 'savedTutors', to: '#' },

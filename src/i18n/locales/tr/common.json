@@ -100,6 +100,15 @@
     "emptyBody": "Daha sonrası için kaydetmek üzere herhangi bir öğretmenin kalbine dokun.",
     "browseTutors": "Öğretmenlere göz at"
   },
+  "weekdays": {
+    "Mon": "Pzt",
+    "Tue": "Sal",
+    "Wed": "Çar",
+    "Thu": "Per",
+    "Fri": "Cum",
+    "Sat": "Cmt",
+    "Sun": "Paz"
+  },
   "student": {
     "heading": "Profesyonel olarak gelişmenize yardımcı olan İngilizce öğretmenleri",
     "searchPlaceholder": "İsme veya anahtar kelimeye göre ara",
@@ -116,7 +125,39 @@
       "specialties": "Uzmanlıklar",
       "alsoSpeaks": "Ayrıca konuşur",
       "nativeSpeaker": "Ana dili",
-      "tutorCategories": "Öğretmen kategorileri"
+      "tutorCategories": "Öğretmen kategorileri",
+      "anyCountry": "Herhangi bir ülke",
+      "anyTime": "Herhangi bir zaman",
+      "countrySearch": "Aramak için yazın...",
+      "popular": "Popüler",
+      "moreCountries": "Diğer ülkeler",
+      "minPrice": "Asgari fiyat",
+      "maxPrice": "Azami fiyat",
+      "clearPrice": "Fiyat filtresini temizle",
+      "clearCountry": "Ülke filtresini temizle",
+      "clearAvailability": "Uygunluk filtresini temizle"
+    },
+    "availability": {
+      "times": "Saatler",
+      "daytime": "Gündüz",
+      "eveningNight": "Akşam ve gece",
+      "morning": "Sabah",
+      "days": "Günler"
+    },
+    "countries": {
+      "United States": "Amerika Birleşik Devletleri",
+      "United Kingdom": "Birleşik Krallık",
+      "Türkiye": "Türkiye",
+      "France": "Fransa",
+      "Germany": "Almanya",
+      "Spain": "İspanya",
+      "Italy": "İtalya",
+      "Japan": "Japonya",
+      "China": "Çin",
+      "India": "Hindistan",
+      "Russia": "Rusya",
+      "Brazil": "Brezilya",
+      "Pakistan": "Pakistan"
     },
     "languages": {
       "English": "İngilizce",

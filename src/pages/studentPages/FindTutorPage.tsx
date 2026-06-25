@@ -1,14 +1,26 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { BadgeCheck, ChevronDown, Search, X } from 'lucide-react';
+import { BadgeCheck, ChevronDown, Search } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 import { TutorCardSkeleton } from '@/components/ui/Skeleton';
 import { ErrorState } from '@/components/ui/ErrorState';
 import {
+  AvailabilityFilter,
+  CountryFilter,
   LearnFilter,
+  PriceFilter,
   StudentTutorCard,
   VideoPromoCard,
 } from '@/features/tutors/components';
+import {
+  type AvailabilitySelection,
+  DEFAULT_PRICE,
+  EMPTY_AVAILABILITY,
+  PRICE_MAX,
+  PRICE_MIN,
+  type PriceRange,
+  slotsToPeriods,
+} from '@/features/tutors/utils/filterOptions';
 import {
   useSavedTutorIds,
   useToggleSavedTutor,
@@ -20,44 +32,15 @@ import { useDebounce } from '@/hooks/useDebounce';
 const NO_SAVED = new Set<string>();
 
 /**
- * Student landing page shown right after login: a Preply-style tutor discovery
- * view with a filter bar, a list of tutor cards, and a promo/video rail.
+ * Find-a-tutor page shown right after login: a Preply-style discovery view with
+ * a live filter bar (language, price, country of birth, availability), a list of
+ * tutor cards, and a promo/video rail. Every filter feeds the `GET /tutors`
+ * query, so changing one re-runs the request and re-renders the results.
  */
 
 /* -------------------------------------------------------------------------- */
-/* Filter bar                                                                 */
+/* Filter pills (second row)                                                  */
 /* -------------------------------------------------------------------------- */
-
-interface FilterFieldProps {
-  label: string;
-  value: string;
-  /** Show a clear (×) affordance like the active filters in the design. */
-  clearable?: boolean;
-}
-
-/** Large labelled dropdown control (top row of the filter bar). */
-function FilterField({ label, value, clearable }: FilterFieldProps) {
-  return (
-    <button
-      type="button"
-      className="group flex w-full items-center justify-between gap-3 rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-start transition-colors hover:border-gray-300"
-    >
-      <span className="min-w-0">
-        <span className="block text-xs font-medium text-gray-500">{label}</span>
-        <span className="block truncate text-sm font-semibold text-gray-900">
-          {value}
-        </span>
-      </span>
-      {clearable ? (
-        <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-gray-900 text-white">
-          <X className="h-3.5 w-3.5" />
-        </span>
-      ) : (
-        <ChevronDown className="h-5 w-5 shrink-0 text-gray-500" />
-      )}
-    </button>
-  );
-}
 
 interface FilterPillProps {
   label: string;
@@ -102,15 +85,28 @@ const SORT_OPTION_KEYS = [
   'mostReviews',
 ] as const;
 
-export function StudentHomePage() {
+export function FindTutorPage() {
   const { t } = useTranslation();
-  const [search, setSearch] = useState('');
+
+  // Filter state — each piece is a controlled input that feeds the query below.
   const [learn, setLearn] = useState('English');
+  const [price, setPrice] = useState<PriceRange>(DEFAULT_PRICE);
+  const [countries, setCountries] = useState<string[]>([]);
+  const [availability, setAvailability] =
+    useState<AvailabilitySelection>(EMPTY_AVAILABILITY);
+  const [search, setSearch] = useState('');
   const debouncedSearch = useDebounce(search.trim(), 350);
+
+  const periods = slotsToPeriods(availability.slots);
 
   const tutorsQuery = useTutors({
     subject: learn,
     search: debouncedSearch || undefined,
+    minPrice: price.min > PRICE_MIN ? price.min : undefined,
+    maxPrice: price.max < PRICE_MAX ? price.max : undefined,
+    countries: countries.length ? countries : undefined,
+    availability: periods.length ? periods : undefined,
+    days: availability.days.length ? availability.days : undefined,
   });
   const tutors = tutorsQuery.data?.data ?? [];
   const total = tutorsQuery.data?.meta.total ?? 0;
@@ -141,23 +137,14 @@ export function StudentHomePage() {
       {/* Filter bar */}
       <div className="border-b border-gray-100 bg-white">
         <Container className="px-3.75 py-5 sm:px-3.75 lg:px-3.75">
-          {/* Top row: labelled dropdowns */}
+          {/* Top row: labelled dropdown filters */}
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
             <LearnFilter value={learn} onChange={setLearn} />
-            <FilterField
-              label={t('student.filters.price')}
-              value={t('student.filters.priceValue')}
-              clearable
-            />
-            <FilterField
-              label={t('student.filters.country')}
-              value={t('student.filters.countryValue')}
-              clearable
-            />
-            <FilterField
-              label={t('student.filters.available')}
-              value={t('student.filters.availableValue')}
-              clearable
+            <PriceFilter value={price} onChange={setPrice} />
+            <CountryFilter value={countries} onChange={setCountries} />
+            <AvailabilityFilter
+              value={availability}
+              onChange={setAvailability}
             />
           </div>
 

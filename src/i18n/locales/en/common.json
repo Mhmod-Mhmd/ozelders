@@ -100,6 +100,15 @@
     "emptyBody": "Tap the heart on any tutor to save them here for later.",
     "browseTutors": "Browse tutors"
   },
+  "weekdays": {
+    "Mon": "Mon",
+    "Tue": "Tue",
+    "Wed": "Wed",
+    "Thu": "Thu",
+    "Fri": "Fri",
+    "Sat": "Sat",
+    "Sun": "Sun"
+  },
   "student": {
     "heading": "English tutors that help you develop professionally",
     "searchPlaceholder": "Search by name or keyword",
@@ -116,7 +125,39 @@
       "specialties": "Specialties",
       "alsoSpeaks": "Also speaks",
       "nativeSpeaker": "Native speaker",
-      "tutorCategories": "Tutor categories"
+      "tutorCategories": "Tutor categories",
+      "anyCountry": "Any country",
+      "anyTime": "Any time",
+      "countrySearch": "Type to search...",
+      "popular": "Popular",
+      "moreCountries": "More countries",
+      "minPrice": "Minimum price",
+      "maxPrice": "Maximum price",
+      "clearPrice": "Clear price filter",
+      "clearCountry": "Clear country filter",
+      "clearAvailability": "Clear availability filter"
+    },
+    "availability": {
+      "times": "Times",
+      "daytime": "Daytime",
+      "eveningNight": "Evening and night",
+      "morning": "Morning",
+      "days": "Days"
+    },
+    "countries": {
+      "United States": "United States",
+      "United Kingdom": "United Kingdom",
+      "Türkiye": "Türkiye",
+      "France": "France",
+      "Germany": "Germany",
+      "Spain": "Spain",
+      "Italy": "Italy",
+      "Japan": "Japan",
+      "China": "China",
+      "India": "India",
+      "Russia": "Russia",
+      "Brazil": "Brazil",
+      "Pakistan": "Pakistan"
     },
     "languages": {
       "English": "English",

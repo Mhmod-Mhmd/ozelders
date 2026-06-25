@@ -1,10 +1,10 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { Navigate, createBrowserRouter } from 'react-router-dom';
 import { RootLayout } from '@/components/layout/RootLayout';
 import { StudentAccountLayout } from '@/components/layout/StudentAccountLayout';
 import { HomePage } from '@/pages/HomePage';
 import { TutorsPage } from '@/pages/TutorsPage';
 import { TutorProfilePage } from '@/pages/TutorProfilePage';
-import { StudentHomePage } from '@/pages/studentPages/StudentHomePage';
+import { FindTutorPage } from '@/pages/studentPages/FindTutorPage';
 import { StudentSavedTutorsPage } from '@/pages/studentPages/StudentSavedTutorsPage';
 import { StudentMessagesPage } from '@/pages/studentPages/StudentMessagesPage';
 import { StudentLessonsPage } from '@/pages/studentPages/StudentLessonsPage';
@@ -27,7 +27,8 @@ export const router = createBrowserRouter([
       {
         path: 'student',
         children: [
-          { index: true, element: <StudentHomePage /> },
+          { index: true, element: <Navigate to="find-tutor" replace /> },
+          { path: 'find-tutor', element: <FindTutorPage /> },
           { path: 'saved', element: <StudentSavedTutorsPage /> },
           {
             element: <StudentAccountLayout />,

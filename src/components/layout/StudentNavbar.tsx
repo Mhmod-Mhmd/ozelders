@@ -19,7 +19,7 @@ interface NavItem {
 }
 
 const NAV_ITEMS: NavItem[] = [
-  { key: 'findTutors', to: paths.studentHome },
+  { key: 'findTutors', to: paths.studentFindTutor },
   { key: 'corporate', to: '#' },
 ];
 

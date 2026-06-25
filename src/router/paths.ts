@@ -7,6 +7,7 @@ export const paths = {
   tutors: '/tutors',
   tutorProfile: (id: string) => `/tutors/${id}`,
   studentHome: '/student',
+  studentFindTutor: '/student/find-tutor',
   studentSaved: '/student/saved',
   studentMessages: '/student/messages',
   studentLessons: '/student/lessons',

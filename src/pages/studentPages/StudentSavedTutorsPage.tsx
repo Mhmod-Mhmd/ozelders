@@ -66,7 +66,7 @@ export function StudentSavedTutorsPage() {
                 </h3>
                 <p className="mt-1 text-gray-500">{t('saved.emptyBody')}</p>
                 <Link
-                  to={paths.studentHome}
+                  to={paths.studentFindTutor}
                   className={buttonVariants({ className: 'mt-5' })}
                 >
                   {t('saved.browseTutors')}

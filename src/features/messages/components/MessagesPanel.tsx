@@ -69,7 +69,7 @@ function EmptyInbox() {
         {t('messages.emptyBody')}
       </p>
       <Link
-        to={paths.studentHome}
+        to={paths.studentFindTutor}
         className={buttonVariants({ size: 'md', className: 'mt-5' })}
       >
         {t('messages.findTutor')}

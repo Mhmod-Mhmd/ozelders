@@ -20,6 +20,7 @@ import { filterTutors, sortTutors } from '@/features/tutors/utils/filterTutors';
 import {
   type AvailabilityPeriod,
   type SortKey,
+  type Weekday,
 } from '@/features/tutors/types/tutor.types';
 import { type Paginated } from '@/types';
 
@@ -122,7 +123,9 @@ const routes: Route[] = [
         maxPrice: asNumber(query.maxPrice),
         minRating: asNumber(query.minRating),
         nativeOnly: asBool(query.nativeOnly),
+        countries: asArray<string>(query.countries),
         availability: asArray<AvailabilityPeriod>(query.availability),
+        days: asArray<Weekday>(query.days),
       });
       const sorted = sortTutors(
         filtered,

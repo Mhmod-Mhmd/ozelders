@@ -2,7 +2,10 @@ import {
   type SortKey,
   type Tutor,
   type TutorFilters,
+  type Weekday,
 } from '../types/tutor.types';
+
+const WEEKDAYS: Weekday[] = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
 /** Apply the active filters to a list of tutors. */
 export function filterTutors(tutors: Tutor[], f: TutorFilters): Tutor[] {
@@ -24,9 +27,22 @@ export function filterTutors(tutors: Tutor[], f: TutorFilters): Tutor[] {
     if (f.minRating !== undefined && t.rating < f.minRating) return false;
     if (f.nativeOnly && !t.isNativeSpeaker) return false;
 
-    if (f.availability && f.availability.length > 0) {
-      const offered = new Set(Object.values(t.availability).flat());
-      if (!f.availability.some((period) => offered.has(period))) return false;
+    if (f.countries && f.countries.length > 0 && !f.countries.includes(t.country))
+      return false;
+
+    // Availability is matched per-day: the tutor must offer at least one of the
+    // selected periods on at least one of the selected days. When only days are
+    // given, the tutor must be available (any period) on one of them; when only
+    // periods are given, on any day.
+    const periods = f.availability?.length ? f.availability : undefined;
+    const days = f.days?.length ? f.days : undefined;
+    if (periods || days) {
+      const checkDays = days ?? WEEKDAYS;
+      const ok = checkDays.some((day) => {
+        const offered = t.availability[day] ?? [];
+        return periods ? periods.some((p) => offered.includes(p)) : offered.length > 0;
+      });
+      if (!ok) return false;
     }
 
     return true;
