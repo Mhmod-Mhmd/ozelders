@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
+import { paths } from '@/router/paths';
 import { Navbar } from './Navbar';
+import { StudentNavbar } from './StudentNavbar';
 import { Footer } from './Footer';
 
 /** Scrolls to the top of the page whenever the route changes. */
@@ -17,10 +19,14 @@ function ScrollToTop() {
  * and footer.
  */
 export function RootLayout() {
+  const { pathname } = useLocation();
+  // Logged-in students get the account header; everyone else the marketing nav.
+  const isStudentArea = pathname.startsWith(paths.studentHome);
+
   return (
     <div className="flex min-h-dvh flex-col bg-white">
       <ScrollToTop />
-      <Navbar />
+      {isStudentArea ? <StudentNavbar /> : <Navbar />}
       <main className="flex-1">
         <Outlet />
       </main>

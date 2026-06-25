@@ -3,6 +3,7 @@ import { RootLayout } from '@/components/layout/RootLayout';
 import { HomePage } from '@/pages/HomePage';
 import { TutorsPage } from '@/pages/TutorsPage';
 import { TutorProfilePage } from '@/pages/TutorProfilePage';
+import { StudentHomePage } from '@/pages/studentPages/StudentHomePage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 
 /**
@@ -18,6 +19,7 @@ export const router = createBrowserRouter([
       { index: true, element: <HomePage /> },
       { path: 'tutors', element: <TutorsPage /> },
       { path: 'tutors/:id', element: <TutorProfilePage /> },
+      { path: 'student', element: <StudentHomePage /> },
       { path: '*', element: <NotFoundPage /> },
     ],
   },
