@@ -1,6 +1,6 @@
 import { type ReactNode } from 'react';
 import { RotateCcw } from 'lucide-react';
-import { SUBJECTS } from '@/data';
+import { useSubjects } from '@/features/subjects/hooks/useSubjects';
 import { cn } from '@/utils/cn';
 import {
   type AvailabilityPeriod,
@@ -63,6 +63,7 @@ export function FilterSidebar({
   onReset,
   hideHeader = false,
 }: FilterSidebarProps) {
+  const { data: subjects = [] } = useSubjects();
   const activeBracket =
     PRICE_BRACKETS.find(
       (b) => b.min === filters.minPrice && b.max === filters.maxPrice,
@@ -99,7 +100,7 @@ export function FilterSidebar({
           className="w-full cursor-pointer appearance-none rounded-xl border border-gray-200 bg-white px-3.5 py-2.5 text-sm font-medium text-gray-800 hover:border-gray-300"
         >
           <option value="">All subjects</option>
-          {SUBJECTS.map((s) => (
+          {subjects.map((s) => (
             <option key={s.key} value={s.key}>
               {s.name}
             </option>

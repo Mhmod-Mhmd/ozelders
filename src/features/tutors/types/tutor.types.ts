@@ -63,3 +63,10 @@ export interface TutorFilters {
   nativeOnly?: boolean;
   availability?: AvailabilityPeriod[];
 }
+
+/** Full query for the `GET /tutors` endpoint: filters + sort + pagination. */
+export interface TutorListParams extends TutorFilters {
+  sort?: SortKey;
+  page?: number;
+  pageSize?: number;
+}

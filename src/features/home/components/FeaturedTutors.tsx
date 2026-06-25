@@ -2,13 +2,16 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
+import { TutorCardSkeleton } from '@/components/ui/Skeleton';
+import { ErrorState } from '@/components/ui/ErrorState';
 import { buttonVariants } from '@/components/ui/button-variants';
 import { TutorCard } from '@/features/tutors/components/TutorCard';
-import { getFeaturedTutors } from '@/data';
+import { useFeaturedTutors } from '@/features/tutors/hooks/useTutors';
 import { paths } from '@/router/paths';
 
 export function FeaturedTutors() {
-  const tutors = getFeaturedTutors(4);
+  const { data, isLoading, isError, refetch } = useFeaturedTutors(4);
+  const tutors = data?.data ?? [];
 
   return (
     <section className="bg-gray-50 py-16 lg:py-24">
@@ -28,11 +31,19 @@ export function FeaturedTutors() {
           </Link>
         </div>
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-2">
-          {tutors.map((tutor) => (
-            <TutorCard key={tutor.id} tutor={tutor} />
-          ))}
-        </div>
+        {isError ? (
+          <ErrorState className="mt-10" onRetry={() => refetch()} />
+        ) : (
+          <div className="mt-10 grid gap-6 lg:grid-cols-2">
+            {isLoading
+              ? Array.from({ length: 4 }).map((_, i) => (
+                  <TutorCardSkeleton key={i} />
+                ))
+              : tutors.map((tutor) => (
+                  <TutorCard key={tutor.id} tutor={tutor} />
+                ))}
+          </div>
+        )}
       </Container>
     </section>
   );

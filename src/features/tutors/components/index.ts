@@ -1,4 +1,6 @@
 export { TutorCard } from './TutorCard';
+export { StudentTutorCard } from './StudentTutorCard';
+export { VideoPromoCard } from './VideoPromoCard';
 export { FilterSidebar } from './FilterSidebar';
 export { SortDropdown } from './SortDropdown';
 export { ProfileHeader } from './ProfileHeader';

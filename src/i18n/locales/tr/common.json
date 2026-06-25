@@ -1,0 +1,130 @@
+{
+  "common": {
+    "loading": "Yükleniyor…",
+    "search": "Ara",
+    "error": {
+      "title": "Bir şeyler ters gitti",
+      "body": "Bunu şu anda yükleyemedik. Lütfen tekrar deneyin.",
+      "retry": "Tekrar dene"
+    }
+  },
+  "nav": {
+    "findTutors": "Öğretmen bul",
+    "corporate": "Kurumsal eğitim",
+    "referFriend": "Arkadaşını davet et",
+    "openMenu": "Menüyü aç",
+    "closeMenu": "Menüyü kapat"
+  },
+  "account": {
+    "menu": "Hesap menüsü",
+    "title": "Hesap",
+    "yourAccount": "Hesabınız",
+    "home": "Ana sayfa",
+    "messages": "Mesajlar",
+    "myLessons": "Derslerim",
+    "savedTutors": "Kaydedilen öğretmenler",
+    "referFriend": "Arkadaşını davet et",
+    "settings": "Ayarlar",
+    "help": "Yardım",
+    "notifications": "Bildirimler",
+    "logout": "Çıkış yap"
+  },
+  "notifications": {
+    "title": "Bildirimler",
+    "close": "Bildirimleri kapat",
+    "emptyTitle": "Güncellemeleri kaçırmayın!",
+    "emptyBody": "Öğrenme yolculuğunuzla ilgili güncellemeler için bu akışı takip edin"
+  },
+  "messages": {
+    "title": "Mesajlar",
+    "expand": "Tam ekran aç",
+    "close": "Mesajları kapat",
+    "tabs": {
+      "all": "Tümü",
+      "unread": "Okunmamış",
+      "archived": "Arşivlenmiş"
+    },
+    "emptyTitle": "Öğrenmeye hazır mısın?",
+    "emptyBody": "Bir öğretmen bul ve becerilerini geliştirmeye başlamak için bir ders ayarla.",
+    "findTutor": "Öğretmenini bul",
+    "selectConversation": "Sohbet başlatmak için bir öğretmen seç"
+  },
+  "accountNav": {
+    "home": "Ana sayfa",
+    "messages": "Mesajlar",
+    "myLessons": "Derslerim",
+    "settings": "Ayarlar",
+    "forBusiness": "Kurumsal"
+  },
+  "lessons": {
+    "title": "Derslerim",
+    "comingSoon": "Dersleriniz burada görünecek."
+  },
+  "settings": {
+    "title": "Ayarlar",
+    "comingSoon": "Hesap ayarlarınız burada görünecek."
+  },
+  "language": {
+    "label": "Dil",
+    "en": "English",
+    "tr": "Türkçe",
+    "ar": "العربية"
+  },
+  "tutors": {
+    "availableCount_one": "{{count}} öğretmen mevcut",
+    "availableCount_other": "{{count}} öğretmen mevcut",
+    "noResults": "Filtrelerinize uygun öğretmen yok",
+    "noResultsHint": "Filtreleri değiştirmeyi veya sıfırlamayı deneyin.",
+    "bookTrial": "Deneme dersi ayarla",
+    "sendMessage": "Mesaj gönder",
+    "superTutor": "Süper Öğretmen",
+    "professional": "Profesyonel",
+    "speaks": "{{languages}} konuşur",
+    "learnMore": "Daha fazla bilgi",
+    "lessonDuration": "50 dk ders",
+    "reviewsCount_one": "{{count}} değerlendirme",
+    "reviewsCount_other": "{{count}} değerlendirme",
+    "studentsLabel": "öğrenci",
+    "lessonsLabel": "ders",
+    "saveTutor": "Öğretmeni kaydet",
+    "removeSaved": "Kaydedilenlerden çıkar",
+    "viewProfile": "{{name}} adlı öğretmenin profilini görüntüle"
+  },
+  "saved": {
+    "heading_one": "{{count}} kaydedilen öğretmen",
+    "heading_other": "{{count}} kaydedilen öğretmen",
+    "emptyTitle": "Henüz kaydedilen öğretmen yok",
+    "emptyBody": "Daha sonrası için kaydetmek üzere herhangi bir öğretmenin kalbine dokun.",
+    "browseTutors": "Öğretmenlere göz at"
+  },
+  "student": {
+    "heading": "Profesyonel olarak gelişmenize yardımcı olan İngilizce öğretmenleri",
+    "searchPlaceholder": "İsme veya anahtar kelimeye göre ara",
+    "sortBy": "Öğretmenleri sırala",
+    "filters": {
+      "learn": "Öğrenmek istiyorum",
+      "learnValue": "İngilizce",
+      "price": "Ders başına ücret",
+      "priceValue": "₺100 – ₺1.600",
+      "country": "Doğduğu ülke",
+      "countryValue": "Amerika Birleşik Devletleri",
+      "available": "Müsait olduğum zaman",
+      "availableValue": "12-15, 15-18 · Çar",
+      "specialties": "Uzmanlıklar",
+      "alsoSpeaks": "Ayrıca konuşur",
+      "nativeSpeaker": "Ana dili",
+      "tutorCategories": "Öğretmen kategorileri"
+    },
+    "sort": {
+      "topPicks": "En iyi seçimlerimiz",
+      "priceLowHigh": "Fiyat: düşükten yükseğe",
+      "priceHighLow": "Fiyat: yüksekten düşüğe",
+      "mostReviews": "En çok değerlendirme"
+    },
+    "promo": {
+      "title": "Hadi {{subject}} konuşalım!",
+      "play": "Tanıtım videosunu oynat",
+      "viewSchedule": "Tüm programı görüntüle"
+    }
+  }
+}

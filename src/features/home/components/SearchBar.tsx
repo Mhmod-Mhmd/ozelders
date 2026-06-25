@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Search } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Select } from '@/components/ui/Select';
-import { SUBJECTS } from '@/data';
+import { useSubjects } from '@/features/subjects/hooks/useSubjects';
 import { paths } from '@/router/paths';
 
 const LANGUAGES = [
@@ -19,6 +19,7 @@ const LANGUAGES = [
 
 export function SearchBar() {
   const navigate = useNavigate();
+  const { data: subjects = [] } = useSubjects();
   const [category, setCategory] = useState('');
   const [language, setLanguage] = useState('');
 
@@ -43,7 +44,7 @@ export function SearchBar() {
           className="border-transparent hover:border-gray-200"
         >
           <option value="">What do you want to learn?</option>
-          {SUBJECTS.map((subject) => (
+          {subjects.map((subject) => (
             <option key={subject.key} value={subject.key}>
               {subject.name}
             </option>

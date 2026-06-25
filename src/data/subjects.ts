@@ -9,18 +9,8 @@ import {
   Palette,
   Landmark,
   Dumbbell,
-  type LucideIcon,
 } from 'lucide-react';
-
-export interface Subject {
-  key: string;
-  name: string;
-  icon: LucideIcon;
-  tutorsCount: number;
-  blurb: string;
-  /** Tailwind classes for the icon chip background + text color. */
-  accent: string;
-}
+import { type Subject } from '@/features/subjects/types/subject.types';
 
 export const SUBJECTS: Subject[] = [
   {

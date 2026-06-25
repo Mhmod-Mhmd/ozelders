@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 import { Badge } from '@/components/ui/Badge';
+import { Skeleton } from '@/components/ui/Skeleton';
 import { buttonVariants } from '@/components/ui/button-variants';
 import {
   ProfileHeader,
@@ -11,7 +12,10 @@ import {
   ReviewsList,
   BookingCard,
 } from '@/features/tutors/components';
-import { getTutorById, getReviewsForTutor } from '@/data';
+import {
+  useTutor,
+  useTutorReviews,
+} from '@/features/tutors/hooks/useTutors';
 import { paths } from '@/router/paths';
 
 function ProfileSection({
@@ -34,9 +38,27 @@ function ProfileSection({
 
 export function TutorProfilePage() {
   const { id = '' } = useParams();
-  const tutor = getTutorById(id);
+  const { data: tutor, isLoading, isError } = useTutor(id);
+  const { data: reviewsPage } = useTutorReviews(id, 6);
+  const reviews = reviewsPage?.data ?? [];
 
-  if (!tutor) {
+  if (isLoading) {
+    return (
+      <Container className="py-8">
+        <Skeleton className="h-5 w-32" />
+        <div className="mt-4 grid gap-8 lg:grid-cols-[1fr_360px]">
+          <div className="space-y-6">
+            <Skeleton className="h-40 rounded-2xl" />
+            <Skeleton className="h-32 rounded-2xl" />
+            <Skeleton className="h-64 rounded-2xl" />
+          </div>
+          <Skeleton className="h-96 rounded-2xl" />
+        </div>
+      </Container>
+    );
+  }
+
+  if (isError || !tutor) {
     return (
       <Container className="py-24 text-center">
         <h1 className="text-2xl font-bold text-gray-900">Tutor not found</h1>
@@ -52,8 +74,6 @@ export function TutorProfilePage() {
       </Container>
     );
   }
-
-  const reviews = getReviewsForTutor(tutor.id, 6);
 
   return (
     <div className="bg-gray-50">

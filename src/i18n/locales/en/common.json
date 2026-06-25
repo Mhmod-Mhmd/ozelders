@@ -1,0 +1,130 @@
+{
+  "common": {
+    "loading": "Loading…",
+    "search": "Search",
+    "error": {
+      "title": "Something went wrong",
+      "body": "We couldn't load this right now. Please try again.",
+      "retry": "Try again"
+    }
+  },
+  "nav": {
+    "findTutors": "Find tutors",
+    "corporate": "Corporate training",
+    "referFriend": "Refer a friend",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "account": {
+    "menu": "Account menu",
+    "title": "Account",
+    "yourAccount": "Your account",
+    "home": "Home",
+    "messages": "Messages",
+    "myLessons": "My lessons",
+    "savedTutors": "Saved tutors",
+    "referFriend": "Refer a friend",
+    "settings": "Settings",
+    "help": "Help",
+    "notifications": "Notifications",
+    "logout": "Log out"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "close": "Close notifications",
+    "emptyTitle": "Don't miss out on updates!",
+    "emptyBody": "Keep an eye on this feed for updates about your learning journey"
+  },
+  "messages": {
+    "title": "Messages",
+    "expand": "Open full screen",
+    "close": "Close messages",
+    "tabs": {
+      "all": "All",
+      "unread": "Unread",
+      "archived": "Archived"
+    },
+    "emptyTitle": "Ready to start learning?",
+    "emptyBody": "Find a tutor and book a lesson to start improving your skills.",
+    "findTutor": "Find your tutor",
+    "selectConversation": "Select a tutor to start a conversation"
+  },
+  "accountNav": {
+    "home": "Home",
+    "messages": "Messages",
+    "myLessons": "My lessons",
+    "settings": "Settings",
+    "forBusiness": "For business"
+  },
+  "lessons": {
+    "title": "My lessons",
+    "comingSoon": "Your lessons will appear here."
+  },
+  "settings": {
+    "title": "Settings",
+    "comingSoon": "Your account settings will appear here."
+  },
+  "language": {
+    "label": "Language",
+    "en": "English",
+    "tr": "Türkçe",
+    "ar": "العربية"
+  },
+  "tutors": {
+    "availableCount_one": "{{count}} tutor available",
+    "availableCount_other": "{{count}} tutors available",
+    "noResults": "No tutors match your filters",
+    "noResultsHint": "Try adjusting or resetting your filters.",
+    "bookTrial": "Book trial lesson",
+    "sendMessage": "Send message",
+    "superTutor": "Super Tutor",
+    "professional": "Professional",
+    "speaks": "Speaks {{languages}}",
+    "learnMore": "Learn more",
+    "lessonDuration": "50-min lesson",
+    "reviewsCount_one": "{{count}} review",
+    "reviewsCount_other": "{{count}} reviews",
+    "studentsLabel": "students",
+    "lessonsLabel": "lessons",
+    "saveTutor": "Save tutor",
+    "removeSaved": "Remove from saved",
+    "viewProfile": "View {{name}}'s profile"
+  },
+  "saved": {
+    "heading_one": "{{count}} saved tutor",
+    "heading_other": "{{count}} saved tutors",
+    "emptyTitle": "No saved tutors yet",
+    "emptyBody": "Tap the heart on any tutor to save them here for later.",
+    "browseTutors": "Browse tutors"
+  },
+  "student": {
+    "heading": "English tutors that help you develop professionally",
+    "searchPlaceholder": "Search by name or keyword",
+    "sortBy": "Sort tutors by",
+    "filters": {
+      "learn": "I want to learn",
+      "learnValue": "English",
+      "price": "Price per lesson",
+      "priceValue": "₺100 – ₺1,600",
+      "country": "Country of birth",
+      "countryValue": "United States of America",
+      "available": "I'm available",
+      "availableValue": "12-15, 15-18 · Wed",
+      "specialties": "Specialties",
+      "alsoSpeaks": "Also speaks",
+      "nativeSpeaker": "Native speaker",
+      "tutorCategories": "Tutor categories"
+    },
+    "sort": {
+      "topPicks": "Our top picks",
+      "priceLowHigh": "Price: low to high",
+      "priceHighLow": "Price: high to low",
+      "mostReviews": "Most reviews"
+    },
+    "promo": {
+      "title": "Let's Talk {{subject}}!",
+      "play": "Play intro video",
+      "viewSchedule": "View full schedule"
+    }
+  }
+}

@@ -1,20 +1,23 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { SlidersHorizontal, Search, X, RotateCcw, SearchX } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
+import { TutorCardSkeleton } from '@/components/ui/Skeleton';
+import { ErrorState } from '@/components/ui/ErrorState';
 import { TutorCard } from '@/features/tutors/components/TutorCard';
 import { FilterSidebar } from '@/features/tutors/components/FilterSidebar';
 import { SortDropdown } from '@/features/tutors/components/SortDropdown';
-import { filterTutors, sortTutors } from '@/features/tutors/utils/filterTutors';
+import { useTutors } from '@/features/tutors/hooks/useTutors';
+import { useSubjects } from '@/features/subjects/hooks/useSubjects';
 import {
   type SortKey,
   type TutorFilters,
 } from '@/features/tutors/types/tutor.types';
-import { TUTORS, getSubjectByKey } from '@/data';
 
 export function TutorsPage() {
   const [searchParams] = useSearchParams();
+  const { data: subjects = [] } = useSubjects();
   const [filters, setFilters] = useState<TutorFilters>(() => ({
     category: searchParams.get('category') || undefined,
     search: searchParams.get('q') || undefined,
@@ -31,17 +34,16 @@ export function TutorsPage() {
     }));
   }, [searchParams]);
 
-  const results = useMemo(
-    () => sortTutors(filterTutors(TUTORS, filters), sort),
-    [filters, sort],
-  );
+  const tutorsQuery = useTutors({ ...filters, sort });
+  const results = tutorsQuery.data?.data ?? [];
+  const total = tutorsQuery.data?.meta.total ?? 0;
 
   const updateFilters = (next: Partial<TutorFilters>) =>
     setFilters((f) => ({ ...f, ...next }));
   const resetFilters = () => setFilters({});
 
   const activeCategory = filters.category
-    ? getSubjectByKey(filters.category)
+    ? subjects.find((s) => s.key === filters.category)
     : undefined;
 
   return (
@@ -103,14 +105,21 @@ export function TutorsPage() {
               </div>
             </div>
 
-            <p className="mb-4 text-sm text-gray-500">
-              <span className="font-semibold text-gray-900">
-                {results.length}
-              </span>{' '}
-              {results.length === 1 ? 'tutor' : 'tutors'} available
+            <p className="mb-4 text-sm font-medium text-gray-600">
+              {tutorsQuery.isLoading
+                ? ' '
+                : `${total} ${total === 1 ? 'tutor' : 'tutors'} available`}
             </p>
 
-            {results.length > 0 ? (
+            {tutorsQuery.isLoading ? (
+              <div className="space-y-5">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <TutorCardSkeleton key={i} />
+                ))}
+              </div>
+            ) : tutorsQuery.isError ? (
+              <ErrorState onRetry={() => tutorsQuery.refetch()} />
+            ) : results.length > 0 ? (
               <div className="space-y-5">
                 {results.map((tutor) => (
                   <TutorCard key={tutor.id} tutor={tutor} />
@@ -180,8 +189,7 @@ export function TutorsPage() {
             </div>
             <div className="border-t border-gray-100 p-4">
               <Button className="w-full" onClick={() => setMobileOpen(false)}>
-                Show {results.length}{' '}
-                {results.length === 1 ? 'result' : 'results'}
+                Show {total} {total === 1 ? 'result' : 'results'}
               </Button>
             </div>
           </div>

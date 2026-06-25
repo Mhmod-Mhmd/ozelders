@@ -1,0 +1,142 @@
+{
+  "common": {
+    "loading": "جارٍ التحميل…",
+    "search": "بحث",
+    "error": {
+      "title": "حدث خطأ ما",
+      "body": "تعذّر تحميل هذا المحتوى الآن. يرجى المحاولة مرة أخرى.",
+      "retry": "أعد المحاولة"
+    }
+  },
+  "nav": {
+    "findTutors": "ابحث عن معلّم",
+    "corporate": "التدريب المؤسسي",
+    "referFriend": "ادعُ صديقًا",
+    "openMenu": "افتح القائمة",
+    "closeMenu": "أغلق القائمة"
+  },
+  "account": {
+    "menu": "قائمة الحساب",
+    "title": "الحساب",
+    "yourAccount": "حسابك",
+    "home": "الرئيسية",
+    "messages": "الرسائل",
+    "myLessons": "دروسي",
+    "savedTutors": "المعلّمون المحفوظون",
+    "referFriend": "ادعُ صديقًا",
+    "settings": "الإعدادات",
+    "help": "المساعدة",
+    "notifications": "الإشعارات",
+    "logout": "تسجيل الخروج"
+  },
+  "notifications": {
+    "title": "الإشعارات",
+    "close": "إغلاق الإشعارات",
+    "emptyTitle": "لا تفوّت التحديثات!",
+    "emptyBody": "تابع هذا الموجز للاطّلاع على تحديثات رحلتك التعليمية"
+  },
+  "messages": {
+    "title": "الرسائل",
+    "expand": "فتح بملء الشاشة",
+    "close": "إغلاق الرسائل",
+    "tabs": {
+      "all": "الكل",
+      "unread": "غير المقروءة",
+      "archived": "المؤرشفة"
+    },
+    "emptyTitle": "هل أنت مستعد للتعلّم؟",
+    "emptyBody": "ابحث عن معلّم واحجز درسًا لتبدأ في تطوير مهاراتك.",
+    "findTutor": "ابحث عن معلّمك",
+    "selectConversation": "اختر معلّمًا لبدء محادثة"
+  },
+  "accountNav": {
+    "home": "الرئيسية",
+    "messages": "الرسائل",
+    "myLessons": "دروسي",
+    "settings": "الإعدادات",
+    "forBusiness": "للأعمال"
+  },
+  "lessons": {
+    "title": "دروسي",
+    "comingSoon": "ستظهر دروسك هنا."
+  },
+  "settings": {
+    "title": "الإعدادات",
+    "comingSoon": "ستظهر إعدادات حسابك هنا."
+  },
+  "language": {
+    "label": "اللغة",
+    "en": "English",
+    "tr": "Türkçe",
+    "ar": "العربية"
+  },
+  "tutors": {
+    "availableCount_zero": "لا يوجد معلّمون متاحون",
+    "availableCount_one": "معلّم واحد متاح",
+    "availableCount_two": "معلّمان متاحان",
+    "availableCount_few": "{{count}} معلّمين متاحين",
+    "availableCount_many": "{{count}} معلّمًا متاحًا",
+    "availableCount_other": "{{count}} معلّم متاح",
+    "noResults": "لا يوجد معلّمون مطابقون لعوامل التصفية",
+    "noResultsHint": "حاول تعديل عوامل التصفية أو إعادة ضبطها.",
+    "bookTrial": "احجز درسًا تجريبيًا",
+    "sendMessage": "أرسل رسالة",
+    "superTutor": "معلّم متميز",
+    "professional": "محترف",
+    "speaks": "يتحدث {{languages}}",
+    "learnMore": "اعرف المزيد",
+    "lessonDuration": "درس مدته 50 دقيقة",
+    "reviewsCount_zero": "لا توجد تقييمات",
+    "reviewsCount_one": "تقييم واحد",
+    "reviewsCount_two": "تقييمان",
+    "reviewsCount_few": "{{count}} تقييمات",
+    "reviewsCount_many": "{{count}} تقييمًا",
+    "reviewsCount_other": "{{count}} تقييم",
+    "studentsLabel": "طالب",
+    "lessonsLabel": "درس",
+    "saveTutor": "احفظ المعلّم",
+    "removeSaved": "إزالة من المحفوظات",
+    "viewProfile": "عرض ملف {{name}}"
+  },
+  "saved": {
+    "heading_zero": "لا يوجد معلّمون محفوظون",
+    "heading_one": "معلّم محفوظ واحد",
+    "heading_two": "معلّمان محفوظان",
+    "heading_few": "{{count}} معلّمين محفوظين",
+    "heading_many": "{{count}} معلّمًا محفوظًا",
+    "heading_other": "{{count}} معلّم محفوظ",
+    "emptyTitle": "لا يوجد معلّمون محفوظون بعد",
+    "emptyBody": "انقر على القلب لدى أي معلّم لحفظه هنا لوقت لاحق.",
+    "browseTutors": "تصفّح المعلّمين"
+  },
+  "student": {
+    "heading": "معلّمو الإنجليزية الذين يساعدونك على التطور مهنيًا",
+    "searchPlaceholder": "ابحث بالاسم أو الكلمة المفتاحية",
+    "sortBy": "ترتيب المعلّمين حسب",
+    "filters": {
+      "learn": "أريد أن أتعلّم",
+      "learnValue": "الإنجليزية",
+      "price": "سعر الدرس",
+      "priceValue": "₺100 – ₺1,600",
+      "country": "بلد الميلاد",
+      "countryValue": "الولايات المتحدة الأمريكية",
+      "available": "أنا متاح",
+      "availableValue": "12-15، 15-18 · الأربعاء",
+      "specialties": "التخصصات",
+      "alsoSpeaks": "يتحدث أيضًا",
+      "nativeSpeaker": "متحدث أصلي",
+      "tutorCategories": "فئات المعلّمين"
+    },
+    "sort": {
+      "topPicks": "أفضل اختياراتنا",
+      "priceLowHigh": "السعر: من الأقل إلى الأعلى",
+      "priceHighLow": "السعر: من الأعلى إلى الأقل",
+      "mostReviews": "الأكثر تقييمًا"
+    },
+    "promo": {
+      "title": "هيا نتحدّث عن {{subject}}!",
+      "play": "تشغيل فيديو التعريف",
+      "viewSchedule": "عرض الجدول الكامل"
+    }
+  }
+}

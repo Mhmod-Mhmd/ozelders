@@ -7,4 +7,8 @@ export const paths = {
   tutors: '/tutors',
   tutorProfile: (id: string) => `/tutors/${id}`,
   studentHome: '/student',
+  studentSaved: '/student/saved',
+  studentMessages: '/student/messages',
+  studentLessons: '/student/lessons',
+  studentSettings: '/student/settings',
 } as const;

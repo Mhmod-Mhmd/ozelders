@@ -1,9 +1,14 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { RootLayout } from '@/components/layout/RootLayout';
+import { StudentAccountLayout } from '@/components/layout/StudentAccountLayout';
 import { HomePage } from '@/pages/HomePage';
 import { TutorsPage } from '@/pages/TutorsPage';
 import { TutorProfilePage } from '@/pages/TutorProfilePage';
 import { StudentHomePage } from '@/pages/studentPages/StudentHomePage';
+import { StudentSavedTutorsPage } from '@/pages/studentPages/StudentSavedTutorsPage';
+import { StudentMessagesPage } from '@/pages/studentPages/StudentMessagesPage';
+import { StudentLessonsPage } from '@/pages/studentPages/StudentLessonsPage';
+import { StudentSettingsPage } from '@/pages/studentPages/StudentSettingsPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 
 /**
@@ -19,7 +24,21 @@ export const router = createBrowserRouter([
       { index: true, element: <HomePage /> },
       { path: 'tutors', element: <TutorsPage /> },
       { path: 'tutors/:id', element: <TutorProfilePage /> },
-      { path: 'student', element: <StudentHomePage /> },
+      {
+        path: 'student',
+        children: [
+          { index: true, element: <StudentHomePage /> },
+          { path: 'saved', element: <StudentSavedTutorsPage /> },
+          {
+            element: <StudentAccountLayout />,
+            children: [
+              { path: 'messages', element: <StudentMessagesPage /> },
+              { path: 'lessons', element: <StudentLessonsPage /> },
+              { path: 'settings', element: <StudentSettingsPage /> },
+            ],
+          },
+        ],
+      },
       { path: '*', element: <NotFoundPage /> },
     ],
   },
