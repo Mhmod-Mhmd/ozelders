@@ -4,6 +4,8 @@
  */
 export const paths = {
   home: '/',
+  login: '/login',
+  becomeTutor: '/become-tutor',
   tutors: '/tutors',
   tutorProfile: (id: string) => `/tutors/${id}`,
   studentHome: '/student',

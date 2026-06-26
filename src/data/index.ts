@@ -2,6 +2,8 @@
 // (`src/lib/mock`) should import from here — UI code goes through React Query
 // hooks and the feature `api/` modules instead.
 export { TUTORS, getTutorById, getFeaturedTutors } from './tutors';
+export { authenticate, findUserById } from './auth';
+export type { AuthUser, UserRole } from './auth';
 export {
   getSavedTutorIds,
   isTutorSaved,

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ArrowRight } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
@@ -10,6 +11,8 @@ import { useFeaturedTutors } from '@/features/tutors/hooks/useTutors';
 import { paths } from '@/router/paths';
 
 export function FeaturedTutors() {
+  const { t } = useTranslation();
+  // Real, top-rated tutors straight from the API (GET /tutors?sort=top-rated).
   const { data, isLoading, isError, refetch } = useFeaturedTutors(4);
   const tutors = data?.data ?? [];
 
@@ -19,15 +22,15 @@ export function FeaturedTutors() {
         <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
           <SectionHeading
             align="left"
-            eyebrow="Featured tutors"
-            title="Meet our top-rated tutors"
-            subtitle="Hand-picked, highly-rated tutors loved by thousands of students."
+            eyebrow={t('home.featured.eyebrow')}
+            title={t('home.featured.title')}
+            subtitle={t('home.featured.subtitle')}
           />
           <Link
-            to={paths.tutors}
+            to={paths.studentFindTutor}
             className={buttonVariants({ variant: 'outline' })}
           >
-            View all tutors <ArrowRight className="h-4 w-4" />
+            {t('home.featured.viewAll')} <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
 

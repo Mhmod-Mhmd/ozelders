@@ -21,7 +21,7 @@ const HERO_IMAGES = [
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-brand-50 to-white">
-      <Container className="py-12 lg:py-20">
+      <Container className="pt-7.5 pb-12 lg:pb-20">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           {/* Copy + search */}
           <div>

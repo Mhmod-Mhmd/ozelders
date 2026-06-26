@@ -64,13 +64,15 @@ export function useSavedTutors() {
 /**
  * Set of saved tutor ids, derived from the same cache as {@link useSavedTutors}
  * (shared query key → no extra request). Use it to light up the heart on any
- * tutor card.
+ * tutor card. Pass `enabled: false` for guests so the authenticated saved-list
+ * request never fires.
  */
-export function useSavedTutorIds() {
+export function useSavedTutorIds(enabled = true) {
   return useQuery({
     queryKey: tutorKeys.saved(),
     queryFn: () => getSavedTutors(),
     select: (data) => new Set(data.data.map((tutor) => tutor.id)),
+    enabled,
   });
 }
 

@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom';
 import { Check } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 import { buttonVariants } from '@/components/ui/button-variants';
+import { paths } from '@/router/paths';
 
 const BENEFITS = [
   'Find new students',
@@ -36,12 +38,12 @@ export function BecomeTutorCTA() {
                 ))}
               </ul>
               <div className="mt-8 flex flex-wrap gap-3">
-                <a
-                  href="#"
+                <Link
+                  to={paths.becomeTutor}
                   className={buttonVariants({ variant: 'white', size: 'lg' })}
                 >
                   Become a tutor
-                </a>
+                </Link>
                 <a
                   href="#how-it-works"
                   className={buttonVariants({

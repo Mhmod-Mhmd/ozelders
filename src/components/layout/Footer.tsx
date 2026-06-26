@@ -42,7 +42,7 @@ const COLUMNS: FooterColumn[] = [
   {
     title: 'For tutors',
     links: [
-      { label: 'Become a tutor', to: '#' },
+      { label: 'Become a tutor', to: paths.becomeTutor },
       { label: 'Tutor resources', to: '#' },
       { label: 'Community', to: '#' },
     ],

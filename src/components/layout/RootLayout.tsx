@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import { paths } from '@/router/paths';
+import { useHasRole } from '@/features/auth';
 import { Navbar } from './Navbar';
 import { StudentNavbar } from './StudentNavbar';
 import { Footer } from './Footer';
@@ -19,14 +19,16 @@ function ScrollToTop() {
  * and footer.
  */
 export function RootLayout() {
-  const { pathname } = useLocation();
-  // Logged-in students get the account header; everyone else the marketing nav.
-  const isStudentArea = pathname.startsWith(paths.studentHome);
+  // The header follows the session, not the URL: signed-in students get the
+  // account header everywhere; guests (and other roles) get the marketing nav.
+  // This is what lets a guest browse /student/find-tutor without the student
+  // chrome. While the session is still resolving, default to the guest nav.
+  const isStudent = useHasRole('student');
 
   return (
     <div className="flex min-h-dvh flex-col bg-white">
       <ScrollToTop />
-      {isStudentArea ? <StudentNavbar /> : <Navbar />}
+      {isStudent ? <StudentNavbar /> : <Navbar />}
       <main className="flex-1">
         <Outlet />
       </main>

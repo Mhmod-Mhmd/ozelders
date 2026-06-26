@@ -10,6 +10,8 @@ import {
   SUBJECTS,
   TESTIMONIALS,
   CONVERSATIONS,
+  authenticate,
+  findUserById,
   getSavedTutorIds,
   addSavedTutor,
   removeSavedTutor,
@@ -137,6 +139,29 @@ interface RouteContext {
   query: Query;
   /** Parsed JSON request body (empty object for GET/DELETE). */
   body: Record<string, unknown>;
+  /** Bearer access token from the `Authorization` header, if present. */
+  token?: string;
+}
+
+/* ------------------------------------------------------------------ */
+/* Auth helpers (mock JWT-ish tokens encode the user id as a suffix).  */
+/* ------------------------------------------------------------------ */
+
+const makeAccessToken = (userId: string) => `mock-access.${userId}`;
+const makeRefreshToken = (userId: string) => `mock-refresh.${userId}`;
+
+/** Pull the user id out of a `mock-access.<id>` / `mock-refresh.<id>` token. */
+function userIdFromToken(token?: string): string | undefined {
+  if (!token) return undefined;
+  const id = token.split('.').slice(1).join('.');
+  return id || undefined;
+}
+
+/** Resolve the signed-in user from a request's bearer token, or 401. */
+function requireUser(token?: string) {
+  const user = findUserById(userIdFromToken(token) ?? '');
+  if (!user) throw new HttpError(401, 'Not authenticated', 'UNAUTHENTICATED');
+  return user;
 }
 
 type Handler = (ctx: RouteContext) => unknown;
@@ -148,6 +173,58 @@ interface Route {
 }
 
 const routes: Route[] = [
+  /* ---------------------------------------------------------------- */
+  /* Auth                                                             */
+  /* ---------------------------------------------------------------- */
+  {
+    method: 'POST',
+    pattern: /^\/auth\/login$/,
+    handler: ({ body }) => {
+      const email = asString(body.email)?.trim() ?? '';
+      const password = asString(body.password) ?? '';
+      const errors: Record<string, string[]> = {};
+      if (!email) errors.email = ['Email is required.'];
+      if (!password) errors.password = ['Password is required.'];
+      if (Object.keys(errors).length) throw validationError(errors);
+
+      const user = authenticate(email, password);
+      if (!user) {
+        throw new HttpError(
+          401,
+          'The email or password is incorrect.',
+          'INVALID_CREDENTIALS',
+        );
+      }
+      return {
+        user,
+        accessToken: makeAccessToken(user.id),
+        refreshToken: makeRefreshToken(user.id),
+      };
+    },
+  },
+  {
+    method: 'POST',
+    pattern: /^\/auth\/refresh$/,
+    handler: ({ body }) => {
+      const userId = userIdFromToken(asString(body.refreshToken));
+      const user = findUserById(userId ?? '');
+      if (!user) {
+        throw new HttpError(401, 'Invalid refresh token', 'INVALID_REFRESH');
+      }
+      return { user, accessToken: makeAccessToken(user.id) };
+    },
+  },
+  {
+    method: 'GET',
+    pattern: /^\/auth\/session$/,
+    handler: ({ token }) => ({ user: requireUser(token) }),
+  },
+  {
+    method: 'POST',
+    pattern: /^\/auth\/logout$/,
+    handler: () => ({ success: true }),
+  },
+
   {
     method: 'GET',
     pattern: /^\/tutors$/,
@@ -555,13 +632,18 @@ export const mockAdapter: AxiosAdapter = async (config) => {
   const query = (config.params ?? {}) as Query;
   const body = parseBody(config.data);
 
+  const authHeader = String(
+    AxiosHeaders.from(config.headers).get('Authorization') ?? '',
+  );
+  const token = authHeader.replace(/^Bearer\s+/i, '') || undefined;
+
   for (const route of routes) {
     if (route.method !== method) continue;
     const match = route.pattern.exec(path);
     if (!match) continue;
 
     try {
-      const data = route.handler({ params: match.slice(1), query, body });
+      const data = route.handler({ params: match.slice(1), query, body, token });
       return buildResponse(config, data);
     } catch (error) {
       if (error instanceof HttpError) {

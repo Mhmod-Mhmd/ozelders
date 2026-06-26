@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { Search } from 'lucide-react';
+import { useHasRole } from '@/features/auth';
+import { paths } from '@/router/paths';
+import { cn } from '@/utils/cn';
 import { Container } from '@/components/ui/Container';
 import { TutorCardSkeleton } from '@/components/ui/Skeleton';
 import { ErrorState } from '@/components/ui/ErrorState';
@@ -49,6 +53,11 @@ const NO_SAVED = new Set<string>();
 
 export function FindTutorPage() {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  // Guests browse the same discovery view but get only the filters + list (no
+  // personalized heading, promo rail, or saving). Signed-in students get the
+  // full experience.
+  const isStudent = useHasRole('student');
 
   // Filter state — each piece is a controlled input that feeds the query below.
   const [learn, setLearn] = useState('English');
@@ -86,31 +95,40 @@ export function FindTutorPage() {
   const total = tutorsQuery.data?.meta.total ?? 0;
   const featured = tutors[0];
 
-  const savedIds = useSavedTutorIds().data ?? NO_SAVED;
+  const savedIds = useSavedTutorIds(isStudent).data ?? NO_SAVED;
   const toggleSave = useToggleSavedTutor();
 
   return (
     <div className="bg-gray-50">
-      {/* Heading */}
-      <Container className="px-3.75 pt-8 pb-2 sm:px-3.75 lg:px-3.75">
-        <div className="flex items-center justify-between gap-4">
-          <h1 className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">
-            {t('student.heading')}
-          </h1>
-          <span aria-hidden className="hidden text-4xl sm:block">
-            📈
-          </span>
-        </div>
-        <p className="mt-2 text-sm font-medium text-gray-600">
-          {tutorsQuery.isLoading
-            ? t('common.loading')
-            : t('tutors.availableCount', { count: total })}
-        </p>
-      </Container>
+      {/* Heading — only the personalized student view shows it; guests get
+          straight to the filters and list. */}
+      {isStudent && (
+        <Container className="px-3.75 pt-8 pb-2 sm:px-3.75 lg:px-3.75">
+          <div className="flex items-center justify-between gap-4">
+            <h1 className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">
+              {t('student.heading')}
+            </h1>
+            <span aria-hidden className="hidden text-4xl sm:block">
+              📈
+            </span>
+          </div>
+          <p className="mt-2 text-sm font-medium text-gray-600">
+            {tutorsQuery.isLoading
+              ? t('common.loading')
+              : t('tutors.availableCount', { count: total })}
+          </p>
+        </Container>
+      )}
 
-      {/* Filter bar — pins to the top of the viewport on scroll (the header
-          slides away to make room, see StudentNavbar). */}
-      <div className="sticky top-0 z-40 border-b border-gray-100 bg-white shadow-sm">
+      {/* Filter bar. For students the account header slides away on scroll so
+          the bar pins to the very top; for guests the marketing header stays
+          fixed (h-16), so the bar pins just below it to avoid overlap. */}
+      <div
+        className={cn(
+          'sticky z-40 border-b border-gray-100 bg-white shadow-sm',
+          isStudent ? 'top-0' : 'top-16',
+        )}
+      >
 
         <Container className="px-3.75 py-5 sm:px-3.75 lg:px-3.75">
           {/* Top row: labelled dropdown filters */}
@@ -147,9 +165,14 @@ export function FindTutorPage() {
         </Container>
       </div>
 
-      {/* Results + rail */}
+      {/* Results + rail. The promo rail is part of the personalized student
+          experience; guests get a full-width list. */}
       <Container className="px-3.75 py-6 sm:px-3.75 lg:px-3.75">
-        <div className="lg:grid lg:grid-cols-[1fr_320px] lg:gap-8">
+        <div
+          className={cn(
+            isStudent && 'lg:grid lg:grid-cols-[1fr_320px] lg:gap-8',
+          )}
+        >
           <div className="space-y-5">
             {tutorsQuery.isLoading ? (
               Array.from({ length: 4 }).map((_, i) => (
@@ -165,7 +188,12 @@ export function FindTutorPage() {
                     key={tutor.id}
                     tutor={tutor}
                     saved={saved}
-                    onToggleSave={(t) => toggleSave.mutate({ tutor: t, saved })}
+                    onToggleSave={(t) =>
+                      isStudent
+                        ? toggleSave.mutate({ tutor: t, saved })
+                        : // Saving requires an account — send guests to sign in.
+                          navigate(paths.login)
+                    }
                   />
                 );
               })
@@ -180,14 +208,16 @@ export function FindTutorPage() {
             )}
           </div>
 
-          {/* Right rail */}
-          <aside className="mt-6 hidden lg:mt-0 lg:block">
-            {featured && (
-              <div className="sticky top-20">
-                <VideoPromoCard tutor={featured} />
-              </div>
-            )}
-          </aside>
+          {/* Right rail (students only) */}
+          {isStudent && (
+            <aside className="mt-6 hidden lg:mt-0 lg:block">
+              {featured && (
+                <div className="sticky top-20">
+                  <VideoPromoCard tutor={featured} />
+                </div>
+              )}
+            </aside>
+          )}
         </div>
       </Container>
     </div>

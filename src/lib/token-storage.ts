@@ -1,34 +1,57 @@
 /**
- * Thin wrapper around persistent auth-token storage.
+ * Auth token storage.
  *
- * Centralizing this here means the storage mechanism (localStorage today,
- * cookies or an in-memory store tomorrow) can change without touching the
- * Axios client or feature code. All access is wrapped in try/catch because
- * storage can throw (private mode, disabled cookies, SSR).
+ * Per the app's auth model:
+ *  - The **access token** (a short-lived JWT) is kept **in memory only** and is
+ *    never persisted — it's lost on reload and restored via the refresh flow.
+ *  - The **refresh token** is, in production, an HttpOnly cookie set by the
+ *    backend and unreadable by JS. A frontend-only mock can't set HttpOnly
+ *    cookies, so we persist an **opaque (non-JWT) handle** in localStorage to
+ *    simulate that cross-reload persistence. No JWT ever touches localStorage.
  */
 
-const ACCESS_TOKEN_KEY = 'ozelders.accessToken';
+/* ------------------------------------------------------------------ */
+/* Access token — in-memory.                                          */
+/* ------------------------------------------------------------------ */
+
+let accessToken: string | null = null;
 
 export const tokenStorage = {
   get(): string | null {
+    return accessToken;
+  },
+  set(token: string): void {
+    accessToken = token;
+  },
+  clear(): void {
+    accessToken = null;
+  },
+};
+
+/* ------------------------------------------------------------------ */
+/* Refresh handle — simulates the backend's HttpOnly cookie.          */
+/* ------------------------------------------------------------------ */
+
+const REFRESH_KEY = 'ozelders.refresh';
+
+export const refreshStorage = {
+  get(): string | null {
     try {
-      return localStorage.getItem(ACCESS_TOKEN_KEY);
+      return localStorage.getItem(REFRESH_KEY);
     } catch {
       return null;
     }
   },
-
   set(token: string): void {
     try {
-      localStorage.setItem(ACCESS_TOKEN_KEY, token);
+      localStorage.setItem(REFRESH_KEY, token);
     } catch {
       /* storage unavailable — ignore */
     }
   },
-
   clear(): void {
     try {
-      localStorage.removeItem(ACCESS_TOKEN_KEY);
+      localStorage.removeItem(REFRESH_KEY);
     } catch {
       /* storage unavailable — ignore */
     }

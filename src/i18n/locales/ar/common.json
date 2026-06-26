@@ -14,9 +14,68 @@
   "nav": {
     "findTutors": "ابحث عن معلّم",
     "corporate": "التدريب المؤسسي",
+    "subjects": "المواد",
+    "howItWorks": "كيف يعمل",
+    "becomeTutor": "كن معلّمًا",
     "referFriend": "ادعُ صديقًا",
+    "signIn": "تسجيل الدخول",
+    "getStarted": "ابدأ الآن",
+    "help": "مساعدة",
     "openMenu": "افتح القائمة",
     "closeMenu": "أغلق القائمة"
+  },
+  "auth": {
+    "login": {
+      "title": "مرحبًا بعودتك",
+      "subtitle": "سجّل الدخول للمتابعة إلى حسابك.",
+      "emailLabel": "البريد الإلكتروني",
+      "emailPlaceholder": "you@example.com",
+      "passwordLabel": "كلمة المرور",
+      "passwordPlaceholder": "أدخل كلمة المرور",
+      "submit": "تسجيل الدخول",
+      "submitting": "جارٍ تسجيل الدخول…",
+      "demoTitle": "حسابات تجريبية",
+      "demoStudent": "طالب",
+      "demoTutor": "معلّم",
+      "demoPassword": "كلمة المرور للحسابين: {{password}}",
+      "backHome": "← العودة إلى الرئيسية"
+    },
+    "errors": {
+      "emailRequired": "البريد الإلكتروني مطلوب.",
+      "emailInvalid": "أدخل بريدًا إلكترونيًا صالحًا.",
+      "passwordRequired": "كلمة المرور مطلوبة.",
+      "invalidCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
+      "generic": "حدث خطأ ما. يرجى المحاولة مرة أخرى."
+    }
+  },
+  "home": {
+    "featured": {
+      "eyebrow": "معلّمون مميّزون",
+      "title": "تعرّف على أعلى معلّمينا تقييمًا",
+      "subtitle": "معلّمون مختارون بعناية وبتقييمات عالية يحبّهم آلاف الطلاب.",
+      "viewAll": "عرض كل المعلّمين"
+    }
+  },
+  "becomeTutor": {
+    "hero": {
+      "title": "اكسب رزقك بتدريس أكبر مجتمع من المتعلّمين حول العالم",
+      "cta": "أنشئ ملف معلّم الآن",
+      "imageAlt": "معلّم يدرّس عبر الإنترنت",
+      "steps": {
+        "signUp": {
+          "title": "سجّل",
+          "subtitle": "لإنشاء ملفك التعريفي كمعلّم"
+        },
+        "getApproved": {
+          "title": "احصل على الموافقة",
+          "subtitle": "من فريقنا خلال 5 أيام عمل"
+        },
+        "startEarning": {
+          "title": "ابدأ الكسب",
+          "subtitle": "بتدريس الطلاب من جميع أنحاء العالم!"
+        }
+      }
+    }
   },
   "account": {
     "menu": "قائمة الحساب",

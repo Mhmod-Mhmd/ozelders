@@ -14,9 +14,68 @@
   "nav": {
     "findTutors": "Find tutors",
     "corporate": "Corporate training",
+    "subjects": "Subjects",
+    "howItWorks": "How it works",
+    "becomeTutor": "Become a tutor",
     "referFriend": "Refer a friend",
+    "signIn": "Sign in",
+    "getStarted": "Get started",
+    "help": "Help",
     "openMenu": "Open menu",
     "closeMenu": "Close menu"
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome back",
+      "subtitle": "Sign in to continue to your account.",
+      "emailLabel": "Email",
+      "emailPlaceholder": "you@example.com",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "Enter your password",
+      "submit": "Sign in",
+      "submitting": "Signing in…",
+      "demoTitle": "Demo accounts",
+      "demoStudent": "Student",
+      "demoTutor": "Tutor",
+      "demoPassword": "Password for both: {{password}}",
+      "backHome": "← Back to home"
+    },
+    "errors": {
+      "emailRequired": "Email is required.",
+      "emailInvalid": "Enter a valid email address.",
+      "passwordRequired": "Password is required.",
+      "invalidCredentials": "The email or password is incorrect.",
+      "generic": "Something went wrong. Please try again."
+    }
+  },
+  "home": {
+    "featured": {
+      "eyebrow": "Featured tutors",
+      "title": "Meet our top-rated tutors",
+      "subtitle": "Hand-picked, highly-rated tutors loved by thousands of students.",
+      "viewAll": "View all tutors"
+    }
+  },
+  "becomeTutor": {
+    "hero": {
+      "title": "Make a living by teaching the largest community of learners worldwide",
+      "cta": "Create a tutor profile now",
+      "imageAlt": "A tutor teaching online",
+      "steps": {
+        "signUp": {
+          "title": "Sign up",
+          "subtitle": "to create your tutor profile"
+        },
+        "getApproved": {
+          "title": "Get approved",
+          "subtitle": "by our team in 5 business days"
+        },
+        "startEarning": {
+          "title": "Start earning",
+          "subtitle": "by teaching students all over the world!"
+        }
+      }
+    }
   },
   "account": {
     "menu": "Account menu",

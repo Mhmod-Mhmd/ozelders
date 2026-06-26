@@ -14,9 +14,68 @@
   "nav": {
     "findTutors": "Öğretmen bul",
     "corporate": "Kurumsal eğitim",
+    "subjects": "Dersler",
+    "howItWorks": "Nasıl çalışır",
+    "becomeTutor": "Öğretmen ol",
     "referFriend": "Arkadaşını davet et",
+    "signIn": "Giriş yap",
+    "getStarted": "Başla",
+    "help": "Yardım",
     "openMenu": "Menüyü aç",
     "closeMenu": "Menüyü kapat"
+  },
+  "auth": {
+    "login": {
+      "title": "Tekrar hoş geldiniz",
+      "subtitle": "Hesabınıza devam etmek için giriş yapın.",
+      "emailLabel": "E-posta",
+      "emailPlaceholder": "siz@ornek.com",
+      "passwordLabel": "Parola",
+      "passwordPlaceholder": "Parolanızı girin",
+      "submit": "Giriş yap",
+      "submitting": "Giriş yapılıyor…",
+      "demoTitle": "Demo hesaplar",
+      "demoStudent": "Öğrenci",
+      "demoTutor": "Öğretmen",
+      "demoPassword": "İkisi için parola: {{password}}",
+      "backHome": "← Ana sayfaya dön"
+    },
+    "errors": {
+      "emailRequired": "E-posta gerekli.",
+      "emailInvalid": "Geçerli bir e-posta adresi girin.",
+      "passwordRequired": "Parola gerekli.",
+      "invalidCredentials": "E-posta veya parola hatalı.",
+      "generic": "Bir şeyler ters gitti. Lütfen tekrar deneyin."
+    }
+  },
+  "home": {
+    "featured": {
+      "eyebrow": "Öne çıkan öğretmenler",
+      "title": "En yüksek puanlı öğretmenlerimizle tanışın",
+      "subtitle": "Binlerce öğrencinin sevdiği, özenle seçilmiş yüksek puanlı öğretmenler.",
+      "viewAll": "Tüm öğretmenleri gör"
+    }
+  },
+  "becomeTutor": {
+    "hero": {
+      "title": "Dünyanın en büyük öğrenci topluluğuna öğretmenlik yaparak geçimini sağla",
+      "cta": "Hemen öğretmen profili oluştur",
+      "imageAlt": "Çevrimiçi ders veren bir öğretmen",
+      "steps": {
+        "signUp": {
+          "title": "Kaydol",
+          "subtitle": "öğretmen profilini oluşturmak için"
+        },
+        "getApproved": {
+          "title": "Onaylan",
+          "subtitle": "ekibimiz tarafından 5 iş günü içinde"
+        },
+        "startEarning": {
+          "title": "Kazanmaya başla",
+          "subtitle": "dünyanın her yerinden öğrencilere ders vererek!"
+        }
+      }
+    }
   },
   "account": {
     "menu": "Hesap menüsü",
