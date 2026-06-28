@@ -1,15 +1,11 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Star, BadgeCheck } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 import { paths } from '@/router/paths';
 import { SearchBar } from './SearchBar';
 
-const POPULAR = [
-  { label: 'English', category: 'languages' },
-  { label: 'Mathematics', category: 'mathematics' },
-  { label: 'Programming', category: 'programming' },
-  { label: 'Music', category: 'music' },
-];
+const POPULAR = ['languages', 'mathematics', 'programming', 'music'] as const;
 
 const HERO_IMAGES = [
   { img: 1, ratio: 'aspect-[3/4]' },
@@ -19,6 +15,8 @@ const HERO_IMAGES = [
 ];
 
 export function Hero() {
+  const { t } = useTranslation();
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-brand-50 to-white">
       <Container className="pt-7.5 pb-12 lg:pb-20">
@@ -27,18 +25,18 @@ export function Hero() {
           <div>
             <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-sm font-medium text-gray-700 shadow-sm ring-1 ring-gray-100">
               <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
-              4.9 average from 300,000+ reviews
+              {t('home.hero.ratingBadge')}
             </span>
 
             <h1 className="mt-5 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
-              Learn faster with your{' '}
-              <span className="text-brand-600">perfect tutor</span>
+              {t('home.hero.titleLead')}
+              <span className="text-brand-600">
+                {t('home.hero.titleHighlight')}
+              </span>
             </h1>
 
             <p className="mt-5 max-w-lg text-lg text-gray-600">
-              1-on-1 online lessons in languages, math, science, music and 120+
-              subjects. Find an expert tutor, book a trial, and start making
-              progress every week.
+              {t('home.hero.subtitle')}
             </p>
 
             <div className="mt-8 max-w-xl">
@@ -46,25 +44,37 @@ export function Hero() {
             </div>
 
             <div className="mt-5 flex flex-wrap items-center gap-2 text-sm text-gray-600">
-              <span className="font-medium">Popular:</span>
-              {POPULAR.map((item) => (
+              <span className="font-medium">{t('home.hero.popularLabel')}</span>
+              {POPULAR.map((category) => (
                 <Link
-                  key={item.label}
-                  to={`${paths.tutors}?category=${item.category}`}
+                  key={category}
+                  to={`${paths.tutors}?category=${category}`}
                   className="rounded-full bg-white px-3 py-1 font-medium text-gray-700 shadow-sm ring-1 ring-gray-100 transition-colors hover:text-brand-600"
                 >
-                  {item.label}
+                  {t(`home.hero.popular.${category}`)}
                 </Link>
               ))}
             </div>
 
             <dl className="mt-10 grid max-w-md grid-cols-3 gap-4">
               {[
-                { value: '50,000+', label: 'Expert tutors' },
-                { value: '120+', label: 'Subjects' },
-                { value: '4.9★', label: 'Avg. rating' },
+                {
+                  id: 'tutors',
+                  value: t('home.hero.stats.tutorsValue'),
+                  label: t('home.hero.stats.tutorsLabel'),
+                },
+                {
+                  id: 'subjects',
+                  value: t('home.hero.stats.subjectsValue'),
+                  label: t('home.hero.stats.subjectsLabel'),
+                },
+                {
+                  id: 'rating',
+                  value: t('home.hero.stats.ratingValue'),
+                  label: t('home.hero.stats.ratingLabel'),
+                },
               ].map((stat) => (
-                <div key={stat.label}>
+                <div key={stat.id}>
                   <dt className="text-2xl font-extrabold text-gray-900">
                     {stat.value}
                   </dt>
@@ -105,8 +115,12 @@ export function Hero() {
                 <Star className="h-5 w-5 fill-amber-400 text-amber-400" />
               </span>
               <div>
-                <p className="text-sm font-bold text-gray-900">Top-rated</p>
-                <p className="text-xs text-gray-500">tutors worldwide</p>
+                <p className="text-sm font-bold text-gray-900">
+                  {t('home.hero.chips.topRated')}
+                </p>
+                <p className="text-xs text-gray-500">
+                  {t('home.hero.chips.tutorsWorldwide')}
+                </p>
               </div>
             </div>
 
@@ -116,8 +130,12 @@ export function Hero() {
                 <BadgeCheck className="h-5 w-5 text-green-600" />
               </span>
               <div>
-                <p className="text-sm font-bold text-gray-900">1,200+ trials</p>
-                <p className="text-xs text-gray-500">booked today</p>
+                <p className="text-sm font-bold text-gray-900">
+                  {t('home.hero.chips.trials')}
+                </p>
+                <p className="text-xs text-gray-500">
+                  {t('home.hero.chips.bookedToday')}
+                </p>
               </div>
             </div>
           </div>

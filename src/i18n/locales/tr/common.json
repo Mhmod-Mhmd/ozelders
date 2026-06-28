@@ -54,6 +54,83 @@
       "title": "En yüksek puanlı öğretmenlerimizle tanışın",
       "subtitle": "Binlerce öğrencinin sevdiği, özenle seçilmiş yüksek puanlı öğretmenler.",
       "viewAll": "Tüm öğretmenleri gör"
+    },
+    "hero": {
+      "ratingBadge": "300.000+ değerlendirmeden 4,9 ortalama",
+      "titleLead": "Daha hızlı öğren, ",
+      "titleHighlight": "mükemmel öğretmeninle",
+      "subtitle": "Dillerde, matematikte, fende, müzikte ve 120+ konuda birebir çevrimiçi dersler. Uzman bir öğretmen bul, deneme dersi ayarla ve her hafta ilerleme kaydetmeye başla.",
+      "popularLabel": "Popüler:",
+      "popular": {
+        "languages": "İngilizce",
+        "mathematics": "Matematik",
+        "programming": "Programlama",
+        "music": "Müzik"
+      },
+      "stats": {
+        "tutorsValue": "50.000+",
+        "tutorsLabel": "Uzman öğretmen",
+        "subjectsValue": "120+",
+        "subjectsLabel": "Konu",
+        "ratingValue": "4,9★",
+        "ratingLabel": "Ort. puan"
+      },
+      "chips": {
+        "topRated": "En yüksek puanlı",
+        "tutorsWorldwide": "dünya çapında öğretmenler",
+        "trials": "1.200+ deneme",
+        "bookedToday": "bugün ayarlandı"
+      }
+    },
+    "search": {
+      "subjectLabel": "Konu",
+      "subjectPlaceholder": "Ne öğrenmek istiyorsun?",
+      "languageLabel": "Dil",
+      "anyLanguage": "Herhangi bir dil"
+    },
+    "subjects": {
+      "eyebrow": "Konuları keşfet",
+      "title": "Her konu için bir öğretmen bul",
+      "subtitle": "Dillerden kodlamaya, 120+ konuda binlerce öğretmen keşfet.",
+      "tutorsCount_one": "{{formatted}} öğretmen",
+      "tutorsCount_other": "{{formatted}} öğretmen"
+    },
+    "testimonials": {
+      "eyebrow": "Yorumlar",
+      "title": "Dünya çapında öğrenciler tarafından sevildi",
+      "subtitle": "Ozelders ile hedeflerine ulaşan milyonlarca öğrenciye katıl."
+    },
+    "howItWorks": {
+      "eyebrow": "Nasıl çalışır",
+      "title": "3 basit adımda öğrenmeye başla",
+      "subtitle": "Kayıttan ilk dersine yalnızca birkaç dakikada.",
+      "steps": {
+        "find": {
+          "title": "Öğretmenini bul",
+          "text": "Uzman öğretmenlere göz at; fiyata, konuya ve uygunluğa göre filtreleyerek sana en uygun olanı bul."
+        },
+        "book": {
+          "title": "Deneme dersi ayarla",
+          "text": "Sana uygun bir zamanda deneme dersi planla. Uygun değil mi? İstediğin zaman ücretsiz öğretmen değiştir."
+        },
+        "learn": {
+          "title": "Öğrenmeye başla",
+          "text": "Etkileşimli birebir görüntülü derslere katıl ve her hafta gerçek, ölçülebilir ilerleme kaydet."
+        }
+      }
+    },
+    "becomeTutorCta": {
+      "title": "Öğretmen ol",
+      "subtitle": "Uzmanlığını dünyanın dört bir yanındaki öğrencilerle paylaşarak para kazan. Kendi programına göre, her yerden ders ver.",
+      "benefits": {
+        "findStudents": "Yeni öğrenciler bul",
+        "growBusiness": "Öğretmenlik işini büyüt",
+        "getPaid": "Güvenli ve zamanında ödeme al"
+      },
+      "cta": "Öğretmen ol",
+      "howItWorks": "Nasıl çalışır",
+      "earnedThisWeek": "Bu hafta kazanılan",
+      "earnedAmount": "$1.250"
     }
   },
   "becomeTutor": {
@@ -123,8 +200,6 @@
     "comingSoon": "Dersleriniz burada görünecek."
   },
   "settings": {
-    "title": "Ayarlar",
-    "comingSoon": "Bu bölüm yakında geliyor.",
     "sectionsLabel": "Ayar bölümleri",
     "sections": {
       "account": "Hesap",
@@ -271,8 +346,16 @@
       "subject": "Konu",
       "tutor": "Öğretmen",
       "hours": "Saat",
-      "amount": "Tutar"
+      "amount": "Tutar",
+      "currency": "Para birimi"
     },
+    "placeholders": {
+      "cardNumber": "1234 5678 9012 3456",
+      "expMonth": "AA",
+      "expYear": "YYYY",
+      "cvc": "123"
+    },
+    "historyFilename": "payment-history.csv",
     "errors": {
       "holderRequired": "Kart sahibinin adı zorunludur.",
       "numberInvalid": "Geçerli bir kart numarası girin.",
@@ -282,10 +365,7 @@
     }
   },
   "language": {
-    "label": "Dil",
-    "en": "English",
-    "tr": "Türkçe",
-    "ar": "العربية"
+    "label": "Dil"
   },
   "currency": {
     "label": "Para birimi"
@@ -308,7 +388,85 @@
     "lessonsLabel": "ders",
     "saveTutor": "Öğretmeni kaydet",
     "removeSaved": "Kaydedilenlerden çıkar",
-    "viewProfile": "{{name}} adlı öğretmenin profilini görüntüle"
+    "viewProfile": "{{name}} adlı öğretmenin profilini görüntüle",
+    "viewProfileShort": "Profili görüntüle",
+    "bookTrialShort": "Deneme ayarla",
+    "nativeSpeaker": "Ana dili konuşuru",
+    "trialFrom": "Deneme fiyatı",
+    "perHour": "/ saat",
+    "perHourShort": "/sa",
+    "responds": "Yanıt verir: {{time}}",
+    "lessonsAndResponds": "{{lessons}} ders · Yanıt: {{time}}",
+    "lessonsTaught": "{{lessons}} ders verildi",
+    "freeTrialNote": "Ücretsiz deneme · istediğin zaman öğretmen değiştir",
+    "subjectCountryLine": "{{subject}} öğretmeni · {{country}}",
+    "speaksLabel": "Konuşur:",
+    "ratingExcellent": "Mükemmel",
+    "basedOnReviews_one": "{{count}} doğrulanmış değerlendirmeye göre",
+    "basedOnReviews_other": "{{count}} doğrulanmış değerlendirmeye göre",
+    "playIntroVideoOf": "{{name}} adlı öğretmenin tanıtım videosunu oynat",
+    "introVideoOf": "Tanıtım videosu · {{name}}",
+    "available": "Müsait",
+    "unavailable": "Müsait değil",
+    "pageTitle": "Öğretmenini bul",
+    "pageTitleCategory": "{{category}} öğretmenleri",
+    "pageSubtitle": "Uzman öğretmenlere göz at, fiyatları ve değerlendirmeleri karşılaştır ve ücretsiz bir deneme dersi ayarla.",
+    "searchByNameOrSubject": "İsme veya konuya göre ara",
+    "filtersButton": "Filtreler",
+    "filtersHeading": "Filtreler",
+    "resetFilters": "Filtreleri sıfırla",
+    "reset": "Sıfırla",
+    "close": "Kapat",
+    "closeFilters": "Filtreleri kapat",
+    "showResults_one": "{{count}} sonucu göster",
+    "showResults_other": "{{count}} sonucu göster",
+    "notFoundTitle": "Öğretmen bulunamadı",
+    "notFoundBody": "Bu öğretmen taşınmış veya artık mevcut olmayabilir.",
+    "browseAll": "Tüm öğretmenlere göz at",
+    "backToTutors": "Öğretmenlere dön",
+    "reviewsTitle": "Değerlendirmeler ({{count}})",
+    "sections": {
+      "about": "Hakkımda",
+      "introVideo": "Tanıtım videosu",
+      "specialties": "Uzmanlıklar",
+      "availability": "Uygunluk",
+      "availabilitySubtitle": "Sana uygun bir zaman seç. Saatler yerel saat diliminde gösterilir."
+    },
+    "periods": {
+      "morning": "Sabah",
+      "afternoon": "Öğleden sonra",
+      "evening": "Akşam",
+      "night": "Gece"
+    },
+    "sidebar": {
+      "subject": "Konu",
+      "allSubjects": "Tüm konular",
+      "pricePerHour": "Saatlik ücret",
+      "rating": "Puan",
+      "availability": "Uygunluk",
+      "nativeSpeaker": "Ana dili",
+      "nativeSpeakersOnly": "Yalnızca ana dili konuşurları",
+      "price": {
+        "any": "Herhangi bir fiyat",
+        "under15": "$15 altı",
+        "p15to25": "$15 – $25",
+        "p25to40": "$25 – $40",
+        "over40": "$40 ve üzeri"
+      },
+      "ratingOptions": {
+        "any": "Herhangi bir puan",
+        "r40": "4,0 ve üzeri",
+        "r45": "4,5 ve üzeri",
+        "r48": "4,8 ve üzeri"
+      }
+    },
+    "sortDropdown": {
+      "label": "Sırala",
+      "topRated": "En yüksek puanlı",
+      "priceLowHigh": "Fiyat: Düşükten Yükseğe",
+      "priceHighLow": "Fiyat: Yüksekten Düşüğe",
+      "mostReviews": "En çok değerlendirme"
+    }
   },
   "saved": {
     "heading_one": "{{count}} kaydedilen öğretmen",
@@ -332,13 +490,9 @@
     "sortBy": "Öğretmenleri sırala",
     "filters": {
       "learn": "Öğrenmek istiyorum",
-      "learnValue": "İngilizce",
       "price": "Ders başına ücret",
-      "priceValue": "₺100 – ₺1.600",
       "country": "Doğduğu ülke",
-      "countryValue": "Amerika Birleşik Devletleri",
       "available": "Müsait olduğum zaman",
-      "availableValue": "12-15, 15-18 · Çar",
       "specialties": "Uzmanlıklar",
       "alsoSpeaks": "Ayrıca konuşur",
       "nativeSpeaker": "Ana dili",
@@ -447,5 +601,59 @@
       "play": "Tanıtım videosunu oynat",
       "viewSchedule": "Tüm programı görüntüle"
     }
+  },
+  "brand": {
+    "name": "Ozelders",
+    "homeAriaLabel": "Ozelders ana sayfa"
+  },
+  "footer": {
+    "tagline": "Dünyanın en iyi çevrimiçi öğretmenleriyle birebir her şeyi öğren. Diller, matematik, fen, müzik ve daha fazlası.",
+    "company": {
+      "title": "Şirket",
+      "about": "Hakkımızda",
+      "careers": "Kariyer",
+      "press": "Basın",
+      "blog": "Blog"
+    },
+    "students": {
+      "title": "Öğrenciler için",
+      "findTutor": "Öğretmen bul",
+      "howItWorks": "Nasıl çalışır",
+      "pricing": "Fiyatlandırma",
+      "reviews": "Yorumlar"
+    },
+    "tutors": {
+      "title": "Öğretmenler için",
+      "become": "Öğretmen ol",
+      "resources": "Öğretmen kaynakları",
+      "community": "Topluluk"
+    },
+    "support": {
+      "title": "Destek",
+      "help": "Yardım merkezi",
+      "contact": "Bize ulaşın",
+      "safety": "Güvenlik",
+      "terms": "Şartlar"
+    },
+    "social": {
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "youtube": "YouTube",
+      "linkedin": "LinkedIn",
+      "x": "X"
+    },
+    "copyright": "© 2012–2026 Ozelders Inc. Tüm hakları saklıdır.",
+    "legal": {
+      "privacy": "Gizlilik",
+      "cookies": "Çerezler",
+      "terms": "Şartlar"
+    }
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Sayfa bulunamadı",
+    "body": "Aradığın sayfa taşınmış veya hiç var olmamış olabilir. Seni yoluna geri döndürelim.",
+    "backHome": "Ana sayfaya dön",
+    "browseTutors": "Öğretmenlere göz at"
   }
 }

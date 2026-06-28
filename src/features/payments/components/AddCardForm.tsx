@@ -83,7 +83,7 @@ export function AddCardForm({ onDone, onCancel }: AddCardFormProps) {
           id="number"
           inputMode="numeric"
           autoComplete="cc-number"
-          placeholder="1234 5678 9012 3456"
+          placeholder={t('payments.placeholders.cardNumber')}
           invalid={Boolean(errors.number)}
           {...register('number')}
         />
@@ -98,7 +98,7 @@ export function AddCardForm({ onDone, onCancel }: AddCardFormProps) {
           <Input
             id="expMonth"
             inputMode="numeric"
-            placeholder="MM"
+            placeholder={t('payments.placeholders.expMonth')}
             invalid={Boolean(errors.expMonth)}
             {...register('expMonth')}
           />
@@ -111,7 +111,7 @@ export function AddCardForm({ onDone, onCancel }: AddCardFormProps) {
           <Input
             id="expYear"
             inputMode="numeric"
-            placeholder="YYYY"
+            placeholder={t('payments.placeholders.expYear')}
             invalid={Boolean(errors.expYear)}
             {...register('expYear')}
           />
@@ -126,7 +126,7 @@ export function AddCardForm({ onDone, onCancel }: AddCardFormProps) {
             id="cvc"
             inputMode="numeric"
             autoComplete="cc-csc"
-            placeholder="123"
+            placeholder={t('payments.placeholders.cvc')}
             invalid={Boolean(errors.cvc)}
             {...register('cvc')}
           />

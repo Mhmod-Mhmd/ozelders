@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { cn } from '@/utils/cn';
 import {
   type Availability,
@@ -7,11 +8,11 @@ import {
 
 const DAYS: Weekday[] = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
-const ROWS: { period: AvailabilityPeriod; label: string; time: string }[] = [
-  { period: 'morning', label: 'Morning', time: '6–12' },
-  { period: 'afternoon', label: 'Afternoon', time: '12–17' },
-  { period: 'evening', label: 'Evening', time: '17–21' },
-  { period: 'night', label: 'Night', time: '21–24' },
+const ROWS: { period: AvailabilityPeriod; time: string }[] = [
+  { period: 'morning', time: '6–12' },
+  { period: 'afternoon', time: '12–17' },
+  { period: 'evening', time: '17–21' },
+  { period: 'night', time: '21–24' },
 ];
 
 export function AvailabilityCalendar({
@@ -19,6 +20,8 @@ export function AvailabilityCalendar({
 }: {
   availability: Availability;
 }) {
+  const { t } = useTranslation();
+
   return (
     <div className="overflow-x-auto">
       <table className="w-full min-w-[520px] border-separate border-spacing-1 text-center">
@@ -30,7 +33,7 @@ export function AvailabilityCalendar({
                 key={day}
                 className="pb-2 text-xs font-semibold text-gray-500"
               >
-                {day}
+                {t(`weekdays.${day}`)}
               </th>
             ))}
           </tr>
@@ -40,7 +43,7 @@ export function AvailabilityCalendar({
             <tr key={row.period}>
               <td className="py-1 pr-3 text-left align-middle">
                 <p className="text-xs font-semibold text-gray-700">
-                  {row.label}
+                  {t(`tutors.periods.${row.period}`)}
                 </p>
                 <p className="text-[11px] text-gray-400">{row.time}</p>
               </td>
@@ -67,11 +70,11 @@ export function AvailabilityCalendar({
       <div className="mt-4 flex items-center gap-4 text-xs text-gray-500">
         <span className="inline-flex items-center gap-1.5">
           <span className="h-3 w-3 rounded bg-brand-100 ring-1 ring-brand-200" />
-          Available
+          {t('tutors.available')}
         </span>
         <span className="inline-flex items-center gap-1.5">
           <span className="h-3 w-3 rounded bg-gray-50 ring-1 ring-gray-200" />
-          Unavailable
+          {t('tutors.unavailable')}
         </span>
       </div>
     </div>

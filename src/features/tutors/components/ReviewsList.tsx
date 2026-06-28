@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { Avatar } from '@/components/ui/Avatar';
 import { RatingStars } from '@/components/ui/RatingStars';
 import { type Review, type Tutor } from '../types/tutor.types';
@@ -8,6 +9,8 @@ interface ReviewsListProps {
 }
 
 export function ReviewsList({ tutor, reviews }: ReviewsListProps) {
+  const { t } = useTranslation();
+
   return (
     <div>
       <div className="flex items-center gap-5 rounded-xl bg-gray-50 p-5">
@@ -20,9 +23,11 @@ export function ReviewsList({ tutor, reviews }: ReviewsListProps) {
           </div>
         </div>
         <div className="border-l border-gray-200 pl-5">
-          <p className="font-semibold text-gray-900">Excellent</p>
+          <p className="font-semibold text-gray-900">
+            {t('tutors.ratingExcellent')}
+          </p>
           <p className="text-sm text-gray-500">
-            Based on {tutor.reviewsCount} verified reviews
+            {t('tutors.basedOnReviews', { count: tutor.reviewsCount })}
           </p>
         </div>
       </div>

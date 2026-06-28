@@ -54,6 +54,87 @@
       "title": "تعرّف على أعلى معلّمينا تقييمًا",
       "subtitle": "معلّمون مختارون بعناية وبتقييمات عالية يحبّهم آلاف الطلاب.",
       "viewAll": "عرض كل المعلّمين"
+    },
+    "hero": {
+      "ratingBadge": "متوسط 4.9 من أكثر من 300,000 تقييم",
+      "titleLead": "تعلّم بشكل أسرع مع ",
+      "titleHighlight": "معلّمك المثالي",
+      "subtitle": "دروس فردية عبر الإنترنت في اللغات والرياضيات والعلوم والموسيقى وأكثر من 120 مادة. اعثر على معلّم خبير، واحجز درسًا تجريبيًا، وابدأ في إحراز تقدّم كل أسبوع.",
+      "popularLabel": "شائع:",
+      "popular": {
+        "languages": "الإنجليزية",
+        "mathematics": "الرياضيات",
+        "programming": "البرمجة",
+        "music": "الموسيقى"
+      },
+      "stats": {
+        "tutorsValue": "50,000+",
+        "tutorsLabel": "معلّم خبير",
+        "subjectsValue": "120+",
+        "subjectsLabel": "مادة",
+        "ratingValue": "4.9★",
+        "ratingLabel": "متوسط التقييم"
+      },
+      "chips": {
+        "topRated": "الأعلى تقييمًا",
+        "tutorsWorldwide": "معلّمون حول العالم",
+        "trials": "1,200+ درس تجريبي",
+        "bookedToday": "حُجزت اليوم"
+      }
+    },
+    "search": {
+      "subjectLabel": "المادة",
+      "subjectPlaceholder": "ماذا تريد أن تتعلّم؟",
+      "languageLabel": "اللغة",
+      "anyLanguage": "أي لغة"
+    },
+    "subjects": {
+      "eyebrow": "استكشف المواد",
+      "title": "اعثر على معلّم لأي مادة",
+      "subtitle": "من اللغات إلى البرمجة، اكتشف آلاف المعلّمين في أكثر من 120 مادة.",
+      "tutorsCount_zero": "{{formatted}} معلّم",
+      "tutorsCount_one": "معلّم واحد",
+      "tutorsCount_two": "معلّمان",
+      "tutorsCount_few": "{{formatted}} معلّمين",
+      "tutorsCount_many": "{{formatted}} معلّمًا",
+      "tutorsCount_other": "{{formatted}} معلّم"
+    },
+    "testimonials": {
+      "eyebrow": "آراء الطلاب",
+      "title": "محبوب من المتعلّمين حول العالم",
+      "subtitle": "انضم إلى ملايين الطلاب الذين يحقّقون أهدافهم مع Ozelders."
+    },
+    "howItWorks": {
+      "eyebrow": "كيف يعمل",
+      "title": "ابدأ التعلّم في 3 خطوات بسيطة",
+      "subtitle": "من التسجيل إلى درسك الأول في دقائق معدودة.",
+      "steps": {
+        "find": {
+          "title": "اعثر على معلّمك",
+          "text": "تصفّح المعلّمين الخبراء وصفّ حسب السعر والمادة والتوفر للعثور على الأنسب لك."
+        },
+        "book": {
+          "title": "احجز درسًا تجريبيًا",
+          "text": "جدول درسًا تجريبيًا في وقت يناسبك. ليس مناسبًا؟ غيّر المعلّم مجانًا في أي وقت."
+        },
+        "learn": {
+          "title": "ابدأ التعلّم",
+          "text": "انضم إلى دروس فيديو فردية تفاعلية وحقّق تقدّمًا حقيقيًا وقابلاً للقياس كل أسبوع."
+        }
+      }
+    },
+    "becomeTutorCta": {
+      "title": "كن معلّمًا",
+      "subtitle": "اكسب المال بمشاركة خبرتك مع الطلاب حول العالم. درّس وفق جدولك الخاص ومن أي مكان.",
+      "benefits": {
+        "findStudents": "اعثر على طلاب جدد",
+        "growBusiness": "نمِّ عملك في التدريس",
+        "getPaid": "احصل على أجرك بأمان وفي الوقت المحدد"
+      },
+      "cta": "كن معلّمًا",
+      "howItWorks": "كيف يعمل",
+      "earnedThisWeek": "المكتسب هذا الأسبوع",
+      "earnedAmount": "$1,250"
     }
   },
   "becomeTutor": {
@@ -123,8 +204,6 @@
     "comingSoon": "ستظهر دروسك هنا."
   },
   "settings": {
-    "title": "الإعدادات",
-    "comingSoon": "هذا القسم قادم قريبًا.",
     "sectionsLabel": "أقسام الإعدادات",
     "sections": {
       "account": "الحساب",
@@ -271,8 +350,16 @@
       "subject": "المادة",
       "tutor": "المعلّم",
       "hours": "الساعات",
-      "amount": "المبلغ"
+      "amount": "المبلغ",
+      "currency": "العملة"
     },
+    "placeholders": {
+      "cardNumber": "1234 5678 9012 3456",
+      "expMonth": "MM",
+      "expYear": "YYYY",
+      "cvc": "123"
+    },
+    "historyFilename": "payment-history.csv",
     "errors": {
       "holderRequired": "اسم حامل البطاقة مطلوب.",
       "numberInvalid": "أدخل رقم بطاقة صالحًا.",
@@ -282,10 +369,7 @@
     }
   },
   "language": {
-    "label": "اللغة",
-    "en": "English",
-    "tr": "Türkçe",
-    "ar": "العربية"
+    "label": "اللغة"
   },
   "currency": {
     "label": "العملة"
@@ -316,7 +400,93 @@
     "lessonsLabel": "درس",
     "saveTutor": "احفظ المعلّم",
     "removeSaved": "إزالة من المحفوظات",
-    "viewProfile": "عرض ملف {{name}}"
+    "viewProfile": "عرض ملف {{name}}",
+    "viewProfileShort": "عرض الملف",
+    "bookTrialShort": "احجز تجربة",
+    "nativeSpeaker": "متحدث أصلي",
+    "trialFrom": "سعر التجربة",
+    "perHour": "/ ساعة",
+    "perHourShort": "/ساعة",
+    "responds": "يرد {{time}}",
+    "lessonsAndResponds": "{{lessons}} درس · يرد {{time}}",
+    "lessonsTaught": "{{lessons}} درس تم تدريسه",
+    "freeTrialNote": "تجربة مجانية · غيّر المعلّم في أي وقت",
+    "subjectCountryLine": "معلّم {{subject}} · {{country}}",
+    "speaksLabel": "يتحدث:",
+    "ratingExcellent": "ممتاز",
+    "basedOnReviews_zero": "بناءً على {{count}} تقييم موثّق",
+    "basedOnReviews_one": "بناءً على تقييم موثّق واحد",
+    "basedOnReviews_two": "بناءً على تقييمين موثّقين",
+    "basedOnReviews_few": "بناءً على {{count}} تقييمات موثّقة",
+    "basedOnReviews_many": "بناءً على {{count}} تقييمًا موثّقًا",
+    "basedOnReviews_other": "بناءً على {{count}} تقييم موثّق",
+    "playIntroVideoOf": "تشغيل فيديو تعريف {{name}}",
+    "introVideoOf": "فيديو تعريفي · {{name}}",
+    "available": "متاح",
+    "unavailable": "غير متاح",
+    "pageTitle": "اعثر على معلّمك",
+    "pageTitleCategory": "معلّمو {{category}}",
+    "pageSubtitle": "تصفّح المعلّمين الخبراء، وقارن الأسعار والتقييمات، واحجز درسًا تجريبيًا مجانيًا.",
+    "searchByNameOrSubject": "ابحث بالاسم أو المادة",
+    "filtersButton": "عوامل التصفية",
+    "filtersHeading": "عوامل التصفية",
+    "resetFilters": "إعادة ضبط عوامل التصفية",
+    "reset": "إعادة ضبط",
+    "close": "إغلاق",
+    "closeFilters": "إغلاق عوامل التصفية",
+    "showResults_zero": "عرض {{count}} نتيجة",
+    "showResults_one": "عرض نتيجة واحدة",
+    "showResults_two": "عرض نتيجتين",
+    "showResults_few": "عرض {{count}} نتائج",
+    "showResults_many": "عرض {{count}} نتيجة",
+    "showResults_other": "عرض {{count}} نتيجة",
+    "notFoundTitle": "لم يتم العثور على المعلّم",
+    "notFoundBody": "قد يكون هذا المعلّم قد انتقل أو لم يعد موجودًا.",
+    "browseAll": "تصفّح كل المعلّمين",
+    "backToTutors": "العودة إلى المعلّمين",
+    "reviewsTitle": "التقييمات ({{count}})",
+    "sections": {
+      "about": "نبذة عني",
+      "introVideo": "فيديو تعريفي",
+      "specialties": "التخصصات",
+      "availability": "التوفر",
+      "availabilitySubtitle": "اختر وقتًا يناسبك. تُعرض الأوقات بتوقيتك المحلي."
+    },
+    "periods": {
+      "morning": "الصباح",
+      "afternoon": "بعد الظهر",
+      "evening": "المساء",
+      "night": "الليل"
+    },
+    "sidebar": {
+      "subject": "المادة",
+      "allSubjects": "كل المواد",
+      "pricePerHour": "السعر لكل ساعة",
+      "rating": "التقييم",
+      "availability": "التوفر",
+      "nativeSpeaker": "متحدث أصلي",
+      "nativeSpeakersOnly": "المتحدثون الأصليون فقط",
+      "price": {
+        "any": "أي سعر",
+        "under15": "أقل من $15",
+        "p15to25": "$15 – $25",
+        "p25to40": "$25 – $40",
+        "over40": "$40 فأكثر"
+      },
+      "ratingOptions": {
+        "any": "أي تقييم",
+        "r40": "4.0 فأعلى",
+        "r45": "4.5 فأعلى",
+        "r48": "4.8 فأعلى"
+      }
+    },
+    "sortDropdown": {
+      "label": "ترتيب حسب",
+      "topRated": "الأعلى تقييمًا",
+      "priceLowHigh": "السعر: من الأقل إلى الأعلى",
+      "priceHighLow": "السعر: من الأعلى إلى الأقل",
+      "mostReviews": "الأكثر تقييمًا"
+    }
   },
   "saved": {
     "heading_zero": "لا يوجد معلّمون محفوظون",
@@ -344,13 +514,9 @@
     "sortBy": "ترتيب المعلّمين حسب",
     "filters": {
       "learn": "أريد أن أتعلّم",
-      "learnValue": "الإنجليزية",
       "price": "سعر الدرس",
-      "priceValue": "₺100 – ₺1,600",
       "country": "بلد الميلاد",
-      "countryValue": "الولايات المتحدة الأمريكية",
       "available": "أنا متاح",
-      "availableValue": "12-15، 15-18 · الأربعاء",
       "specialties": "التخصصات",
       "alsoSpeaks": "يتحدث أيضًا",
       "nativeSpeaker": "متحدث أصلي",
@@ -459,5 +625,59 @@
       "play": "تشغيل فيديو التعريف",
       "viewSchedule": "عرض الجدول الكامل"
     }
+  },
+  "brand": {
+    "name": "Ozelders",
+    "homeAriaLabel": "الصفحة الرئيسية لـ Ozelders"
+  },
+  "footer": {
+    "tagline": "تعلّم أي شيء، بشكل فردي، مع أفضل المعلّمين عبر الإنترنت في العالم. اللغات والرياضيات والعلوم والموسيقى وأكثر.",
+    "company": {
+      "title": "الشركة",
+      "about": "من نحن",
+      "careers": "الوظائف",
+      "press": "الصحافة",
+      "blog": "المدوّنة"
+    },
+    "students": {
+      "title": "للطلاب",
+      "findTutor": "ابحث عن معلّم",
+      "howItWorks": "كيف يعمل",
+      "pricing": "الأسعار",
+      "reviews": "التقييمات"
+    },
+    "tutors": {
+      "title": "للمعلّمين",
+      "become": "كن معلّمًا",
+      "resources": "موارد المعلّمين",
+      "community": "المجتمع"
+    },
+    "support": {
+      "title": "الدعم",
+      "help": "مركز المساعدة",
+      "contact": "اتصل بنا",
+      "safety": "السلامة",
+      "terms": "الشروط"
+    },
+    "social": {
+      "facebook": "فيسبوك",
+      "instagram": "إنستغرام",
+      "youtube": "يوتيوب",
+      "linkedin": "لينكدإن",
+      "x": "إكس"
+    },
+    "copyright": "© 2012–2026 Ozelders Inc. جميع الحقوق محفوظة.",
+    "legal": {
+      "privacy": "الخصوصية",
+      "cookies": "ملفات تعريف الارتباط",
+      "terms": "الشروط"
+    }
+  },
+  "notFound": {
+    "code": "404",
+    "title": "الصفحة غير موجودة",
+    "body": "قد تكون الصفحة التي تبحث عنها قد انتقلت أو لم تكن موجودة من قبل. دعنا نعيدك إلى المسار الصحيح.",
+    "backHome": "العودة إلى الرئيسية",
+    "browseTutors": "تصفّح المعلّمين"
   }
 }

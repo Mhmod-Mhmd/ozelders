@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { Search } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
@@ -6,6 +7,7 @@ import { Select } from '@/components/ui/Select';
 import { useSubjects } from '@/features/subjects/hooks/useSubjects';
 import { paths } from '@/router/paths';
 
+/** The first entry is the "any language" sentinel; the rest match tutor data. */
 const LANGUAGES = [
   'Any language',
   'English',
@@ -18,10 +20,16 @@ const LANGUAGES = [
 ];
 
 export function SearchBar() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { data: subjects = [] } = useSubjects();
   const [category, setCategory] = useState('');
   const [language, setLanguage] = useState('');
+
+  const languageLabel = (lang: string) =>
+    lang === 'Any language'
+      ? t('home.search.anyLanguage')
+      : t(`student.languages.${lang}`, lang);
 
   function handleSearch() {
     const params = new URLSearchParams();
@@ -35,7 +43,7 @@ export function SearchBar() {
     <div className="flex flex-col gap-3 rounded-2xl bg-white p-3 shadow-xl ring-1 ring-gray-100 sm:flex-row sm:items-center">
       <div className="flex-1">
         <label className="sr-only" htmlFor="search-subject">
-          Subject
+          {t('home.search.subjectLabel')}
         </label>
         <Select
           id="search-subject"
@@ -43,7 +51,7 @@ export function SearchBar() {
           onChange={(e) => setCategory(e.target.value)}
           className="border-transparent hover:border-gray-200"
         >
-          <option value="">What do you want to learn?</option>
+          <option value="">{t('home.search.subjectPlaceholder')}</option>
           {subjects.map((subject) => (
             <option key={subject.key} value={subject.key}>
               {subject.name}
@@ -56,7 +64,7 @@ export function SearchBar() {
 
       <div className="flex-1">
         <label className="sr-only" htmlFor="search-language">
-          Language
+          {t('home.search.languageLabel')}
         </label>
         <Select
           id="search-language"
@@ -66,7 +74,7 @@ export function SearchBar() {
         >
           {LANGUAGES.map((lang) => (
             <option key={lang} value={lang}>
-              {lang}
+              {languageLabel(lang)}
             </option>
           ))}
         </Select>
@@ -74,7 +82,7 @@ export function SearchBar() {
 
       <Button size="lg" onClick={handleSearch} className="sm:w-auto">
         <Search className="h-5 w-5" />
-        Search
+        {t('common.search')}
       </Button>
     </div>
   );

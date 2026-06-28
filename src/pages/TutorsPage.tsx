@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
 import { SlidersHorizontal, Search, X, RotateCcw, SearchX } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
@@ -16,6 +17,7 @@ import {
 } from '@/features/tutors/types/tutor.types';
 
 export function TutorsPage() {
+  const { t } = useTranslation();
   const [searchParams] = useSearchParams();
   const { data: subjects = [] } = useSubjects();
   const [filters, setFilters] = useState<TutorFilters>(() => ({
@@ -53,13 +55,10 @@ export function TutorsPage() {
         <Container className="py-8">
           <h1 className="text-3xl font-extrabold tracking-tight text-gray-900">
             {activeCategory
-              ? `${activeCategory.name} tutors`
-              : 'Find your tutor'}
+              ? t('tutors.pageTitleCategory', { category: activeCategory.name })
+              : t('tutors.pageTitle')}
           </h1>
-          <p className="mt-2 text-gray-600">
-            Browse expert tutors, compare prices and reviews, and book a free
-            trial lesson.
-          </p>
+          <p className="mt-2 text-gray-600">{t('tutors.pageSubtitle')}</p>
         </Container>
       </div>
 
@@ -88,7 +87,7 @@ export function TutorsPage() {
                   onChange={(e) =>
                     updateFilters({ search: e.target.value || undefined })
                   }
-                  placeholder="Search by name or subject"
+                  placeholder={t('tutors.searchByNameOrSubject')}
                   className="w-full rounded-xl border border-gray-200 bg-white py-2.5 pr-3 pl-9 text-sm text-gray-800 hover:border-gray-300 focus-visible:border-brand-400"
                 />
               </div>
@@ -99,7 +98,7 @@ export function TutorsPage() {
                   className="inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-3.5 py-2.5 text-sm font-medium text-gray-700 hover:border-gray-300 lg:hidden"
                 >
                   <SlidersHorizontal className="h-4 w-4" />
-                  Filters
+                  {t('tutors.filtersButton')}
                 </button>
                 <SortDropdown value={sort} onChange={setSort} />
               </div>
@@ -108,7 +107,7 @@ export function TutorsPage() {
             <p className="mb-4 text-sm font-medium text-gray-600">
               {tutorsQuery.isLoading
                 ? ' '
-                : `${total} ${total === 1 ? 'tutor' : 'tutors'} available`}
+                : t('tutors.availableCount', { count: total })}
             </p>
 
             {tutorsQuery.isLoading ? (
@@ -129,10 +128,10 @@ export function TutorsPage() {
               <div className="rounded-2xl border border-dashed border-gray-200 bg-white py-16 text-center">
                 <SearchX className="mx-auto h-10 w-10 text-gray-300" />
                 <h3 className="mt-4 text-lg font-bold text-gray-900">
-                  No tutors match your filters
+                  {t('tutors.noResults')}
                 </h3>
                 <p className="mt-1 text-gray-500">
-                  Try adjusting or resetting your filters.
+                  {t('tutors.noResultsHint')}
                 </p>
                 <Button
                   variant="outline"
@@ -140,7 +139,7 @@ export function TutorsPage() {
                   className="mt-5"
                 >
                   <RotateCcw className="h-4 w-4" />
-                  Reset filters
+                  {t('tutors.resetFilters')}
                 </Button>
               </div>
             )}
@@ -153,13 +152,15 @@ export function TutorsPage() {
         <div className="fixed inset-0 z-50 lg:hidden">
           <button
             type="button"
-            aria-label="Close filters"
+            aria-label={t('tutors.closeFilters')}
             className="absolute inset-0 bg-black/40"
             onClick={() => setMobileOpen(false)}
           />
           <div className="absolute inset-y-0 left-0 flex w-full max-w-xs flex-col bg-white shadow-xl">
             <div className="flex items-center justify-between border-b border-gray-100 p-4">
-              <h2 className="text-lg font-bold text-gray-900">Filters</h2>
+              <h2 className="text-lg font-bold text-gray-900">
+                {t('tutors.filtersHeading')}
+              </h2>
               <div className="flex items-center gap-1">
                 <button
                   type="button"
@@ -167,11 +168,11 @@ export function TutorsPage() {
                   className="inline-flex items-center gap-1.5 rounded-lg px-2 py-1.5 text-sm font-medium text-gray-500 hover:bg-gray-100"
                 >
                   <RotateCcw className="h-3.5 w-3.5" />
-                  Reset
+                  {t('tutors.reset')}
                 </button>
                 <button
                   type="button"
-                  aria-label="Close"
+                  aria-label={t('tutors.close')}
                   onClick={() => setMobileOpen(false)}
                   className="rounded-lg p-2 text-gray-500 hover:bg-gray-100"
                 >
@@ -189,7 +190,7 @@ export function TutorsPage() {
             </div>
             <div className="border-t border-gray-100 p-4">
               <Button className="w-full" onClick={() => setMobileOpen(false)}>
-                Show {total} {total === 1 ? 'result' : 'results'}
+                {t('tutors.showResults', { count: total })}
               </Button>
             </div>
           </div>

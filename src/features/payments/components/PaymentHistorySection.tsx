@@ -22,8 +22,11 @@ function formatAmount(value: number, currency: string, locale: string): string {
 }
 
 /** Build a CSV blob from the transactions and trigger a download. */
-function downloadCsv(rows: PaymentTransaction[], filename: string): void {
-  const header = ['Date', 'Subject', 'Tutor', 'Hours', 'Amount', 'Currency'];
+function downloadCsv(
+  rows: PaymentTransaction[],
+  header: string[],
+  filename: string,
+): void {
   const lines = rows.map((r) =>
     [r.date, r.subject, r.tutorName, r.hours, r.amount, r.currency].join(','),
   );
@@ -92,7 +95,20 @@ export function PaymentHistorySection() {
                 <th className="py-3 text-end font-semibold">
                   <button
                     type="button"
-                    onClick={() => downloadCsv(rows, 'payment-history.csv')}
+                    onClick={() =>
+                      downloadCsv(
+                        rows,
+                        [
+                          t('payments.table.date'),
+                          t('payments.table.subject'),
+                          t('payments.table.tutor'),
+                          t('payments.table.hours'),
+                          t('payments.table.amount'),
+                          t('payments.table.currency'),
+                        ],
+                        t('payments.historyFilename'),
+                      )
+                    }
                     className="inline-flex items-center gap-1.5 font-semibold text-gray-700 underline underline-offset-2 hover:text-brand-600"
                   >
                     <Download className="h-3.5 w-3.5" />

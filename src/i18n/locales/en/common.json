@@ -54,6 +54,83 @@
       "title": "Meet our top-rated tutors",
       "subtitle": "Hand-picked, highly-rated tutors loved by thousands of students.",
       "viewAll": "View all tutors"
+    },
+    "hero": {
+      "ratingBadge": "4.9 average from 300,000+ reviews",
+      "titleLead": "Learn faster with your ",
+      "titleHighlight": "perfect tutor",
+      "subtitle": "1-on-1 online lessons in languages, math, science, music and 120+ subjects. Find an expert tutor, book a trial, and start making progress every week.",
+      "popularLabel": "Popular:",
+      "popular": {
+        "languages": "English",
+        "mathematics": "Mathematics",
+        "programming": "Programming",
+        "music": "Music"
+      },
+      "stats": {
+        "tutorsValue": "50,000+",
+        "tutorsLabel": "Expert tutors",
+        "subjectsValue": "120+",
+        "subjectsLabel": "Subjects",
+        "ratingValue": "4.9★",
+        "ratingLabel": "Avg. rating"
+      },
+      "chips": {
+        "topRated": "Top-rated",
+        "tutorsWorldwide": "tutors worldwide",
+        "trials": "1,200+ trials",
+        "bookedToday": "booked today"
+      }
+    },
+    "search": {
+      "subjectLabel": "Subject",
+      "subjectPlaceholder": "What do you want to learn?",
+      "languageLabel": "Language",
+      "anyLanguage": "Any language"
+    },
+    "subjects": {
+      "eyebrow": "Explore subjects",
+      "title": "Find a tutor for any subject",
+      "subtitle": "From languages to coding, discover thousands of tutors across 120+ subjects.",
+      "tutorsCount_one": "{{formatted}} tutor",
+      "tutorsCount_other": "{{formatted}} tutors"
+    },
+    "testimonials": {
+      "eyebrow": "Testimonials",
+      "title": "Loved by learners worldwide",
+      "subtitle": "Join millions of students achieving their goals with Ozelders."
+    },
+    "howItWorks": {
+      "eyebrow": "How it works",
+      "title": "Start learning in 3 simple steps",
+      "subtitle": "From sign-up to your first lesson in just a few minutes.",
+      "steps": {
+        "find": {
+          "title": "Find your tutor",
+          "text": "Browse expert tutors and filter by price, subject and availability to find your perfect match."
+        },
+        "book": {
+          "title": "Book a trial",
+          "text": "Schedule a trial lesson at a time that suits you. Not the right fit? Switch tutors for free, anytime."
+        },
+        "learn": {
+          "title": "Start learning",
+          "text": "Join interactive 1-on-1 video lessons and make real, measurable progress every single week."
+        }
+      }
+    },
+    "becomeTutorCta": {
+      "title": "Become a tutor",
+      "subtitle": "Earn money sharing your expertise with students around the world. Teach on your own schedule, from anywhere.",
+      "benefits": {
+        "findStudents": "Find new students",
+        "growBusiness": "Grow your tutoring business",
+        "getPaid": "Get paid securely, on time"
+      },
+      "cta": "Become a tutor",
+      "howItWorks": "How it works",
+      "earnedThisWeek": "Earned this week",
+      "earnedAmount": "$1,250"
     }
   },
   "becomeTutor": {
@@ -123,8 +200,6 @@
     "comingSoon": "Your lessons will appear here."
   },
   "settings": {
-    "title": "Settings",
-    "comingSoon": "This section is coming soon.",
     "sectionsLabel": "Settings sections",
     "sections": {
       "account": "Account",
@@ -271,8 +346,16 @@
       "subject": "Subject",
       "tutor": "Tutor",
       "hours": "Hours",
-      "amount": "Amount"
+      "amount": "Amount",
+      "currency": "Currency"
     },
+    "placeholders": {
+      "cardNumber": "1234 5678 9012 3456",
+      "expMonth": "MM",
+      "expYear": "YYYY",
+      "cvc": "123"
+    },
+    "historyFilename": "payment-history.csv",
     "errors": {
       "holderRequired": "Cardholder name is required.",
       "numberInvalid": "Enter a valid card number.",
@@ -282,10 +365,7 @@
     }
   },
   "language": {
-    "label": "Language",
-    "en": "English",
-    "tr": "Türkçe",
-    "ar": "العربية"
+    "label": "Language"
   },
   "currency": {
     "label": "Currency"
@@ -308,7 +388,85 @@
     "lessonsLabel": "lessons",
     "saveTutor": "Save tutor",
     "removeSaved": "Remove from saved",
-    "viewProfile": "View {{name}}'s profile"
+    "viewProfile": "View {{name}}'s profile",
+    "viewProfileShort": "View profile",
+    "bookTrialShort": "Book trial",
+    "nativeSpeaker": "Native speaker",
+    "trialFrom": "Trial from",
+    "perHour": "/ hour",
+    "perHourShort": "/hr",
+    "responds": "Responds {{time}}",
+    "lessonsAndResponds": "{{lessons}} lessons · Responds {{time}}",
+    "lessonsTaught": "{{lessons}} lessons taught",
+    "freeTrialNote": "Free trial · switch tutors anytime",
+    "subjectCountryLine": "{{subject}} tutor · {{country}}",
+    "speaksLabel": "Speaks:",
+    "ratingExcellent": "Excellent",
+    "basedOnReviews_one": "Based on {{count}} verified review",
+    "basedOnReviews_other": "Based on {{count}} verified reviews",
+    "playIntroVideoOf": "Play intro video of {{name}}",
+    "introVideoOf": "Intro video · {{name}}",
+    "available": "Available",
+    "unavailable": "Unavailable",
+    "pageTitle": "Find your tutor",
+    "pageTitleCategory": "{{category}} tutors",
+    "pageSubtitle": "Browse expert tutors, compare prices and reviews, and book a free trial lesson.",
+    "searchByNameOrSubject": "Search by name or subject",
+    "filtersButton": "Filters",
+    "filtersHeading": "Filters",
+    "resetFilters": "Reset filters",
+    "reset": "Reset",
+    "close": "Close",
+    "closeFilters": "Close filters",
+    "showResults_one": "Show {{count}} result",
+    "showResults_other": "Show {{count}} results",
+    "notFoundTitle": "Tutor not found",
+    "notFoundBody": "This tutor may have moved or no longer exists.",
+    "browseAll": "Browse all tutors",
+    "backToTutors": "Back to tutors",
+    "reviewsTitle": "Reviews ({{count}})",
+    "sections": {
+      "about": "About me",
+      "introVideo": "Intro video",
+      "specialties": "Specialties",
+      "availability": "Availability",
+      "availabilitySubtitle": "Pick a time that works for you. Times shown in your local timezone."
+    },
+    "periods": {
+      "morning": "Morning",
+      "afternoon": "Afternoon",
+      "evening": "Evening",
+      "night": "Night"
+    },
+    "sidebar": {
+      "subject": "Subject",
+      "allSubjects": "All subjects",
+      "pricePerHour": "Price per hour",
+      "rating": "Rating",
+      "availability": "Availability",
+      "nativeSpeaker": "Native speaker",
+      "nativeSpeakersOnly": "Native speakers only",
+      "price": {
+        "any": "Any price",
+        "under15": "Under $15",
+        "p15to25": "$15 – $25",
+        "p25to40": "$25 – $40",
+        "over40": "$40 and up"
+      },
+      "ratingOptions": {
+        "any": "Any rating",
+        "r40": "4.0 & up",
+        "r45": "4.5 & up",
+        "r48": "4.8 & up"
+      }
+    },
+    "sortDropdown": {
+      "label": "Sort by",
+      "topRated": "Top rated",
+      "priceLowHigh": "Price: Low to High",
+      "priceHighLow": "Price: High to Low",
+      "mostReviews": "Most reviews"
+    }
   },
   "saved": {
     "heading_one": "{{count}} saved tutor",
@@ -332,13 +490,9 @@
     "sortBy": "Sort tutors by",
     "filters": {
       "learn": "I want to learn",
-      "learnValue": "English",
       "price": "Price per lesson",
-      "priceValue": "₺100 – ₺1,600",
       "country": "Country of birth",
-      "countryValue": "United States of America",
       "available": "I'm available",
-      "availableValue": "12-15, 15-18 · Wed",
       "specialties": "Specialties",
       "alsoSpeaks": "Also speaks",
       "nativeSpeaker": "Native speaker",
@@ -447,5 +601,59 @@
       "play": "Play intro video",
       "viewSchedule": "View full schedule"
     }
+  },
+  "brand": {
+    "name": "Ozelders",
+    "homeAriaLabel": "Ozelders home"
+  },
+  "footer": {
+    "tagline": "Learn anything, 1-on-1, with the world’s best online tutors. Languages, math, science, music and more.",
+    "company": {
+      "title": "Company",
+      "about": "About us",
+      "careers": "Careers",
+      "press": "Press",
+      "blog": "Blog"
+    },
+    "students": {
+      "title": "For students",
+      "findTutor": "Find a tutor",
+      "howItWorks": "How it works",
+      "pricing": "Pricing",
+      "reviews": "Reviews"
+    },
+    "tutors": {
+      "title": "For tutors",
+      "become": "Become a tutor",
+      "resources": "Tutor resources",
+      "community": "Community"
+    },
+    "support": {
+      "title": "Support",
+      "help": "Help center",
+      "contact": "Contact us",
+      "safety": "Safety",
+      "terms": "Terms"
+    },
+    "social": {
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "youtube": "YouTube",
+      "linkedin": "LinkedIn",
+      "x": "X"
+    },
+    "copyright": "© 2012–2026 Ozelders Inc. All rights reserved.",
+    "legal": {
+      "privacy": "Privacy",
+      "cookies": "Cookies",
+      "terms": "Terms"
+    }
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Page not found",
+    "body": "The page you’re looking for may have moved or never existed. Let’s get you back on track.",
+    "backHome": "Back to home",
+    "browseTutors": "Browse tutors"
   }
 }

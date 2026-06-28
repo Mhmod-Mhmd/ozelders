@@ -1,4 +1,5 @@
 import { type ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
@@ -37,6 +38,7 @@ function ProfileSection({
 }
 
 export function TutorProfilePage() {
+  const { t } = useTranslation();
   const { id = '' } = useParams();
   const { data: tutor, isLoading, isError } = useTutor(id);
   const { data: reviewsPage } = useTutorReviews(id, 6);
@@ -61,15 +63,17 @@ export function TutorProfilePage() {
   if (isError || !tutor) {
     return (
       <Container className="py-24 text-center">
-        <h1 className="text-2xl font-bold text-gray-900">Tutor not found</h1>
+        <h1 className="text-2xl font-bold text-gray-900">
+          {t('tutors.notFoundTitle')}
+        </h1>
         <p className="mx-auto mt-2 max-w-md text-gray-600">
-          This tutor may have moved or no longer exists.
+          {t('tutors.notFoundBody')}
         </p>
         <Link
           to={paths.tutors}
           className={buttonVariants({ className: 'mt-6' })}
         >
-          Browse all tutors
+          {t('tutors.browseAll')}
         </Link>
       </Container>
     );
@@ -82,22 +86,22 @@ export function TutorProfilePage() {
           to={paths.tutors}
           className="inline-flex items-center gap-1.5 text-sm font-medium text-gray-500 hover:text-brand-600"
         >
-          <ArrowLeft className="h-4 w-4" /> Back to tutors
+          <ArrowLeft className="h-4 w-4" /> {t('tutors.backToTutors')}
         </Link>
 
         <div className="mt-4 grid gap-8 lg:grid-cols-[1fr_360px]">
           <div className="space-y-6">
             <ProfileHeader tutor={tutor} />
 
-            <ProfileSection title="About me">
+            <ProfileSection title={t('tutors.sections.about')}>
               <p className="leading-relaxed text-gray-700">{tutor.bio}</p>
             </ProfileSection>
 
-            <ProfileSection title="Intro video">
+            <ProfileSection title={t('tutors.sections.introVideo')}>
               <VideoPlaceholder poster={tutor.avatarUrl} name={tutor.name} />
             </ProfileSection>
 
-            <ProfileSection title="Specialties">
+            <ProfileSection title={t('tutors.sections.specialties')}>
               <div className="flex flex-wrap gap-2">
                 {tutor.tags.map((tag) => (
                   <Badge key={tag} variant="brand">
@@ -108,13 +112,15 @@ export function TutorProfilePage() {
             </ProfileSection>
 
             <ProfileSection
-              title="Availability"
-              subtitle="Pick a time that works for you. Times shown in your local timezone."
+              title={t('tutors.sections.availability')}
+              subtitle={t('tutors.sections.availabilitySubtitle')}
             >
               <AvailabilityCalendar availability={tutor.availability} />
             </ProfileSection>
 
-            <ProfileSection title={`Reviews (${tutor.reviewsCount})`}>
+            <ProfileSection
+              title={t('tutors.reviewsTitle', { count: tutor.reviewsCount })}
+            >
               <ReviewsList tutor={tutor} reviews={reviews} />
             </ProfileSection>
           </div>

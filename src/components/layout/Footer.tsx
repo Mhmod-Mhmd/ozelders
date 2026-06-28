@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Container } from '@/components/ui/Container';
 import { paths } from '@/router/paths';
 import { Logo } from './Logo';
@@ -11,77 +12,82 @@ import {
 } from './SocialIcons';
 
 interface FooterLink {
-  label: string;
+  /** i18n key for the link label. */
+  labelKey: string;
   to: string;
 }
 
 interface FooterColumn {
-  title: string;
+  /** i18n key for the column title. */
+  titleKey: string;
   links: FooterLink[];
 }
 
 const COLUMNS: FooterColumn[] = [
   {
-    title: 'Company',
+    titleKey: 'footer.company.title',
     links: [
-      { label: 'About us', to: '#' },
-      { label: 'Careers', to: '#' },
-      { label: 'Press', to: '#' },
-      { label: 'Blog', to: '#' },
+      { labelKey: 'footer.company.about', to: '#' },
+      { labelKey: 'footer.company.careers', to: '#' },
+      { labelKey: 'footer.company.press', to: '#' },
+      { labelKey: 'footer.company.blog', to: '#' },
     ],
   },
   {
-    title: 'For students',
+    titleKey: 'footer.students.title',
     links: [
-      { label: 'Find a tutor', to: paths.tutors },
-      { label: 'How it works', to: '/#how-it-works' },
-      { label: 'Pricing', to: '#' },
-      { label: 'Reviews', to: '#' },
+      { labelKey: 'footer.students.findTutor', to: paths.tutors },
+      { labelKey: 'footer.students.howItWorks', to: '/#how-it-works' },
+      { labelKey: 'footer.students.pricing', to: '#' },
+      { labelKey: 'footer.students.reviews', to: '#' },
     ],
   },
   {
-    title: 'For tutors',
+    titleKey: 'footer.tutors.title',
     links: [
-      { label: 'Become a tutor', to: paths.becomeTutor },
-      { label: 'Tutor resources', to: '#' },
-      { label: 'Community', to: '#' },
+      { labelKey: 'footer.tutors.become', to: paths.becomeTutor },
+      { labelKey: 'footer.tutors.resources', to: '#' },
+      { labelKey: 'footer.tutors.community', to: '#' },
     ],
   },
   {
-    title: 'Support',
+    titleKey: 'footer.support.title',
     links: [
-      { label: 'Help center', to: '#' },
-      { label: 'Contact us', to: '#' },
-      { label: 'Safety', to: '#' },
-      { label: 'Terms', to: '#' },
+      { labelKey: 'footer.support.help', to: '#' },
+      { labelKey: 'footer.support.contact', to: '#' },
+      { labelKey: 'footer.support.safety', to: '#' },
+      { labelKey: 'footer.support.terms', to: '#' },
     ],
   },
 ];
 
 const SOCIALS = [
-  { label: 'Facebook', icon: FacebookIcon },
-  { label: 'Instagram', icon: InstagramIcon },
-  { label: 'YouTube', icon: YoutubeIcon },
-  { label: 'LinkedIn', icon: LinkedinIcon },
-  { label: 'X', icon: XIcon },
+  { id: 'facebook', labelKey: 'footer.social.facebook', icon: FacebookIcon },
+  { id: 'instagram', labelKey: 'footer.social.instagram', icon: InstagramIcon },
+  { id: 'youtube', labelKey: 'footer.social.youtube', icon: YoutubeIcon },
+  { id: 'linkedin', labelKey: 'footer.social.linkedin', icon: LinkedinIcon },
+  { id: 'x', labelKey: 'footer.social.x', icon: XIcon },
 ];
 
 function FooterLinkItem({ link }: { link: FooterLink }) {
+  const { t } = useTranslation();
   const isRoute = link.to.startsWith('/') && !link.to.startsWith('/#');
   const className =
     'text-sm text-gray-600 transition-colors hover:text-brand-600';
   return isRoute ? (
     <Link to={link.to} className={className}>
-      {link.label}
+      {t(link.labelKey)}
     </Link>
   ) : (
     <a href={link.to} className={className}>
-      {link.label}
+      {t(link.labelKey)}
     </a>
   );
 }
 
 export function Footer() {
+  const { t } = useTranslation();
+
   return (
     <footer className="border-t border-gray-100 bg-gray-50">
       <Container className="py-12 lg:py-16">
@@ -90,15 +96,14 @@ export function Footer() {
           <div className="col-span-2">
             <Logo />
             <p className="mt-4 max-w-xs text-sm text-gray-600">
-              Learn anything, 1-on-1, with the world’s best online tutors.
-              Languages, math, science, music and more.
+              {t('footer.tagline')}
             </p>
             <div className="mt-5 flex items-center gap-2">
-              {SOCIALS.map(({ label, icon: Icon }) => (
+              {SOCIALS.map(({ id, labelKey, icon: Icon }) => (
                 <a
-                  key={label}
+                  key={id}
                   href="#"
-                  aria-label={label}
+                  aria-label={t(labelKey)}
                   className="grid h-9 w-9 place-items-center rounded-full bg-white text-gray-600 shadow-sm transition-colors hover:text-brand-600"
                 >
                   <Icon className="h-4 w-4" />
@@ -109,13 +114,13 @@ export function Footer() {
 
           {/* Link columns */}
           {COLUMNS.map((column) => (
-            <div key={column.title}>
+            <div key={column.titleKey}>
               <h3 className="text-sm font-semibold text-gray-900">
-                {column.title}
+                {t(column.titleKey)}
               </h3>
               <ul className="mt-4 space-y-3">
                 {column.links.map((link) => (
-                  <li key={link.label}>
+                  <li key={link.labelKey}>
                     <FooterLinkItem link={link} />
                   </li>
                 ))}
@@ -125,18 +130,16 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-gray-200 pt-8 sm:flex-row">
-          <p className="text-sm text-gray-500">
-            © 2012–2026 Ozelders Inc. All rights reserved.
-          </p>
+          <p className="text-sm text-gray-500">{t('footer.copyright')}</p>
           <div className="flex items-center gap-6">
             <a href="#" className="text-sm text-gray-500 hover:text-brand-600">
-              Privacy
+              {t('footer.legal.privacy')}
             </a>
             <a href="#" className="text-sm text-gray-500 hover:text-brand-600">
-              Cookies
+              {t('footer.legal.cookies')}
             </a>
             <a href="#" className="text-sm text-gray-500 hover:text-brand-600">
-              Terms
+              {t('footer.legal.terms')}
             </a>
           </div>
         </div>

@@ -42,3 +42,15 @@ export {
   detectBrand,
 } from './payments';
 export type { PaymentCard, PaymentTransaction, CardBrand } from './payments';
+export {
+  getTutorApplication,
+  saveAbout,
+  savePhoto,
+  saveCertification,
+  saveEducation,
+  saveDescription,
+  saveVideo,
+  saveAvailability,
+  savePricing,
+  submitTutorApplication,
+} from './tutorApplication';

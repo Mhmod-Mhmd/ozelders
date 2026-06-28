@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Heart, BadgeCheck, Clock, Globe } from 'lucide-react';
 import { Avatar } from '@/components/ui/Avatar';
 import { Badge } from '@/components/ui/Badge';
@@ -14,6 +15,7 @@ interface TutorCardProps {
 }
 
 export function TutorCard({ tutor, className }: TutorCardProps) {
+  const { t, i18n } = useTranslation();
   const profile = paths.tutorProfile(tutor.id);
 
   return (
@@ -47,17 +49,20 @@ export function TutorCard({ tutor, className }: TutorCardProps) {
               </span>
               {tutor.superTutor && (
                 <Badge variant="brand">
-                  <BadgeCheck className="h-3.5 w-3.5" /> Super Tutor
+                  <BadgeCheck className="h-3.5 w-3.5" /> {t('tutors.superTutor')}
                 </Badge>
               )}
             </div>
             <p className="mt-0.5 text-sm text-gray-500">
-              {tutor.subject} tutor · {tutor.country}
+              {t('tutors.subjectCountryLine', {
+                subject: tutor.subject,
+                country: tutor.country,
+              })}
             </p>
           </div>
           <button
             type="button"
-            aria-label="Save tutor"
+            aria-label={t('tutors.saveTutor')}
             className="rounded-full p-2 text-gray-400 transition-colors hover:bg-gray-50 hover:text-rose-500"
           >
             <Heart className="h-5 w-5" />
@@ -76,7 +81,7 @@ export function TutorCard({ tutor, className }: TutorCardProps) {
           ))}
           {tutor.isNativeSpeaker && (
             <Badge variant="success">
-              <Globe className="h-3.5 w-3.5" /> Native speaker
+              <Globe className="h-3.5 w-3.5" /> {t('tutors.nativeSpeaker')}
             </Badge>
           )}
         </div>
@@ -89,15 +94,19 @@ export function TutorCard({ tutor, className }: TutorCardProps) {
             />
             <span className="inline-flex items-center gap-1 text-xs text-gray-500">
               <Clock className="h-3.5 w-3.5" />{' '}
-              {tutor.lessonsCount.toLocaleString()} lessons · Responds{' '}
-              {tutor.responseTime}
+              {t('tutors.lessonsAndResponds', {
+                lessons: tutor.lessonsCount.toLocaleString(i18n.language),
+                time: tutor.responseTime,
+              })}
             </span>
           </div>
           <div className="text-right">
-            <p className="text-xs text-gray-500">Trial from</p>
+            <p className="text-xs text-gray-500">{t('tutors.trialFrom')}</p>
             <p className="text-xl font-extrabold text-gray-900">
               ${tutor.pricePerHour}
-              <span className="text-sm font-medium text-gray-500">/hr</span>
+              <span className="text-sm font-medium text-gray-500">
+                {t('tutors.perHourShort')}
+              </span>
             </p>
           </div>
         </div>
@@ -107,7 +116,7 @@ export function TutorCard({ tutor, className }: TutorCardProps) {
             to={profile}
             className={buttonVariants({ className: 'flex-1' })}
           >
-            Book trial
+            {t('tutors.bookTrialShort')}
           </Link>
           <Link
             to={profile}
@@ -116,7 +125,7 @@ export function TutorCard({ tutor, className }: TutorCardProps) {
               className: 'flex-1',
             })}
           >
-            View profile
+            {t('tutors.viewProfileShort')}
           </Link>
         </div>
       </div>

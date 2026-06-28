@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Skeleton } from '@/components/ui/Skeleton';
@@ -8,15 +9,16 @@ import { paths } from '@/router/paths';
 import { cn } from '@/utils/cn';
 
 export function SubjectsGrid() {
+  const { t, i18n } = useTranslation();
   const { data: subjects = [], isLoading, isError, refetch } = useSubjects();
 
   return (
     <section id="subjects" className="scroll-mt-20 py-16 lg:py-24">
       <Container>
         <SectionHeading
-          eyebrow="Explore subjects"
-          title="Find a tutor for any subject"
-          subtitle="From languages to coding, discover thousands of tutors across 120+ subjects."
+          eyebrow={t('home.subjects.eyebrow')}
+          title={t('home.subjects.title')}
+          subtitle={t('home.subjects.subtitle')}
         />
         {isError ? (
           <ErrorState className="mt-12" onRetry={() => refetch()} />
@@ -48,7 +50,12 @@ export function SubjectsGrid() {
                         {subject.blurb}
                       </p>
                       <p className="mt-0.5 text-xs font-medium text-gray-400">
-                        {subject.tutorsCount.toLocaleString()} tutors
+                        {t('home.subjects.tutorsCount', {
+                          count: subject.tutorsCount,
+                          formatted: subject.tutorsCount.toLocaleString(
+                            i18n.language,
+                          ),
+                        })}
                       </p>
                     </div>
                   </Link>

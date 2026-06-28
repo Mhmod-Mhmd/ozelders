@@ -31,9 +31,25 @@ import {
   addCard,
   removeCard,
   getPaymentHistory,
+  getTutorApplication,
+  saveAbout,
+  savePhoto,
+  saveCertification,
+  saveEducation,
+  saveDescription,
+  saveVideo,
+  saveAvailability,
+  savePricing,
+  submitTutorApplication,
   type SocialProvider,
   type AutoconfirmMode,
 } from '@/data';
+import { type Availability } from '@/features/tutors/types/tutor.types';
+import {
+  type CertificateInput,
+  type EducationItemInput,
+  type LanguageSkillInput,
+} from '@/features/tutor-onboarding/types/onboarding.types';
 import { type MessageFolder } from '@/features/messages/types/message.types';
 import { filterTutors, sortTutors } from '@/features/tutors/utils/filterTutors';
 import {
@@ -567,6 +583,192 @@ const routes: Route[] = [
         asNumber(query.page),
         asNumber(query.pageSize),
       ),
+  },
+
+  /* ---------------------------------------------------------------- */
+  /* Tutor onboarding application                                     */
+  /* (Field errors are i18n keys, translated by the form's errorText.) */
+  /* ---------------------------------------------------------------- */
+  {
+    method: 'GET',
+    pattern: /^\/tutor-application$/,
+    handler: ({ token }) => {
+      requireUser(token);
+      return getTutorApplication();
+    },
+  },
+  {
+    method: 'PATCH',
+    pattern: /^\/tutor-application\/about$/,
+    handler: ({ token, body }) => {
+      requireUser(token);
+      const errors: Record<string, string[]> = {};
+      const firstName = asString(body.firstName)?.trim() ?? '';
+      const lastName = asString(body.lastName)?.trim() ?? '';
+      const email = asString(body.email)?.trim() ?? '';
+      const country = asString(body.country) ?? '';
+      const subject = asString(body.subject) ?? '';
+      const phoneNumber = asString(body.phoneNumber)?.trim() ?? '';
+      const languages = (asArray(body.languages) ??
+        []) as LanguageSkillInput[];
+
+      if (!firstName) errors.firstName = ['onboarding.errors.firstNameRequired'];
+      if (!lastName) errors.lastName = ['onboarding.errors.lastNameRequired'];
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+        errors.email = ['onboarding.errors.emailInvalid'];
+      if (!country) errors.country = ['onboarding.errors.countryRequired'];
+      if (!subject) errors.subject = ['onboarding.errors.subjectRequired'];
+      if (!languages.length || languages.some((l) => !l?.language || !l?.level))
+        errors.languages = ['onboarding.errors.languageRequired'];
+      if (phoneNumber && !/^[0-9\s-]{4,20}$/.test(phoneNumber))
+        errors.phoneNumber = ['onboarding.errors.phoneInvalid'];
+      if (body.over18 !== true)
+        errors.over18 = ['onboarding.errors.over18Required'];
+      if (Object.keys(errors).length) throw validationError(errors);
+
+      return saveAbout({
+        firstName,
+        lastName,
+        email,
+        country,
+        subject,
+        languages: languages.map((l) => ({
+          language: String(l.language),
+          level: String(l.level),
+        })),
+        phoneCountry: asString(body.phoneCountry) ?? 'US',
+        phoneNumber,
+        over18: true,
+      });
+    },
+  },
+  {
+    method: 'PATCH',
+    pattern: /^\/tutor-application\/photo$/,
+    handler: ({ token, body }) => {
+      requireUser(token);
+      return savePhoto({ photoUrl: asString(body.photoUrl) ?? '' });
+    },
+  },
+  {
+    method: 'PATCH',
+    pattern: /^\/tutor-application\/certification$/,
+    handler: ({ token, body }) => {
+      requireUser(token);
+      const hasNone = body.hasNone === true;
+      const certificates = (asArray(body.certificates) ??
+        []) as CertificateInput[];
+      if (
+        !hasNone &&
+        (!certificates.length ||
+          certificates.some((c) => !c?.subject || !c?.certificate))
+      ) {
+        throw validationError({
+          certificates: ['onboarding.errors.certificateRequired'],
+        });
+      }
+      return saveCertification({
+        hasNone,
+        certificates: hasNone ? [] : certificates,
+      });
+    },
+  },
+  {
+    method: 'PATCH',
+    pattern: /^\/tutor-application\/education$/,
+    handler: ({ token, body }) => {
+      requireUser(token);
+      const hasNone = body.hasNone === true;
+      const educations = (asArray(body.educations) ??
+        []) as EducationItemInput[];
+      if (
+        !hasNone &&
+        (!educations.length ||
+          educations.some(
+            (e) => !e?.university || !e?.degree || !e?.degreeType,
+          ))
+      ) {
+        throw validationError({
+          educations: ['onboarding.errors.educationRequired'],
+        });
+      }
+      return saveEducation({
+        hasNone,
+        educations: hasNone ? [] : educations,
+      });
+    },
+  },
+  {
+    method: 'PATCH',
+    pattern: /^\/tutor-application\/description$/,
+    handler: ({ token, body }) => {
+      requireUser(token);
+      const headline = asString(body.headline)?.trim() ?? '';
+      const introduction = asString(body.introduction)?.trim() ?? '';
+      const teachingStyle = asString(body.teachingStyle)?.trim() ?? '';
+      const errors: Record<string, string[]> = {};
+      if (headline.length < 10)
+        errors.headline = ['onboarding.errors.headlineTooShort'];
+      if (introduction.length < 50)
+        errors.introduction = ['onboarding.errors.introductionTooShort'];
+      if (teachingStyle.length < 50)
+        errors.teachingStyle = ['onboarding.errors.teachingStyleTooShort'];
+      if (Object.keys(errors).length) throw validationError(errors);
+      return saveDescription({ headline, introduction, teachingStyle });
+    },
+  },
+  {
+    method: 'PATCH',
+    pattern: /^\/tutor-application\/video$/,
+    handler: ({ token, body }) => {
+      requireUser(token);
+      const url = asString(body.url)?.trim() ?? '';
+      if (url && !/^https?:\/\/.+/.test(url)) {
+        throw validationError({ url: ['onboarding.errors.videoUrlInvalid'] });
+      }
+      return saveVideo({ url });
+    },
+  },
+  {
+    method: 'PATCH',
+    pattern: /^\/tutor-application\/availability$/,
+    handler: ({ token, body }) => {
+      requireUser(token);
+      const availability = (body.availability ?? {}) as Availability;
+      const hasAny = Object.values(availability).some(
+        (periods) => Array.isArray(periods) && periods.length > 0,
+      );
+      if (!hasAny) {
+        throw validationError({
+          availability: ['onboarding.errors.availabilityRequired'],
+        });
+      }
+      return saveAvailability(availability);
+    },
+  },
+  {
+    method: 'PATCH',
+    pattern: /^\/tutor-application\/pricing$/,
+    handler: ({ token, body }) => {
+      requireUser(token);
+      const rate = asNumber(body.hourlyRate);
+      if (rate === undefined || !Number.isInteger(rate)) {
+        throw validationError({ hourlyRate: ['onboarding.errors.rateInvalid'] });
+      }
+      if (rate < 3)
+        throw validationError({ hourlyRate: ['onboarding.errors.rateTooLow'] });
+      if (rate > 200)
+        throw validationError({ hourlyRate: ['onboarding.errors.rateTooHigh'] });
+      return savePricing(rate, asString(body.currency) ?? 'USD');
+    },
+  },
+  {
+    method: 'POST',
+    pattern: /^\/tutor-application\/submit$/,
+    handler: ({ token }) => {
+      requireUser(token);
+      return submitTutorApplication();
+    },
   },
 ];
 

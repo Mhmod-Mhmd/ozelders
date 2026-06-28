@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { BadgeCheck, Globe } from 'lucide-react';
 import { Avatar } from '@/components/ui/Avatar';
 import { Badge } from '@/components/ui/Badge';
@@ -5,6 +6,8 @@ import { RatingStars } from '@/components/ui/RatingStars';
 import { type Tutor } from '../types/tutor.types';
 
 export function ProfileHeader({ tutor }: { tutor: Tutor }) {
+  const { t } = useTranslation();
+
   return (
     <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-card">
       <div className="flex flex-col gap-5 sm:flex-row">
@@ -24,12 +27,15 @@ export function ProfileHeader({ tutor }: { tutor: Tutor }) {
             </span>
             {tutor.superTutor && (
               <Badge variant="brand">
-                <BadgeCheck className="h-3.5 w-3.5" /> Super Tutor
+                <BadgeCheck className="h-3.5 w-3.5" /> {t('tutors.superTutor')}
               </Badge>
             )}
           </div>
           <p className="mt-1 text-gray-600">
-            {tutor.subject} tutor · {tutor.country}
+            {t('tutors.subjectCountryLine', {
+              subject: tutor.subject,
+              country: tutor.country,
+            })}
           </p>
           <p className="mt-3 font-medium text-gray-800">{tutor.headline}</p>
 
@@ -43,17 +49,17 @@ export function ProfileHeader({ tutor }: { tutor: Tutor }) {
               <strong className="text-gray-900">
                 {tutor.lessonsCount.toLocaleString()}
               </strong>{' '}
-              lessons
+              {t('tutors.lessonsLabel')}
             </span>
             <span className="text-gray-600">
               <strong className="text-gray-900">{tutor.studentsCount}</strong>{' '}
-              students
+              {t('tutors.studentsLabel')}
             </span>
           </div>
 
           <div className="mt-4 flex flex-wrap items-center gap-2">
             <span className="inline-flex items-center gap-1.5 text-sm text-gray-600">
-              <Globe className="h-4 w-4 text-gray-400" /> Speaks:
+              <Globe className="h-4 w-4 text-gray-400" /> {t('tutors.speaksLabel')}
             </span>
             {tutor.speaks.map((s) => (
               <Badge key={s.language} variant="neutral">
