@@ -6,6 +6,10 @@ export const paths = {
   home: '/',
   login: '/login',
   becomeTutor: '/become-tutor',
+  becomeTutorOnboarding: '/become-tutor/onboarding',
+  becomeTutorOnboardingStep: (step: string) =>
+    `/become-tutor/onboarding/${step}`,
+  becomeTutorOnboardingSubmitted: '/become-tutor/onboarding/submitted',
   tutors: '/tutors',
   tutorProfile: (id: string) => `/tutors/${id}`,
   studentHome: '/student',

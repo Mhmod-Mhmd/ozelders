@@ -679,5 +679,209 @@
     "body": "قد تكون الصفحة التي تبحث عنها قد انتقلت أو لم تكن موجودة من قبل. دعنا نعيدك إلى المسار الصحيح.",
     "backHome": "العودة إلى الرئيسية",
     "browseTutors": "تصفّح المعلّمين"
+  },
+  "onboarding": {
+    "header": {
+      "help": "مساعدة",
+      "account": "حسابك"
+    },
+    "stepper": {
+      "label": "تقدّم التسجيل",
+      "about": "نبذة",
+      "photo": "الصورة",
+      "certification": "الشهادة",
+      "education": "التعليم",
+      "description": "الوصف",
+      "video": "الفيديو",
+      "availability": "التوفر",
+      "pricing": "التسعير"
+    },
+    "actions": {
+      "back": "رجوع",
+      "saveContinue": "حفظ ومتابعة",
+      "select": "اختر",
+      "from": "من",
+      "to": "إلى"
+    },
+    "upload": {
+      "formatNote": "صيغة JPG أو PNG؛ الحد الأقصى للحجم 20 ميجابايت.",
+      "button": "رفع",
+      "remove": "إزالة الملف"
+    },
+    "levels": {
+      "native": "لغة أم",
+      "c2": "متمكّن (C2)",
+      "c1": "متقدّم (C1)",
+      "b2": "فوق المتوسط (B2)",
+      "b1": "متوسط (B1)",
+      "a2": "أساسي (A2)",
+      "a1": "مبتدئ (A1)"
+    },
+    "degreeTypes": {
+      "bachelor": "بكالوريوس",
+      "master": "ماجستير",
+      "phd": "دكتوراه",
+      "associate": "دبلوم متوسط",
+      "other": "أخرى"
+    },
+    "certificates": {
+      "tefl": "TEFL",
+      "tesol": "TESOL",
+      "celta": "CELTA",
+      "delta": "DELTA",
+      "dele": "DELE",
+      "other": "أخرى"
+    },
+    "about": {
+      "title": "نبذة",
+      "subtitle": "ابدأ بإنشاء ملفك التعريفي العام كمعلّم. يُحفظ تقدّمك تلقائيًا كلما أكملت قسمًا.",
+      "firstName": "الاسم الأول",
+      "lastName": "اسم العائلة",
+      "email": "البريد الإلكتروني",
+      "country": "بلد الميلاد",
+      "countryPlaceholder": "اختر الدولة…",
+      "subject": "المادة التي تدرّسها",
+      "subjectPlaceholder": "اختر المادة…",
+      "languagesLabel": "اللغات التي تتحدثها",
+      "levelLabel": "المستوى",
+      "languagePlaceholder": "اللغة…",
+      "addLanguage": "أضف لغة أخرى",
+      "removeLanguage": "إزالة اللغة",
+      "phone": "رقم الهاتف",
+      "phoneOptional": "اختياري",
+      "over18": "أؤكّد أن عمري يزيد عن 18 عامًا"
+    },
+    "photo": {
+      "title": "صورة الملف الشخصي",
+      "subtitle": "اختر صورة تساعد المتعلّمين على التعرّف عليك.",
+      "placeholder": "JPG أو PNG، 5 ميجابايت كحد أقصى",
+      "yourName": "اسمك",
+      "teaches": "يدرّس دروس {{subject}}",
+      "speaks": "يتحدث {{languages}}",
+      "uploadPhoto": "رفع صورة",
+      "changePhoto": "تغيير الصورة",
+      "errorType": "يرجى اختيار صورة بصيغة JPG أو PNG.",
+      "errorSize": "يجب ألا يتجاوز حجم الصورة 5 ميجابايت.",
+      "needsTitle": "ما الذي تحتاجه صورتك",
+      "checklist": {
+        "facingForward": "يجب أن تكون متجهًا للأمام",
+        "headShoulders": "أظهر رأسك وكتفيك في الإطار",
+        "centered": "يجب أن تكون في المنتصف ومنتصبًا",
+        "faceVisible": "يجب أن يكون وجهك وعيناك ظاهرين (باستثناء الأسباب الدينية)",
+        "onlyPerson": "يجب أن تكون الشخص الوحيد في الصورة",
+        "colorPhoto": "استخدم صورة ملوّنة عالية الدقة وبدون فلاتر",
+        "avoidLogos": "تجنّب الشعارات أو معلومات الاتصال"
+      }
+    },
+    "certification": {
+      "title": "شهادة التدريس",
+      "subtitle": "هل لديك شهادات تدريس؟ إن وُجدت، فاوصفها لتعزيز مصداقية ملفك واكتساب المزيد من الطلاب.",
+      "subtitleNone": "هل تخطط للحصول على شهادة؟ يمكنك إضافة شهادة التدريس لاحقًا.",
+      "noCertificate": "ليس لديّ شهادة تدريس",
+      "subject": "المادة",
+      "subjectPlaceholder": "اختر المادة…",
+      "certificate": "الشهادة",
+      "certificatePlaceholder": "اختر الشهادة…",
+      "description": "الوصف",
+      "issuedBy": "جهة الإصدار",
+      "years": "سنوات الدراسة",
+      "verifyTitle": "احصل على شارة «شهادة موثّقة»",
+      "verifyBody": "ارفع شهادتك لتعزيز مصداقيتك! سيراجعها فريقنا ويضيف الشارة إلى ملفك. بعد المراجعة، ستُحذف ملفاتك.",
+      "remove": "إزالة الشهادة",
+      "addAnother": "أضف شهادة أخرى"
+    },
+    "education": {
+      "title": "التعليم",
+      "subtitle": "أخبر الطلاب المزيد عن التعليم العالي الذي أكملته أو تدرسه حاليًا.",
+      "noDegree": "ليس لديّ شهادة تعليم عالٍ",
+      "university": "الجامعة",
+      "universityPlaceholder": "مثال: Mount Royal University",
+      "degree": "الدرجة العلمية",
+      "degreePlaceholder": "مثال: بكالوريوس في اللغة الإنجليزية",
+      "degreeType": "نوع الدرجة",
+      "degreeTypePlaceholder": "اختر نوع الدرجة…",
+      "specialization": "التخصص",
+      "specializationPlaceholder": "مثال: تدريس الإنجليزية كلغة أجنبية",
+      "years": "سنوات الدراسة",
+      "verifyTitle": "احصل على شارة «دبلوم موثّق»",
+      "verifyBody": "ارفع دبلومك لتعزيز مصداقيتك! سيراجعه فريقنا ويضيف الشارة إلى ملفك. بعد المراجعة، ستُحذف ملفاتك.",
+      "remove": "إزالة التعليم",
+      "addAnother": "أضف تعليمًا آخر"
+    },
+    "description": {
+      "title": "الوصف",
+      "subtitle": "ساعد الطلاب على التعرّف عليك — فهذا أول ما يقرؤونه في ملفك.",
+      "headline": "عنوان الملف",
+      "headlineHint": "10 أحرف على الأقل.",
+      "headlinePlaceholder": "مثال: معلّم إنجليزية معتمد بخبرة 5 سنوات",
+      "introduction": "عرّف بنفسك",
+      "introductionHint": "50 حرفًا على الأقل.",
+      "introductionPlaceholder": "أخبر الطلاب عن خلفيتك وخبرتك وما الذي يجعل دروسك فعّالة.",
+      "teachingStyle": "اوصف أسلوبك في التدريس",
+      "teachingStyleHint": "50 حرفًا على الأقل.",
+      "teachingStylePlaceholder": "اشرح كيف تُنظَّم دروسك وكيف تساعد الطلاب على تحقيق أهدافهم."
+    },
+    "video": {
+      "title": "فيديو تعريفي",
+      "subtitle": "يساعد الفيديو التعريفي القصير الطلاب على اختيارك. أضف رابطًا لفيديوك، أو سجّله لاحقًا.",
+      "placeholder": "سجّل أو ارفع فيديو تعريفيًا مدته 1–3 دقائق",
+      "urlLabel": "رابط الفيديو",
+      "urlHint": "الصق رابط YouTube أو Vimeo. يمكنك إضافته لاحقًا.",
+      "urlPlaceholder": "https://youtube.com/watch?v=…",
+      "tipsTitle": "نصائح لفيديو تعريفي رائع",
+      "tips": {
+        "keepShort": "اجعله قصيرًا — من دقيقة إلى ثلاث دقائق مثالي",
+        "goodLighting": "صوّر في مكان هادئ وجيد الإضاءة",
+        "faceCamera": "انظر إلى الكاميرا وابتسم",
+        "introYourself": "عرّف بنفسك وبطريقتك في التدريس"
+      }
+    },
+    "availability": {
+      "title": "التوفر",
+      "subtitle": "اختر الفترات الزمنية التي تكون متاحًا فيها عادةً للتدريس. يمكنك تغيير ذلك في أي وقت.",
+      "selectedLegend": "محدد"
+    },
+    "pricing": {
+      "title": "التسعير",
+      "subtitle": "حدّد أجرك بالساعة. يمكنك تغييره متى شئت.",
+      "rateLabel": "الأجر بالساعة",
+      "rateHint": "اختر سعرًا بين 3 و200.",
+      "perHour": "ساعة",
+      "studentsPay": "يدفع الطلاب",
+      "youKeep": "تحتفظ بـ",
+      "feeNote": "بعد رسوم الخدمة البالغة 18%، والتي تغطي المدفوعات والدعم ومطابقة الطلاب.",
+      "submit": "إرسال الملف"
+    },
+    "submitted": {
+      "title": "تم إرسال ملفك!",
+      "body": "شكرًا لتقديمك. سيراجع فريقنا ملفك خلال 5 أيام عمل وسيراسلك عبر البريد الإلكتروني بمجرد الموافقة عليه.",
+      "goHome": "العودة إلى الرئيسية",
+      "browseTutors": "تصفّح المعلّمين"
+    },
+    "errors": {
+      "firstNameRequired": "الاسم الأول مطلوب.",
+      "lastNameRequired": "اسم العائلة مطلوب.",
+      "emailInvalid": "أدخل عنوان بريد إلكتروني صالحًا.",
+      "countryRequired": "اختر بلد ميلادك.",
+      "subjectRequired": "اختر المادة التي تدرّسها.",
+      "languageRequired": "أضف لغة واحدة على الأقل.",
+      "levelRequired": "اختر مستوى.",
+      "phoneInvalid": "أدخل رقم هاتف صالحًا.",
+      "over18Required": "يرجى تأكيد أن عمرك يزيد عن 18 عامًا.",
+      "certificateRequired": "أضف شهادة أو حدّد «ليس لديّ شهادة تدريس».",
+      "certificateTypeRequired": "اختر شهادة.",
+      "universityRequired": "أدخل جامعتك.",
+      "degreeRequired": "أدخل درجتك العلمية.",
+      "degreeTypeRequired": "اختر نوع الدرجة.",
+      "educationRequired": "أضف إدخال تعليم أو حدّد «ليس لديّ شهادة تعليم عالٍ».",
+      "headlineTooShort": "يجب أن يكون العنوان 10 أحرف على الأقل.",
+      "introductionTooShort": "يجب أن يكون التعريف 50 حرفًا على الأقل.",
+      "teachingStyleTooShort": "يجب أن يكون هذا الحقل 50 حرفًا على الأقل.",
+      "videoUrlInvalid": "أدخل رابطًا صالحًا يبدأ بـ http:// أو https://.",
+      "availabilityRequired": "اختر فترة زمنية واحدة على الأقل.",
+      "rateInvalid": "أدخل رقمًا صحيحًا.",
+      "rateTooLow": "يجب ألا يقل السعر عن 3.",
+      "rateTooHigh": "يمكن أن يكون السعر 200 كحد أقصى."
+    }
   }
 }

@@ -5,6 +5,18 @@ import { RequireRole } from '@/features/auth';
 import { HomePage } from '@/pages/HomePage';
 import { LoginPage } from '@/pages/LoginPage';
 import { BecomeTutorPage } from '@/pages/teacherPages/BecomeTutorPage';
+import {
+  TutorOnboardingLayoutPage,
+  TutorAboutPage,
+  TutorPhotoPage,
+  TutorCertificationPage,
+  TutorEducationPage,
+  TutorDescriptionPage,
+  TutorVideoPage,
+  TutorAvailabilityPage,
+  TutorPricingPage,
+  TutorApplicationSubmittedPage,
+} from '@/pages/teacherPages/TutorOnboardingPages';
 import { TutorsPage } from '@/pages/TutorsPage';
 import { TutorProfilePage } from '@/pages/TutorProfilePage';
 import { FindTutorPage } from '@/pages/studentPages/FindTutorPage';
@@ -22,6 +34,29 @@ import { NotFoundPage } from '@/pages/NotFoundPage';
  */
 export const router = createBrowserRouter([
   { path: 'login', element: <LoginPage /> },
+  // Tutor onboarding wizard — its own focused frame (no marketing chrome),
+  // gated so only a signed-in user can create a tutor profile.
+  {
+    path: 'become-tutor/onboarding',
+    element: <RequireRole role={['student', 'tutor', 'admin']} />,
+    children: [
+      {
+        element: <TutorOnboardingLayoutPage />,
+        children: [
+          { index: true, element: <Navigate to="about" replace /> },
+          { path: 'about', element: <TutorAboutPage /> },
+          { path: 'photo', element: <TutorPhotoPage /> },
+          { path: 'certification', element: <TutorCertificationPage /> },
+          { path: 'education', element: <TutorEducationPage /> },
+          { path: 'description', element: <TutorDescriptionPage /> },
+          { path: 'video', element: <TutorVideoPage /> },
+          { path: 'availability', element: <TutorAvailabilityPage /> },
+          { path: 'pricing', element: <TutorPricingPage /> },
+          { path: 'submitted', element: <TutorApplicationSubmittedPage /> },
+        ],
+      },
+    ],
+  },
   {
     element: <RootLayout />,
     children: [

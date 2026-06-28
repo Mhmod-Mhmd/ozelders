@@ -70,7 +70,7 @@ export function BecomeTutorHero() {
 
             <div className="mt-10">
               <Link
-                to={paths.login}
+                to={paths.becomeTutorOnboarding}
                 className={buttonVariants({ size: 'lg' })}
               >
                 {t('becomeTutor.hero.cta')}

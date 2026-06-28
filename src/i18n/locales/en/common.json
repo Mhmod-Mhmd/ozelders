@@ -655,5 +655,209 @@
     "body": "The page you’re looking for may have moved or never existed. Let’s get you back on track.",
     "backHome": "Back to home",
     "browseTutors": "Browse tutors"
+  },
+  "onboarding": {
+    "header": {
+      "help": "Help",
+      "account": "Your account"
+    },
+    "stepper": {
+      "label": "Onboarding progress",
+      "about": "About",
+      "photo": "Photo",
+      "certification": "Certification",
+      "education": "Education",
+      "description": "Description",
+      "video": "Video",
+      "availability": "Availability",
+      "pricing": "Pricing"
+    },
+    "actions": {
+      "back": "Back",
+      "saveContinue": "Save and continue",
+      "select": "Select",
+      "from": "from",
+      "to": "to"
+    },
+    "upload": {
+      "formatNote": "JPG or PNG format; maximum size of 20MB.",
+      "button": "Upload",
+      "remove": "Remove file"
+    },
+    "levels": {
+      "native": "Native",
+      "c2": "Proficient (C2)",
+      "c1": "Advanced (C1)",
+      "b2": "Upper-intermediate (B2)",
+      "b1": "Intermediate (B1)",
+      "a2": "Elementary (A2)",
+      "a1": "Beginner (A1)"
+    },
+    "degreeTypes": {
+      "bachelor": "Bachelor's degree",
+      "master": "Master's degree",
+      "phd": "PhD",
+      "associate": "Associate degree",
+      "other": "Other"
+    },
+    "certificates": {
+      "tefl": "TEFL",
+      "tesol": "TESOL",
+      "celta": "CELTA",
+      "delta": "DELTA",
+      "dele": "DELE",
+      "other": "Other"
+    },
+    "about": {
+      "title": "About",
+      "subtitle": "Start creating your public tutor profile. Your progress is saved automatically as you complete each section.",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "Email",
+      "country": "Country of birth",
+      "countryPlaceholder": "Choose country…",
+      "subject": "Subject you teach",
+      "subjectPlaceholder": "Choose subject…",
+      "languagesLabel": "Languages you speak",
+      "levelLabel": "Level",
+      "languagePlaceholder": "Language…",
+      "addLanguage": "Add another language",
+      "removeLanguage": "Remove language",
+      "phone": "Phone number",
+      "phoneOptional": "Optional",
+      "over18": "I confirm I'm over 18"
+    },
+    "photo": {
+      "title": "Profile photo",
+      "subtitle": "Choose a photo that will help learners get to know you.",
+      "placeholder": "JPG or PNG, max 5MB",
+      "yourName": "Your name",
+      "teaches": "Teaches {{subject}} lessons",
+      "speaks": "Speaks {{languages}}",
+      "uploadPhoto": "Upload photo",
+      "changePhoto": "Change photo",
+      "errorType": "Please choose a JPG or PNG image.",
+      "errorSize": "The image must be 5MB or smaller.",
+      "needsTitle": "What your photo needs",
+      "checklist": {
+        "facingForward": "You should be facing forward",
+        "headShoulders": "Frame your head and shoulders",
+        "centered": "You should be centered and upright",
+        "faceVisible": "Your face and eyes should be visible (except for religious reasons)",
+        "onlyPerson": "You should be the only person in the photo",
+        "colorPhoto": "Use a color photo with high resolution and no filters",
+        "avoidLogos": "Avoid logos or contact information"
+      }
+    },
+    "certification": {
+      "title": "Teaching certification",
+      "subtitle": "Do you have teaching certificates? If so, describe them to enhance your profile credibility and get more students.",
+      "subtitleNone": "Do you plan on getting certified? You can add your teaching certification later.",
+      "noCertificate": "I don't have a teaching certificate",
+      "subject": "Subject",
+      "subjectPlaceholder": "Choose subject…",
+      "certificate": "Certificate",
+      "certificatePlaceholder": "Choose certificate…",
+      "description": "Description",
+      "issuedBy": "Issued by",
+      "years": "Years of study",
+      "verifyTitle": "Get a “Certificate verified” badge",
+      "verifyBody": "Upload your certificate to boost your credibility! Our team will review it and add the badge to your profile. Once reviewed, your files will be deleted.",
+      "remove": "Remove certificate",
+      "addAnother": "Add another certificate"
+    },
+    "education": {
+      "title": "Education",
+      "subtitle": "Tell students more about the higher education that you've completed or are working on.",
+      "noDegree": "I don't have a higher education degree",
+      "university": "University",
+      "universityPlaceholder": "E.g. Mount Royal University",
+      "degree": "Degree",
+      "degreePlaceholder": "E.g. Bachelor's degree in the English Language",
+      "degreeType": "Degree type",
+      "degreeTypePlaceholder": "Choose degree type…",
+      "specialization": "Specialization",
+      "specializationPlaceholder": "E.g. Teaching English as a Foreign Language",
+      "years": "Years of study",
+      "verifyTitle": "Get a “Diploma verified” badge",
+      "verifyBody": "Upload your diploma to boost your credibility! Our team will review it and add the badge to your profile. Once reviewed, your files will be deleted.",
+      "remove": "Remove education",
+      "addAnother": "Add another education"
+    },
+    "description": {
+      "title": "Description",
+      "subtitle": "Help students get to know you — this is the first thing they read on your profile.",
+      "headline": "Profile headline",
+      "headlineHint": "At least 10 characters.",
+      "headlinePlaceholder": "E.g. Certified English tutor with 5 years of experience",
+      "introduction": "Introduce yourself",
+      "introductionHint": "At least 50 characters.",
+      "introductionPlaceholder": "Tell students about your background, experience and what makes your lessons effective.",
+      "teachingStyle": "Describe your teaching style",
+      "teachingStyleHint": "At least 50 characters.",
+      "teachingStylePlaceholder": "Explain how your lessons are structured and how you help students reach their goals."
+    },
+    "video": {
+      "title": "Intro video",
+      "subtitle": "A short intro video helps students choose you. Add a link to yours, or record one later.",
+      "placeholder": "Record or upload a 1–3 minute intro video",
+      "urlLabel": "Video link",
+      "urlHint": "Paste a YouTube or Vimeo link. You can add this later.",
+      "urlPlaceholder": "https://youtube.com/watch?v=…",
+      "tipsTitle": "Tips for a great intro video",
+      "tips": {
+        "keepShort": "Keep it short — 1 to 3 minutes is ideal",
+        "goodLighting": "Film in a quiet, well-lit space",
+        "faceCamera": "Look at the camera and smile",
+        "introYourself": "Introduce yourself and how you teach"
+      }
+    },
+    "availability": {
+      "title": "Availability",
+      "subtitle": "Pick the time blocks you're usually available to teach. You can change this anytime.",
+      "selectedLegend": "Selected"
+    },
+    "pricing": {
+      "title": "Pricing",
+      "subtitle": "Set your hourly rate. You can change it whenever you like.",
+      "rateLabel": "Hourly rate",
+      "rateHint": "Choose a rate between 3 and 200.",
+      "perHour": "hour",
+      "studentsPay": "Students pay",
+      "youKeep": "You keep",
+      "feeNote": "After our 18% service fee, which covers payments, support and student matching.",
+      "submit": "Submit profile"
+    },
+    "submitted": {
+      "title": "Your profile has been submitted!",
+      "body": "Thanks for applying. Our team will review your profile within 5 business days and email you once it's approved.",
+      "goHome": "Back to home",
+      "browseTutors": "Browse tutors"
+    },
+    "errors": {
+      "firstNameRequired": "First name is required.",
+      "lastNameRequired": "Last name is required.",
+      "emailInvalid": "Enter a valid email address.",
+      "countryRequired": "Choose your country of birth.",
+      "subjectRequired": "Choose the subject you teach.",
+      "languageRequired": "Add at least one language.",
+      "levelRequired": "Choose a level.",
+      "phoneInvalid": "Enter a valid phone number.",
+      "over18Required": "Please confirm you're over 18.",
+      "certificateRequired": "Add a certificate or tick “I don't have a teaching certificate”.",
+      "certificateTypeRequired": "Choose a certificate.",
+      "universityRequired": "Enter your university.",
+      "degreeRequired": "Enter your degree.",
+      "degreeTypeRequired": "Choose a degree type.",
+      "educationRequired": "Add an education entry or tick “I don't have a higher education degree”.",
+      "headlineTooShort": "Your headline must be at least 10 characters.",
+      "introductionTooShort": "Your introduction must be at least 50 characters.",
+      "teachingStyleTooShort": "This must be at least 50 characters.",
+      "videoUrlInvalid": "Enter a valid link starting with http:// or https://.",
+      "availabilityRequired": "Select at least one time block.",
+      "rateInvalid": "Enter a whole number.",
+      "rateTooLow": "The rate must be at least 3.",
+      "rateTooHigh": "The rate can be at most 200."
+    }
   }
 }

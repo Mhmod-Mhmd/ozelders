@@ -655,5 +655,209 @@
     "body": "Aradığın sayfa taşınmış veya hiç var olmamış olabilir. Seni yoluna geri döndürelim.",
     "backHome": "Ana sayfaya dön",
     "browseTutors": "Öğretmenlere göz at"
+  },
+  "onboarding": {
+    "header": {
+      "help": "Yardım",
+      "account": "Hesabınız"
+    },
+    "stepper": {
+      "label": "Kayıt ilerlemesi",
+      "about": "Hakkında",
+      "photo": "Fotoğraf",
+      "certification": "Sertifika",
+      "education": "Eğitim",
+      "description": "Açıklama",
+      "video": "Video",
+      "availability": "Uygunluk",
+      "pricing": "Ücretlendirme"
+    },
+    "actions": {
+      "back": "Geri",
+      "saveContinue": "Kaydet ve devam et",
+      "select": "Seçin",
+      "from": "başlangıç",
+      "to": "bitiş"
+    },
+    "upload": {
+      "formatNote": "JPG veya PNG formatı; en fazla 20MB.",
+      "button": "Yükle",
+      "remove": "Dosyayı kaldır"
+    },
+    "levels": {
+      "native": "Ana dil",
+      "c2": "Üst düzey (C2)",
+      "c1": "İleri (C1)",
+      "b2": "Orta-üstü (B2)",
+      "b1": "Orta (B1)",
+      "a2": "Temel (A2)",
+      "a1": "Başlangıç (A1)"
+    },
+    "degreeTypes": {
+      "bachelor": "Lisans",
+      "master": "Yüksek lisans",
+      "phd": "Doktora",
+      "associate": "Ön lisans",
+      "other": "Diğer"
+    },
+    "certificates": {
+      "tefl": "TEFL",
+      "tesol": "TESOL",
+      "celta": "CELTA",
+      "delta": "DELTA",
+      "dele": "DELE",
+      "other": "Diğer"
+    },
+    "about": {
+      "title": "Hakkında",
+      "subtitle": "Herkese açık öğretmen profilini oluşturmaya başla. İlerlemen, her bölümü tamamladıkça otomatik olarak kaydedilir.",
+      "firstName": "Ad",
+      "lastName": "Soyad",
+      "email": "E-posta",
+      "country": "Doğduğu ülke",
+      "countryPlaceholder": "Ülke seçin…",
+      "subject": "Verdiğin ders",
+      "subjectPlaceholder": "Ders seçin…",
+      "languagesLabel": "Konuştuğun diller",
+      "levelLabel": "Seviye",
+      "languagePlaceholder": "Dil…",
+      "addLanguage": "Başka bir dil ekle",
+      "removeLanguage": "Dili kaldır",
+      "phone": "Telefon numarası",
+      "phoneOptional": "İsteğe bağlı",
+      "over18": "18 yaşından büyük olduğumu onaylıyorum"
+    },
+    "photo": {
+      "title": "Profil fotoğrafı",
+      "subtitle": "Öğrencilerin seni tanımasına yardımcı olacak bir fotoğraf seç.",
+      "placeholder": "JPG veya PNG, en fazla 5MB",
+      "yourName": "Adınız",
+      "teaches": "{{subject}} dersleri veriyor",
+      "speaks": "{{languages}} konuşuyor",
+      "uploadPhoto": "Fotoğraf yükle",
+      "changePhoto": "Fotoğrafı değiştir",
+      "errorType": "Lütfen JPG veya PNG bir görsel seçin.",
+      "errorSize": "Görsel en fazla 5MB olmalıdır.",
+      "needsTitle": "Fotoğrafında olması gerekenler",
+      "checklist": {
+        "facingForward": "Öne doğru bakmalısın",
+        "headShoulders": "Baş ve omuzlar görünmeli",
+        "centered": "Ortalanmış ve dik durmalısın",
+        "faceVisible": "Yüzün ve gözlerin görünmeli (dini sebepler hariç)",
+        "onlyPerson": "Fotoğraftaki tek kişi sen olmalısın",
+        "colorPhoto": "Yüksek çözünürlüklü, filtresiz renkli bir fotoğraf kullan",
+        "avoidLogos": "Logolardan veya iletişim bilgilerinden kaçın"
+      }
+    },
+    "certification": {
+      "title": "Öğretmenlik sertifikası",
+      "subtitle": "Öğretmenlik sertifikan var mı? Varsa, profilinin güvenilirliğini artırmak ve daha fazla öğrenci edinmek için açıkla.",
+      "subtitleNone": "İleride sertifika almayı mı planlıyorsun? Öğretmenlik sertifikanı daha sonra ekleyebilirsin.",
+      "noCertificate": "Öğretmenlik sertifikam yok",
+      "subject": "Ders",
+      "subjectPlaceholder": "Ders seçin…",
+      "certificate": "Sertifika",
+      "certificatePlaceholder": "Sertifika seçin…",
+      "description": "Açıklama",
+      "issuedBy": "Veren kurum",
+      "years": "Öğrenim yılları",
+      "verifyTitle": "“Sertifika doğrulandı” rozeti al",
+      "verifyBody": "Güvenilirliğini artırmak için sertifikanı yükle! Ekibimiz inceleyip profiline rozeti ekleyecek. İnceleme sonrasında dosyaların silinir.",
+      "remove": "Sertifikayı kaldır",
+      "addAnother": "Başka bir sertifika ekle"
+    },
+    "education": {
+      "title": "Eğitim",
+      "subtitle": "Öğrencilere, tamamladığın veya devam ettiğin yükseköğrenim hakkında daha fazla bilgi ver.",
+      "noDegree": "Yükseköğrenim diplomam yok",
+      "university": "Üniversite",
+      "universityPlaceholder": "Örn. Mount Royal University",
+      "degree": "Derece",
+      "degreePlaceholder": "Örn. İngiliz Dili lisans derecesi",
+      "degreeType": "Derece türü",
+      "degreeTypePlaceholder": "Derece türü seçin…",
+      "specialization": "Uzmanlık",
+      "specializationPlaceholder": "Örn. Yabancı Dil Olarak İngilizce Öğretimi",
+      "years": "Öğrenim yılları",
+      "verifyTitle": "“Diploma doğrulandı” rozeti al",
+      "verifyBody": "Güvenilirliğini artırmak için diplomanı yükle! Ekibimiz inceleyip profiline rozeti ekleyecek. İnceleme sonrasında dosyaların silinir.",
+      "remove": "Eğitimi kaldır",
+      "addAnother": "Başka bir eğitim ekle"
+    },
+    "description": {
+      "title": "Açıklama",
+      "subtitle": "Öğrencilerin seni tanımasına yardımcı ol — profilinde okudukları ilk şey budur.",
+      "headline": "Profil başlığı",
+      "headlineHint": "En az 10 karakter.",
+      "headlinePlaceholder": "Örn. 5 yıl deneyimli sertifikalı İngilizce öğretmeni",
+      "introduction": "Kendini tanıt",
+      "introductionHint": "En az 50 karakter.",
+      "introductionPlaceholder": "Öğrencilere geçmişini, deneyimini ve derslerini etkili kılan şeyleri anlat.",
+      "teachingStyle": "Öğretim tarzını anlat",
+      "teachingStyleHint": "En az 50 karakter.",
+      "teachingStylePlaceholder": "Derslerinin nasıl yapılandırıldığını ve öğrencilerin hedeflerine ulaşmasına nasıl yardımcı olduğunu açıkla."
+    },
+    "video": {
+      "title": "Tanıtım videosu",
+      "subtitle": "Kısa bir tanıtım videosu, öğrencilerin seni seçmesine yardımcı olur. Bir bağlantı ekle veya daha sonra kaydet.",
+      "placeholder": "1–3 dakikalık bir tanıtım videosu kaydet veya yükle",
+      "urlLabel": "Video bağlantısı",
+      "urlHint": "Bir YouTube veya Vimeo bağlantısı yapıştır. Bunu daha sonra da ekleyebilirsin.",
+      "urlPlaceholder": "https://youtube.com/watch?v=…",
+      "tipsTitle": "Harika bir tanıtım videosu için ipuçları",
+      "tips": {
+        "keepShort": "Kısa tut — 1 ila 3 dakika idealdir",
+        "goodLighting": "Sessiz ve iyi aydınlatılmış bir yerde çek",
+        "faceCamera": "Kameraya bak ve gülümse",
+        "introYourself": "Kendini ve nasıl öğrettiğini tanıt"
+      }
+    },
+    "availability": {
+      "title": "Uygunluk",
+      "subtitle": "Genellikle ders verebileceğin zaman aralıklarını seç. Bunu istediğin zaman değiştirebilirsin.",
+      "selectedLegend": "Seçili"
+    },
+    "pricing": {
+      "title": "Ücretlendirme",
+      "subtitle": "Saatlik ücretini belirle. İstediğin zaman değiştirebilirsin.",
+      "rateLabel": "Saatlik ücret",
+      "rateHint": "3 ile 200 arasında bir ücret seç.",
+      "perHour": "saat",
+      "studentsPay": "Öğrencilerin ödediği",
+      "youKeep": "Sana kalan",
+      "feeNote": "Ödemeleri, desteği ve öğrenci eşleştirmeyi kapsayan %18 hizmet bedelinden sonra.",
+      "submit": "Profili gönder"
+    },
+    "submitted": {
+      "title": "Profilin gönderildi!",
+      "body": "Başvurduğun için teşekkürler. Ekibimiz profilini 5 iş günü içinde inceleyecek ve onaylandığında sana e-posta gönderecek.",
+      "goHome": "Ana sayfaya dön",
+      "browseTutors": "Öğretmenlere göz at"
+    },
+    "errors": {
+      "firstNameRequired": "Ad zorunludur.",
+      "lastNameRequired": "Soyad zorunludur.",
+      "emailInvalid": "Geçerli bir e-posta adresi girin.",
+      "countryRequired": "Doğduğun ülkeyi seç.",
+      "subjectRequired": "Verdiğin dersi seç.",
+      "languageRequired": "En az bir dil ekle.",
+      "levelRequired": "Bir seviye seç.",
+      "phoneInvalid": "Geçerli bir telefon numarası girin.",
+      "over18Required": "Lütfen 18 yaşından büyük olduğunu onayla.",
+      "certificateRequired": "Bir sertifika ekle veya “Öğretmenlik sertifikam yok” seçeneğini işaretle.",
+      "certificateTypeRequired": "Bir sertifika seç.",
+      "universityRequired": "Üniversiteni gir.",
+      "degreeRequired": "Dereceni gir.",
+      "degreeTypeRequired": "Bir derece türü seç.",
+      "educationRequired": "Bir eğitim girişi ekle veya “Yükseköğrenim diplomam yok” seçeneğini işaretle.",
+      "headlineTooShort": "Başlığın en az 10 karakter olmalıdır.",
+      "introductionTooShort": "Tanıtımın en az 50 karakter olmalıdır.",
+      "teachingStyleTooShort": "Bu alan en az 50 karakter olmalıdır.",
+      "videoUrlInvalid": "http:// veya https:// ile başlayan geçerli bir bağlantı girin.",
+      "availabilityRequired": "En az bir zaman aralığı seç.",
+      "rateInvalid": "Tam bir sayı girin.",
+      "rateTooLow": "Ücret en az 3 olmalıdır.",
+      "rateTooHigh": "Ücret en fazla 200 olabilir."
+    }
   }
 }

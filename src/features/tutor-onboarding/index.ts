@@ -1,0 +1,10 @@
+export { OnboardingLayout } from './components/OnboardingLayout';
+export { AboutStep } from './components/steps/AboutStep';
+export { PhotoStep } from './components/steps/PhotoStep';
+export { CertificationStep } from './components/steps/CertificationStep';
+export { EducationStep } from './components/steps/EducationStep';
+export { DescriptionStep } from './components/steps/DescriptionStep';
+export { VideoStep } from './components/steps/VideoStep';
+export { AvailabilityStep } from './components/steps/AvailabilityStep';
+export { PricingStep } from './components/steps/PricingStep';
+export { SubmittedStep } from './components/steps/SubmittedStep';
