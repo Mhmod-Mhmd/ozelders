@@ -32,11 +32,12 @@ export function Field({
   children,
   className,
 }: FieldProps) {
-  const describedBy = error
-    ? `${htmlFor}-error`
-    : hint
-      ? `${htmlFor}-hint`
-      : undefined;
+  let describedBy: string | undefined;
+  if (error) {
+    describedBy = `${htmlFor}-error`;
+  } else if (hint) {
+    describedBy = `${htmlFor}-hint`;
+  }
 
   return (
     <div className={cn('flex flex-col gap-1.5', className)}>

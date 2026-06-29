@@ -1,7 +1,7 @@
-import { useEffect, useId, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Bell, X } from 'lucide-react';
 import { cn } from '@/utils/cn';
+import { usePopover } from '@/hooks';
 
 /**
  * Notifications dropdown shown in the student header. Opens on the bell icon
@@ -10,30 +10,7 @@ import { cn } from '@/utils/cn';
  */
 export function NotificationMenu() {
   const { t } = useTranslation();
-  const [open, setOpen] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const panelId = useId();
-
-  // Close on outside click or Escape while the panel is open.
-  useEffect(() => {
-    if (!open) return;
-
-    function handlePointer(event: MouseEvent) {
-      if (!containerRef.current?.contains(event.target as Node)) {
-        setOpen(false);
-      }
-    }
-    function handleKey(event: KeyboardEvent) {
-      if (event.key === 'Escape') setOpen(false);
-    }
-
-    document.addEventListener('mousedown', handlePointer);
-    document.addEventListener('keydown', handleKey);
-    return () => {
-      document.removeEventListener('mousedown', handlePointer);
-      document.removeEventListener('keydown', handleKey);
-    };
-  }, [open]);
+  const { open, setOpen, containerRef, panelId } = usePopover<HTMLDivElement>();
 
   return (
     <div ref={containerRef} className="relative">

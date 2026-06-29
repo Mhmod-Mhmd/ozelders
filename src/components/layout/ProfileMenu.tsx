@@ -1,10 +1,10 @@
-import { useEffect, useId, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Avatar } from '@/components/ui/Avatar';
 import { useAuthUser, useLogout } from '@/features/auth';
 import { paths } from '@/router/paths';
 import { cn } from '@/utils/cn';
+import { usePopover } from '@/hooks';
 
 /**
  * Account dropdown shown in the student header. Opens on avatar click and
@@ -35,9 +35,12 @@ export function ProfileMenu() {
   const navigate = useNavigate();
   const user = useAuthUser();
   const logout = useLogout();
-  const [open, setOpen] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const menuId = useId();
+  const {
+    open,
+    setOpen,
+    containerRef,
+    panelId: menuId,
+  } = usePopover<HTMLDivElement>();
 
   const displayName = user
     ? `${user.firstName} ${user.lastName}`.trim()
@@ -49,27 +52,6 @@ export function ProfileMenu() {
     await logout.mutateAsync();
     navigate(paths.home, { replace: true });
   }
-
-  // Close on outside click or Escape while the menu is open.
-  useEffect(() => {
-    if (!open) return;
-
-    function handlePointer(event: MouseEvent) {
-      if (!containerRef.current?.contains(event.target as Node)) {
-        setOpen(false);
-      }
-    }
-    function handleKey(event: KeyboardEvent) {
-      if (event.key === 'Escape') setOpen(false);
-    }
-
-    document.addEventListener('mousedown', handlePointer);
-    document.addEventListener('keydown', handleKey);
-    return () => {
-      document.removeEventListener('mousedown', handlePointer);
-      document.removeEventListener('keydown', handleKey);
-    };
-  }, [open]);
 
   const itemClass =
     'block rounded-lg px-3 py-2 text-sm font-medium text-gray-800 transition-colors hover:bg-gray-50 hover:text-brand-600';

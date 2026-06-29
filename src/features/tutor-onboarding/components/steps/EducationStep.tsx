@@ -22,6 +22,15 @@ import { FormCheckbox } from '../FormCheckbox';
 import { YearRange } from '../YearRange';
 import { VerifiedBadgeUpload } from '../VerifiedBadgeUpload';
 
+/** The education rows to seed the form with: none when the tutor has none,
+ *  their saved rows, otherwise a single blank row to fill in. */
+function initialEducations(
+  education: EducationInput,
+): EducationInput['educations'] {
+  if (education.hasNone) return [];
+  return education.educations.length ? education.educations : [EMPTY_EDUCATION];
+}
+
 /** Step 4 — optional higher-education entries (repeatable), or "I have none". */
 export function EducationStep() {
   const { t } = useTranslation();
@@ -42,11 +51,7 @@ export function EducationStep() {
     resolver: zodResolver(educationSchema),
     defaultValues: {
       hasNone: application.education.hasNone,
-      educations: application.education.hasNone
-        ? []
-        : application.education.educations.length
-          ? application.education.educations
-          : [EMPTY_EDUCATION],
+      educations: initialEducations(application.education),
     },
   });
 

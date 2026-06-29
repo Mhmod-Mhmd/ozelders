@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { Trash2 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Select } from '@/components/ui/Select';
-import { cn } from '@/utils/cn';
 import { timezoneLabel } from '@/features/account/utils/timezones';
 import { type Weekday } from '@/features/tutors/types/tutor.types';
 import { type WeeklySchedule } from '../../types/onboarding.types';
@@ -281,12 +280,7 @@ interface SlotSelectProps {
 function SlotSelect({ label, value, onChange }: SlotSelectProps) {
   return (
     <label className="block">
-      <span
-        className={cn(
-          'mb-1 block text-xs font-medium text-gray-500',
-          'text-start',
-        )}
-      >
+      <span className="mb-1 block text-start text-xs font-medium text-gray-500">
         {label}
       </span>
       <Select value={value} onChange={(e) => onChange(e.currentTarget.value)}>

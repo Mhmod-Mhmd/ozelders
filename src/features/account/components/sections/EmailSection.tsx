@@ -48,12 +48,10 @@ function EmailForm({ email }: { email: string }) {
     defaultValues: { email },
   });
 
-  const errorText = (message?: string) =>
-    message
-      ? message.startsWith('settings.')
-        ? t(message)
-        : message
-      : undefined;
+  const errorText = (message?: string) => {
+    if (!message) return undefined;
+    return message.startsWith('settings.') ? t(message) : message;
+  };
 
   async function onSubmit(values: UpdateEmailInput) {
     try {

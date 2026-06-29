@@ -1,4 +1,3 @@
-import { useEffect, useId, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ChevronDown } from 'lucide-react';
 import { SUPPORTED_LANGUAGES } from '@/i18n';
@@ -8,6 +7,7 @@ import {
   type CurrencyCode,
 } from '@/currency';
 import { cn } from '@/utils/cn';
+import { usePopover } from '@/hooks';
 
 /**
  * Language + currency picker shown in the student header. The trigger reads
@@ -48,25 +48,12 @@ function Field({
 export function LanguageSwitcher({ className }: { className?: string }) {
   const { i18n, t } = useTranslation();
   const { currency, setCurrency } = useCurrency();
-  const [open, setOpen] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const menuId = useId();
-
-  useEffect(() => {
-    if (!open) return;
-    function onPointer(e: MouseEvent) {
-      if (!containerRef.current?.contains(e.target as Node)) setOpen(false);
-    }
-    function onKey(e: KeyboardEvent) {
-      if (e.key === 'Escape') setOpen(false);
-    }
-    document.addEventListener('mousedown', onPointer);
-    document.addEventListener('keydown', onKey);
-    return () => {
-      document.removeEventListener('mousedown', onPointer);
-      document.removeEventListener('keydown', onKey);
-    };
-  }, [open]);
+  const {
+    open,
+    setOpen,
+    containerRef,
+    panelId: menuId,
+  } = usePopover<HTMLDivElement>();
 
   const active =
     SUPPORTED_LANGUAGES.find((l) => l.code === i18n.resolvedLanguage) ??

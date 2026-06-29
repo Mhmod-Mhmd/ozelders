@@ -35,12 +35,10 @@ export function AddCardForm({ onDone, onCancel }: AddCardFormProps) {
     },
   });
 
-  const errorText = (message?: string) =>
-    message
-      ? message.startsWith('payments.')
-        ? t(message)
-        : message
-      : undefined;
+  const errorText = (message?: string) => {
+    if (!message) return undefined;
+    return message.startsWith('payments.') ? t(message) : message;
+  };
 
   async function onSubmit(values: AddCardInput) {
     try {

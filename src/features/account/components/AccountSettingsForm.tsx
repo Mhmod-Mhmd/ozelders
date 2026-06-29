@@ -49,12 +49,10 @@ export function AccountSettingsForm({ account }: AccountSettingsFormProps) {
   const phoneCountry = watch('phoneCountry');
 
   /** Translate a field error: schema messages are i18n keys, server ones aren't. */
-  const errorText = (message?: string) =>
-    message
-      ? message.startsWith('settings.')
-        ? t(message)
-        : message
-      : undefined;
+  const errorText = (message?: string) => {
+    if (!message) return undefined;
+    return message.startsWith('settings.') ? t(message) : message;
+  };
 
   async function onSubmit(values: UpdateAccountInput) {
     try {

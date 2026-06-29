@@ -24,6 +24,17 @@ import { FormCheckbox } from '../FormCheckbox';
 import { YearRange } from '../YearRange';
 import { VerifiedBadgeUpload } from '../VerifiedBadgeUpload';
 
+/** The certificate rows to seed the form with: none when the tutor has none,
+ *  their saved rows, otherwise a single blank row to fill in. */
+function initialCertificates(
+  certification: CertificationInput,
+): CertificationInput['certificates'] {
+  if (certification.hasNone) return [];
+  return certification.certificates.length
+    ? certification.certificates
+    : [EMPTY_CERTIFICATE];
+}
+
 /** Step 3 — optional teaching certificates (repeatable), or "I have none". */
 export function CertificationStep() {
   const { t } = useTranslation();
@@ -45,11 +56,7 @@ export function CertificationStep() {
     resolver: zodResolver(certificationSchema),
     defaultValues: {
       hasNone: application.certification.hasNone,
-      certificates: application.certification.hasNone
-        ? []
-        : application.certification.certificates.length
-          ? application.certification.certificates
-          : [EMPTY_CERTIFICATE],
+      certificates: initialCertificates(application.certification),
     },
   });
 

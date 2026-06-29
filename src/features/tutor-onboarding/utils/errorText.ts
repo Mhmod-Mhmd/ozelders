@@ -6,12 +6,10 @@ import { ApiError } from '@/types';
  * else (an unexpected server string) is shown verbatim.
  */
 export function makeErrorText(t: (key: string) => string) {
-  return (message?: string): string | undefined =>
-    message
-      ? message.startsWith('onboarding.')
-        ? t(message)
-        : message
-      : undefined;
+  return (message?: string): string | undefined => {
+    if (!message) return undefined;
+    return message.startsWith('onboarding.') ? t(message) : message;
+  };
 }
 
 /**
