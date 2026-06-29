@@ -2,6 +2,7 @@ import { type FormEventHandler, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
+import { cn } from '@/utils/cn';
 
 interface StepShellProps {
   title: string;
@@ -15,6 +16,8 @@ interface StepShellProps {
   submitLabel?: string;
   /** A request-level error to surface above the action buttons. */
   serverError?: string;
+  /** Content width: `default` (single column) or `wide` (two-column steps). */
+  width?: 'default' | 'wide';
   children: ReactNode;
 }
 
@@ -32,12 +35,17 @@ export function StepShell({
   isSubmitting,
   submitLabel,
   serverError,
+  width = 'default',
   children,
 }: StepShellProps) {
   const { t } = useTranslation();
 
   return (
-    <form onSubmit={onSubmit} noValidate className="mx-auto max-w-xl">
+    <form
+      onSubmit={onSubmit}
+      noValidate
+      className={cn('mx-auto', width === 'wide' ? 'max-w-4xl' : 'max-w-xl')}
+    >
       <h1 className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">
         {title}
       </h1>

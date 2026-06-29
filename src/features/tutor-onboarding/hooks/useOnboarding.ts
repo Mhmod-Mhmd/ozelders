@@ -4,7 +4,6 @@ import {
   useQueryClient,
 } from '@tanstack/react-query';
 import { useOutletContext } from 'react-router-dom';
-import { type Availability } from '@/features/tutors/types/tutor.types';
 import {
   getApplication,
   saveAbout,
@@ -19,6 +18,7 @@ import {
 } from '../api/onboarding.api';
 import {
   type AboutInput,
+  type AvailabilityValue,
   type CertificationInput,
   type DescriptionInput,
   type EducationInput,
@@ -80,7 +80,7 @@ export const useSaveDescription = () =>
   useStepMutation<DescriptionInput>(saveDescription);
 export const useSaveVideo = () => useStepMutation<VideoInput>(saveVideo);
 export const useSaveAvailability = () =>
-  useStepMutation<Availability>(saveAvailability);
+  useStepMutation<AvailabilityValue>(saveAvailability);
 export const useSavePricing = () =>
   useStepMutation<PricingInput & { currency: string }>(savePricing);
 export const useSubmitApplication = () => useStepMutation<void>(submitApplication);

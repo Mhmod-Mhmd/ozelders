@@ -8,7 +8,6 @@ import {
   VideoStep,
   AvailabilityStep,
   PricingStep,
-  SubmittedStep,
 } from '@/features/tutor-onboarding';
 
 /**
@@ -52,8 +51,4 @@ export function TutorAvailabilityPage() {
 
 export function TutorPricingPage() {
   return <PricingStep />;
-}
-
-export function TutorApplicationSubmittedPage() {
-  return <SubmittedStep />;
 }

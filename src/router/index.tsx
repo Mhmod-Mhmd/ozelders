@@ -15,7 +15,6 @@ import {
   TutorVideoPage,
   TutorAvailabilityPage,
   TutorPricingPage,
-  TutorApplicationSubmittedPage,
 } from '@/pages/teacherPages/TutorOnboardingPages';
 import { TutorsPage } from '@/pages/TutorsPage';
 import { TutorProfilePage } from '@/pages/TutorProfilePage';
@@ -52,7 +51,6 @@ export const router = createBrowserRouter([
           { path: 'video', element: <TutorVideoPage /> },
           { path: 'availability', element: <TutorAvailabilityPage /> },
           { path: 'pricing', element: <TutorPricingPage /> },
-          { path: 'submitted', element: <TutorApplicationSubmittedPage /> },
         ],
       },
     ],

@@ -1,9 +1,12 @@
 import { COUNTRIES, WEEKDAYS } from '@/features/tutors/utils/filterOptions';
-import { type Availability } from '@/features/tutors/types/tutor.types';
+import { TIMEZONES } from '@/features/account/utils/timezones';
 import {
   type CertificateInput,
+  type DayAvailability,
   type EducationItemInput,
   type LanguageSkillInput,
+  type TimeRange,
+  type WeeklySchedule,
 } from '../types/onboarding.types';
 
 /**
@@ -86,13 +89,46 @@ export const EMPTY_EDUCATION: EducationItemInput = {
   yearTo: '',
 };
 
-/** A fully-empty weekly availability grid. */
-export const EMPTY_AVAILABILITY: Availability = {
-  Mon: [],
-  Tue: [],
-  Wed: [],
-  Thu: [],
-  Fri: [],
-  Sat: [],
-  Sun: [],
-};
+/* ------------------------------------------------------------------ */
+/* Availability — timezone + weekly working hours                      */
+/* ------------------------------------------------------------------ */
+
+export { TIMEZONES };
+
+/** Selectable clock times in 30-minute steps ("00:00" … "23:30"). */
+export const TIME_OPTIONS: string[] = Array.from({ length: 48 }, (_, i) => {
+  const h = String(Math.floor(i / 2)).padStart(2, '0');
+  const m = i % 2 === 0 ? '00' : '30';
+  return `${h}:${m}`;
+});
+
+/** Default working block applied to a freshly-enabled day or a new timeslot. */
+export const DEFAULT_TIME_RANGE: TimeRange = { from: '09:00', to: '17:00' };
+
+/** The signed-in browser's IANA timezone, narrowed to a value the select
+ *  actually lists (so it's always selectable); falls back to Istanbul. */
+export function detectTimezone(): string {
+  try {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    return TIMEZONES.includes(tz) ? tz : 'Europe/Istanbul';
+  } catch {
+    return 'Europe/Istanbul';
+  }
+}
+
+/** A blank week — every day off, no slots. */
+export function emptySchedule(): WeeklySchedule {
+  return Object.fromEntries(
+    WEEKDAYS.map((day) => [day, { enabled: false, slots: [] }]),
+  );
+}
+
+/** A sensible starting week — every day on, 09:00–17:00 (matches the design). */
+export function defaultSchedule(): WeeklySchedule {
+  return Object.fromEntries(
+    WEEKDAYS.map((day) => [
+      day,
+      { enabled: true, slots: [{ ...DEFAULT_TIME_RANGE }] } satisfies DayAvailability,
+    ]),
+  );
+}

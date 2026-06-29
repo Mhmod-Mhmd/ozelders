@@ -484,6 +484,15 @@
     "Sat": "Sat",
     "Sun": "Sun"
   },
+  "weekdaysLong": {
+    "Mon": "Monday",
+    "Tue": "Tuesday",
+    "Wed": "Wednesday",
+    "Thu": "Thursday",
+    "Fri": "Friday",
+    "Sat": "Saturday",
+    "Sun": "Sunday"
+  },
   "student": {
     "heading": "English tutors that help you develop professionally",
     "searchPlaceholder": "Search by name or keyword",
@@ -785,54 +794,103 @@
       "addAnother": "Add another education"
     },
     "description": {
-      "title": "Description",
-      "subtitle": "Help students get to know you — this is the first thing they read on your profile.",
-      "headline": "Profile headline",
-      "headlineHint": "At least 10 characters.",
-      "headlinePlaceholder": "E.g. Certified English tutor with 5 years of experience",
-      "introduction": "Introduce yourself",
-      "introductionHint": "At least 50 characters.",
-      "introductionPlaceholder": "Tell students about your background, experience and what makes your lessons effective.",
-      "teachingStyle": "Describe your teaching style",
-      "teachingStyleHint": "At least 50 characters.",
-      "teachingStylePlaceholder": "Explain how your lessons are structured and how you help students reach their goals."
+      "title": "Profile description",
+      "subtitle": "This info goes on your public profile. Write it in the language you'll be teaching and follow our guidelines to get approved.",
+      "continue": "Continue",
+      "sections": {
+        "introduction": {
+          "title": "Introduce yourself",
+          "prompt": "Describe your professional experience, education and key skills. Mention what you can offer students.",
+          "placeholder": "I'm a certified tutor who loves helping students reach their goals…"
+        },
+        "experience": {
+          "title": "Describe your teaching experience",
+          "prompt": "Share how long you've been teaching, the methods and materials you use, and the kinds of students you work with.",
+          "placeholder": "I've taught more than 1,000 lessons to students of all levels…"
+        },
+        "motivation": {
+          "title": "Motivate the potential student",
+          "prompt": "Encourage students to book a trial lesson with you, and tell them what they'll achieve together.",
+          "placeholder": "Book a trial lesson with me and we'll build a plan to reach your goals…"
+        },
+        "headline": {
+          "title": "Write a catchy headline",
+          "prompt": "Your headline is the first thing students see. Make it catchy and mention the language you teach to encourage students to read your full description.",
+          "placeholder": "Certified tutor with over 5 years of experience"
+        }
+      }
     },
     "video": {
-      "title": "Intro video",
-      "subtitle": "A short intro video helps students choose you. Add a link to yours, or record one later.",
-      "placeholder": "Record or upload a 1–3 minute intro video",
+      "title": "Video introduction",
+      "subtitle": "A short intro video helps students choose you. You can add it now or later.",
+      "testCamera": "Test camera",
+      "addVideoTitle": "Add a horizontal video of up to 2 minutes",
+      "addVideoHint": "Choose a video file to upload. Make sure it follows our guidelines.",
+      "uploadVideo": "Upload video",
+      "orPasteLink": "Or paste a link to your video",
+      "learnHowPrefix": "Learn how to upload videos to",
+      "orConnector": "or",
       "urlLabel": "Video link",
-      "urlHint": "Paste a YouTube or Vimeo link. You can add this later.",
-      "urlPlaceholder": "https://youtube.com/watch?v=…",
-      "tipsTitle": "Tips for a great intro video",
-      "tips": {
-        "keepShort": "Keep it short — 1 to 3 minutes is ideal",
-        "goodLighting": "Film in a quiet, well-lit space",
-        "faceCamera": "Look at the camera and smile",
-        "introYourself": "Introduce yourself and how you teach"
-      }
+      "urlPlaceholder": "www.youtube.com/watch?v=…",
+      "thumbnailTitle": "Add a thumbnail (optional)",
+      "thumbnailHint": "Don't worry if you don't have a thumbnail ready — we'll use the preview above.",
+      "uploadThumbnail": "Upload thumbnail",
+      "requirementsTitle": "Video requirements",
+      "requirementsHint": "Make sure your video meets the requirements to get approved.",
+      "doLabel": "Do",
+      "dontLabel": "Don't",
+      "do": [
+        "Your video should be between 30 seconds and 2 minutes long",
+        "Record in horizontal mode and at eye level",
+        "Use good lighting and a neutral background",
+        "Use a stable surface so your video doesn't appear shaky",
+        "Make sure your face and eyes are fully visible (except for religious reasons)",
+        "Highlight your teaching experience and any relevant certifications",
+        "Greet your students warmly and invite them to book a lesson"
+      ],
+      "dont": [
+        "Include your surname or any contact details",
+        "Include logos or links",
+        "Use slideshows or presentations",
+        "Have any other people visible in your video"
+      ]
     },
     "availability": {
       "title": "Availability",
-      "subtitle": "Pick the time blocks you're usually available to teach. You can change this anytime.",
-      "selectedLegend": "Selected"
+      "confirmTimezone": "Is this your current timezone?",
+      "yes": "Yes",
+      "no": "No",
+      "setTimezone": "Set your timezone",
+      "timezoneHint": "A correct timezone is essential to coordinate lessons with international students.",
+      "chooseTimezone": "Choose your timezone",
+      "change": "Change",
+      "setAvailability": "Set your availability",
+      "availabilityHint": "Availability shows your potential working hours. Students can book lessons at these times.",
+      "from": "From",
+      "to": "To",
+      "addTimeslot": "Add another timeslot",
+      "removeTimeslot": "Remove timeslot"
     },
     "pricing": {
-      "title": "Pricing",
-      "subtitle": "Set your hourly rate. You can change it whenever you like.",
-      "rateLabel": "Hourly rate",
-      "rateHint": "Choose a rate between 3 and 200.",
-      "perHour": "hour",
+      "title": "Set your 50 minute lesson price",
+      "subtitle": "Starting with a competitive price can help attract more students. Once you've aced your first few trial lessons, feel free to adjust this price to meet your goals.",
+      "recommend": "To help you get started, we recommend you set your initial lesson price to {{price}}.",
+      "rateLabel": "Lesson price",
+      "currencyNote": "Price in {{currency}} only.",
+      "statNote": "Tutors who follow our price recommendation have a 40% higher chance of teaching their first trial lesson within a week of approval.",
+      "commissionTitle": "{{brand}} commission",
+      "commissionBody": "We charge a service fee on each lesson that covers secure payments, customer support and matching you with new students. It starts higher and decreases as you teach more hours.",
       "studentsPay": "Students pay",
       "youKeep": "You keep",
-      "feeNote": "After our 18% service fee, which covers payments, support and student matching.",
-      "submit": "Submit profile"
+      "finalDetailsTitle": "Final details",
+      "terms": "By completing registration, you also agree to the terms and conditions of the {{brand}} Tutor Program, which gives you access to teach corporate students. You can choose not to be matched with these students at any time.",
+      "submit": "Complete registration"
     },
     "submitted": {
-      "title": "Your profile has been submitted!",
-      "body": "Thanks for applying. Our team will review your profile within 5 business days and email you once it's approved.",
-      "goHome": "Back to home",
-      "browseTutors": "Browse tutors"
+      "title": "Successfully submitted",
+      "body": "Within 5 business days, you will receive an email with your application status update.",
+      "okay": "Okay, I understand",
+      "close": "Close"
     },
     "errors": {
       "firstNameRequired": "First name is required.",
@@ -850,11 +908,15 @@
       "degreeRequired": "Enter your degree.",
       "degreeTypeRequired": "Choose a degree type.",
       "educationRequired": "Add an education entry or tick “I don't have a higher education degree”.",
-      "headlineTooShort": "Your headline must be at least 10 characters.",
       "introductionTooShort": "Your introduction must be at least 50 characters.",
-      "teachingStyleTooShort": "This must be at least 50 characters.",
+      "experienceTooShort": "Your teaching experience must be at least 50 characters.",
+      "motivationTooShort": "This must be at least 50 characters.",
+      "headlineTooShort": "Your headline must be at least 10 characters.",
+      "descriptionTooLong": "You've reached the maximum length.",
       "videoUrlInvalid": "Enter a valid link starting with http:// or https://.",
+      "timezoneRequired": "Choose your timezone.",
       "availabilityRequired": "Select at least one time block.",
+      "timeRangeInvalid": "The end time must be later than the start time.",
       "rateInvalid": "Enter a whole number.",
       "rateTooLow": "The rate must be at least 3.",
       "rateTooHigh": "The rate can be at most 200."

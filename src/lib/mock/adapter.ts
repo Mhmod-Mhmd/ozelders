@@ -44,11 +44,12 @@ import {
   type SocialProvider,
   type AutoconfirmMode,
 } from '@/data';
-import { type Availability } from '@/features/tutors/types/tutor.types';
 import {
+  type AvailabilityValue,
   type CertificateInput,
   type EducationItemInput,
   type LanguageSkillInput,
+  type WeeklySchedule,
 } from '@/features/tutor-onboarding/types/onboarding.types';
 import { type MessageFolder } from '@/features/messages/types/message.types';
 import { filterTutors, sortTutors } from '@/features/tutors/utils/filterTutors';
@@ -703,18 +704,21 @@ const routes: Route[] = [
     pattern: /^\/tutor-application\/description$/,
     handler: ({ token, body }) => {
       requireUser(token);
-      const headline = asString(body.headline)?.trim() ?? '';
       const introduction = asString(body.introduction)?.trim() ?? '';
-      const teachingStyle = asString(body.teachingStyle)?.trim() ?? '';
+      const experience = asString(body.experience)?.trim() ?? '';
+      const motivation = asString(body.motivation)?.trim() ?? '';
+      const headline = asString(body.headline)?.trim() ?? '';
       const errors: Record<string, string[]> = {};
-      if (headline.length < 10)
-        errors.headline = ['onboarding.errors.headlineTooShort'];
       if (introduction.length < 50)
         errors.introduction = ['onboarding.errors.introductionTooShort'];
-      if (teachingStyle.length < 50)
-        errors.teachingStyle = ['onboarding.errors.teachingStyleTooShort'];
+      if (experience.length < 50)
+        errors.experience = ['onboarding.errors.experienceTooShort'];
+      if (motivation.length < 50)
+        errors.motivation = ['onboarding.errors.motivationTooShort'];
+      if (headline.length < 10)
+        errors.headline = ['onboarding.errors.headlineTooShort'];
       if (Object.keys(errors).length) throw validationError(errors);
-      return saveDescription({ headline, introduction, teachingStyle });
+      return saveDescription({ introduction, experience, motivation, headline });
     },
   },
   {
@@ -734,16 +738,16 @@ const routes: Route[] = [
     pattern: /^\/tutor-application\/availability$/,
     handler: ({ token, body }) => {
       requireUser(token);
-      const availability = (body.availability ?? {}) as Availability;
-      const hasAny = Object.values(availability).some(
-        (periods) => Array.isArray(periods) && periods.length > 0,
+      const timezone = asString(body.timezone) ?? '';
+      const schedule = (body.schedule ?? {}) as WeeklySchedule;
+      const errors: Record<string, string[]> = {};
+      if (!timezone) errors.timezone = ['onboarding.errors.timezoneRequired'];
+      const hasAny = Object.values(schedule).some(
+        (day) => day?.enabled && Array.isArray(day.slots) && day.slots.length > 0,
       );
-      if (!hasAny) {
-        throw validationError({
-          availability: ['onboarding.errors.availabilityRequired'],
-        });
-      }
-      return saveAvailability(availability);
+      if (!hasAny) errors.schedule = ['onboarding.errors.availabilityRequired'];
+      if (Object.keys(errors).length) throw validationError(errors);
+      return saveAvailability({ timezone, schedule } satisfies AvailabilityValue);
     },
   },
   {

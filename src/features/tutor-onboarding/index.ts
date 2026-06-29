@@ -7,4 +7,3 @@ export { DescriptionStep } from './components/steps/DescriptionStep';
 export { VideoStep } from './components/steps/VideoStep';
 export { AvailabilityStep } from './components/steps/AvailabilityStep';
 export { PricingStep } from './components/steps/PricingStep';
-export { SubmittedStep } from './components/steps/SubmittedStep';

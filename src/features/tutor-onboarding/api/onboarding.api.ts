@@ -1,7 +1,7 @@
 import { httpClient } from '@/lib/axios';
-import { type Availability } from '@/features/tutors/types/tutor.types';
 import {
   type AboutInput,
+  type AvailabilityValue,
   type CertificationInput,
   type DescriptionInput,
   type EducationInput,
@@ -80,11 +80,11 @@ export async function saveVideo(input: VideoInput): Promise<TutorApplication> {
 }
 
 export async function saveAvailability(
-  availability: Availability,
+  value: AvailabilityValue,
 ): Promise<TutorApplication> {
   const { data } = await httpClient.patch<TutorApplication>(
     `${RESOURCE}/availability`,
-    { availability },
+    value,
   );
   return data;
 }

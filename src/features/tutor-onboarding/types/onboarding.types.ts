@@ -1,5 +1,4 @@
 import { z } from 'zod';
-import { type Availability } from '@/features/tutors/types/tutor.types';
 
 /**
  * Tutor-onboarding domain types + the Zod schema for every wizard step.
@@ -126,22 +125,53 @@ export type EducationInput = z.infer<typeof educationSchema>;
 /* Step 5 — Description                                                */
 /* ------------------------------------------------------------------ */
 
+/**
+ * The profile description is captured as four guided sections (an accordion
+ * checklist), each saved into one field. The order here drives the UI order
+ * and the per-section min/max character limits below.
+ */
+export const DESCRIPTION_SECTIONS = [
+  'introduction',
+  'experience',
+  'motivation',
+  'headline',
+] as const;
+
+export type DescriptionSection = (typeof DESCRIPTION_SECTIONS)[number];
+
+/** Min/max character bounds per section — `min` gates the checkmark, `max`
+ *  caps the textarea and feeds the live `count / max` counter. */
+export const DESCRIPTION_LIMITS: Record<
+  DescriptionSection,
+  { min: number; max: number }
+> = {
+  introduction: { min: 50, max: 700 },
+  experience: { min: 50, max: 700 },
+  motivation: { min: 50, max: 700 },
+  headline: { min: 10, max: 400 },
+};
+
 export const descriptionSchema = z.object({
-  headline: z
-    .string()
-    .trim()
-    .min(10, 'onboarding.errors.headlineTooShort')
-    .max(100),
   introduction: z
     .string()
     .trim()
     .min(50, 'onboarding.errors.introductionTooShort')
-    .max(1000),
-  teachingStyle: z
+    .max(700, 'onboarding.errors.descriptionTooLong'),
+  experience: z
     .string()
     .trim()
-    .min(50, 'onboarding.errors.teachingStyleTooShort')
-    .max(1000),
+    .min(50, 'onboarding.errors.experienceTooShort')
+    .max(700, 'onboarding.errors.descriptionTooLong'),
+  motivation: z
+    .string()
+    .trim()
+    .min(50, 'onboarding.errors.motivationTooShort')
+    .max(700, 'onboarding.errors.descriptionTooLong'),
+  headline: z
+    .string()
+    .trim()
+    .min(10, 'onboarding.errors.headlineTooShort')
+    .max(400, 'onboarding.errors.descriptionTooLong'),
 });
 
 export type DescriptionInput = z.infer<typeof descriptionSchema>;
@@ -162,19 +192,43 @@ export const videoSchema = z.object({
 export type VideoInput = z.infer<typeof videoSchema>;
 
 /* ------------------------------------------------------------------ */
-/* Step 7 — Availability                                               */
+/* Step 7 — Availability (timezone + weekly working hours)             */
 /* ------------------------------------------------------------------ */
+
+/** A single working block on a day, as 24h "HH:MM" strings. */
+export const timeRangeSchema = z.object({
+  from: z.string().min(1),
+  to: z.string().min(1),
+});
+
+export type TimeRange = z.infer<typeof timeRangeSchema>;
+
+/** One weekday: whether the tutor works, and the blocks they're available. */
+export const dayAvailabilitySchema = z.object({
+  enabled: z.boolean(),
+  slots: z.array(timeRangeSchema),
+});
+
+export type DayAvailability = z.infer<typeof dayAvailabilitySchema>;
+
+/** The whole week, keyed by weekday id ("Mon" … "Sun"). */
+export type WeeklySchedule = Record<string, DayAvailability>;
 
 export const availabilitySchema = z
   .object({
-    availability: z.record(z.string(), z.array(z.string())),
+    timezone: z.string().min(1, 'onboarding.errors.timezoneRequired'),
+    schedule: z.record(z.string(), dayAvailabilitySchema),
   })
-  .refine((v) => Object.values(v.availability).some((d) => d.length > 0), {
-    path: ['availability'],
-    message: 'onboarding.errors.availabilityRequired',
-  });
+  .refine(
+    (v) =>
+      Object.values(v.schedule).some((d) => d.enabled && d.slots.length > 0),
+    {
+      path: ['schedule'],
+      message: 'onboarding.errors.availabilityRequired',
+    },
+  );
 
-export type AvailabilityInput = { availability: Availability };
+export type AvailabilityValue = z.infer<typeof availabilitySchema>;
 
 /* ------------------------------------------------------------------ */
 /* Step 8 — Pricing                                                    */
@@ -201,7 +255,7 @@ export interface TutorApplication {
   education: EducationInput;
   description: DescriptionInput;
   video: VideoInput;
-  availability: { availability: Availability };
+  availability: AvailabilityValue;
   pricing: { hourlyRate: number; currency: string };
   /** Steps the tutor has saved at least once — drives the stepper checkmarks. */
   completedSteps: StepId[];
@@ -216,6 +270,6 @@ export interface StepPayloads {
   education: EducationInput;
   description: DescriptionInput;
   video: VideoInput;
-  availability: { availability: Availability };
+  availability: AvailabilityValue;
   pricing: PricingInput;
 }

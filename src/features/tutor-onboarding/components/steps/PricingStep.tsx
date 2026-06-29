@@ -1,11 +1,13 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { Field } from '@/components/ui/Field';
+import { BarChart3, ChevronDown, Info } from 'lucide-react';
 import { Input } from '@/components/ui/Input';
 import { ApiError } from '@/types';
 import { useCurrency } from '@/currency';
+import { cn } from '@/utils/cn';
 import { paths } from '@/router/paths';
 import { pricingSchema, type PricingInput } from '../../types/onboarding.types';
 import {
@@ -16,11 +18,14 @@ import {
 import { useStepNav } from '../../hooks/useStepNav';
 import { makeErrorText, serverErrorMessage } from '../../utils/errorText';
 import { StepShell } from '../StepShell';
+import { SubmittedModal } from '../SubmittedModal';
 
 /** Share of the lesson price the tutor keeps after the platform service fee. */
 const TUTOR_SHARE = 0.82;
+/** Suggested starting price, shown as the recommendation and field placeholder. */
+const RECOMMENDED_RATE = 3;
 
-/** Step 8 — set the hourly rate, then submit the whole application. */
+/** Step 8 — set the 50-minute lesson price, then complete registration. */
 export function PricingStep() {
   const { t, i18n } = useTranslation();
   const application = useOnboardingApplication();
@@ -31,6 +36,9 @@ export function PricingStep() {
   const { goBack } = useStepNav('pricing');
   const navigate = useNavigate();
   const errorText = makeErrorText(t);
+
+  const [commissionOpen, setCommissionOpen] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const {
     register,
@@ -54,11 +62,17 @@ export function PricingStep() {
       maximumFractionDigits: 0,
     }).format(value);
 
+  /** The currency's symbol (e.g. "$", "₺") for the trailing input badge. */
+  const symbol =
+    new Intl.NumberFormat(locale, { style: 'currency', currency })
+      .formatToParts(0)
+      .find((p) => p.type === 'currency')?.value ?? currency;
+
   async function onValid(values: PricingInput) {
     try {
       await savePricing.mutateAsync({ ...values, currency });
       await submit.mutateAsync();
-      navigate(paths.becomeTutorOnboardingSubmitted);
+      setSubmitted(true);
     } catch (error) {
       if (error instanceof ApiError && error.fieldErrors) {
         for (const [field, messages] of Object.entries(error.fieldErrors)) {
@@ -72,65 +86,121 @@ export function PricingStep() {
   const showPreview = Number.isFinite(rate) && (rate as number) >= 1;
 
   return (
-    <StepShell
-      title={t('onboarding.pricing.title')}
-      subtitle={t('onboarding.pricing.subtitle')}
-      onSubmit={handleSubmit(onValid)}
-      onBack={goBack}
-      isSubmitting={isSubmitting}
-      submitLabel={t('onboarding.pricing.submit')}
-      serverError={
-        serverErrorMessage(savePricing.error, t) ??
-        serverErrorMessage(submit.error, t)
-      }
-    >
-      <Field
-        label={t('onboarding.pricing.rateLabel')}
-        htmlFor="hourlyRate"
-        error={errorText(errors.hourlyRate?.message)}
-        hint={t('onboarding.pricing.rateHint')}
+    <>
+      <StepShell
+        title={t('onboarding.pricing.title')}
+        subtitle={t('onboarding.pricing.subtitle')}
+        onSubmit={handleSubmit(onValid)}
+        onBack={goBack}
+        isSubmitting={isSubmitting}
+        submitLabel={t('onboarding.pricing.submit')}
+        serverError={
+          serverErrorMessage(savePricing.error, t) ??
+          serverErrorMessage(submit.error, t)
+        }
       >
-        <div className="flex items-center gap-3">
-          <Input
-            id="hourlyRate"
-            type="number"
-            inputMode="numeric"
-            min={3}
-            max={200}
-            step={1}
-            className="max-w-36"
-            invalid={Boolean(errors.hourlyRate)}
-            {...register('hourlyRate', { valueAsNumber: true })}
-          />
-          <span className="text-sm font-medium text-gray-600">
-            {currency} / {t('onboarding.pricing.perHour')}
-          </span>
-        </div>
-      </Field>
+        <p className="text-sm text-gray-700">
+          {t('onboarding.pricing.recommend', {
+            price: money(RECOMMENDED_RATE),
+          })}
+        </p>
 
-      {showPreview && (
-        <div className="rounded-2xl bg-gray-50 p-5">
-          <div className="flex items-baseline justify-between gap-3">
-            <span className="text-sm text-gray-600">
-              {t('onboarding.pricing.studentsPay')}
-            </span>
-            <span className="text-lg font-bold text-gray-900">
-              {money(rate as number)}
+        <div>
+          <label htmlFor="hourlyRate" className="sr-only">
+            {t('onboarding.pricing.rateLabel')}
+          </label>
+          <div className="relative">
+            <Input
+              id="hourlyRate"
+              type="number"
+              inputMode="numeric"
+              min={3}
+              max={200}
+              step={1}
+              placeholder={String(RECOMMENDED_RATE)}
+              className="pe-14"
+              invalid={Boolean(errors.hourlyRate)}
+              {...register('hourlyRate', { valueAsNumber: true })}
+            />
+            <span className="pointer-events-none absolute inset-y-0 end-3 flex items-center">
+              <span className="grid h-7 w-7 place-items-center rounded-full border border-gray-300 text-sm font-bold text-gray-700">
+                {symbol}
+              </span>
             </span>
           </div>
-          <div className="mt-2 flex items-baseline justify-between gap-3">
-            <span className="text-sm text-gray-600">
-              {t('onboarding.pricing.youKeep')}
-            </span>
-            <span className="text-lg font-bold text-brand-600">
-              {money(Math.round((rate as number) * TUTOR_SHARE))}
-            </span>
-          </div>
-          <p className="mt-3 text-xs text-gray-500">
-            {t('onboarding.pricing.feeNote')}
-          </p>
+          {errors.hourlyRate ? (
+            <p className="mt-1.5 text-sm text-red-500">
+              {errorText(errors.hourlyRate.message)}
+            </p>
+          ) : (
+            <p className="mt-1.5 text-sm text-gray-400">
+              {t('onboarding.pricing.currencyNote', { currency })}
+            </p>
+          )}
         </div>
-      )}
-    </StepShell>
+
+        {/* Recommendation stat */}
+        <div className="flex items-start gap-3 rounded-2xl bg-blue-50 p-4 text-sm text-blue-900">
+          <BarChart3 className="mt-0.5 h-5 w-5 shrink-0" />
+          <p>{t('onboarding.pricing.statNote')}</p>
+        </div>
+
+        {/* Commission accordion */}
+        <div className="rounded-2xl border border-gray-200">
+          <button
+            type="button"
+            onClick={() => setCommissionOpen((open) => !open)}
+            aria-expanded={commissionOpen}
+            className="flex w-full items-center justify-between gap-3 px-4 py-3.5 text-start"
+          >
+            <span className="font-semibold text-gray-900">
+              {t('onboarding.pricing.commissionTitle', { brand: t('brand.name') })}
+            </span>
+            <ChevronDown
+              className={cn(
+                'h-5 w-5 shrink-0 text-gray-400 transition-transform',
+                commissionOpen && 'rotate-180',
+              )}
+            />
+          </button>
+          {commissionOpen && (
+            <div className="border-t border-gray-100 px-4 py-4 text-sm text-gray-600">
+              <p>{t('onboarding.pricing.commissionBody')}</p>
+              {showPreview && (
+                <dl className="mt-4 space-y-2">
+                  <div className="flex items-baseline justify-between gap-3">
+                    <dt>{t('onboarding.pricing.studentsPay')}</dt>
+                    <dd className="font-semibold text-gray-900">
+                      {money(rate as number)}
+                    </dd>
+                  </div>
+                  <div className="flex items-baseline justify-between gap-3">
+                    <dt>{t('onboarding.pricing.youKeep')}</dt>
+                    <dd className="font-bold text-brand-600">
+                      {money(Math.round((rate as number) * TUTOR_SHARE))}
+                    </dd>
+                  </div>
+                </dl>
+              )}
+            </div>
+          )}
+        </div>
+
+        {/* Final details / terms */}
+        <div className="rounded-2xl border border-gray-200 p-5">
+          <h3 className="text-sm font-bold text-gray-900">
+            {t('onboarding.pricing.finalDetailsTitle')}
+          </h3>
+          <div className="mt-2 flex items-start gap-3">
+            <Info className="mt-0.5 h-5 w-5 shrink-0 text-gray-400" />
+            <p className="text-sm text-gray-600">
+              {t('onboarding.pricing.terms', { brand: t('brand.name') })}
+            </p>
+          </div>
+        </div>
+      </StepShell>
+
+      {submitted && <SubmittedModal onClose={() => navigate(paths.home)} />}
+    </>
   );
 }

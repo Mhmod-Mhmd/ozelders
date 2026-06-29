@@ -1,6 +1,7 @@
-import { EMPTY_AVAILABILITY } from '@/features/tutor-onboarding/utils/onboardingOptions';
+import { defaultSchedule } from '@/features/tutor-onboarding/utils/onboardingOptions';
 import {
   type AboutInput,
+  type AvailabilityValue,
   type CertificationInput,
   type DescriptionInput,
   type EducationInput,
@@ -9,7 +10,6 @@ import {
   type TutorApplication,
   type VideoInput,
 } from '@/features/tutor-onboarding/types/onboarding.types';
-import { type Availability } from '@/features/tutors/types/tutor.types';
 
 /**
  * The in-progress tutor-onboarding application. In a real backend this is the
@@ -35,9 +35,9 @@ let application: TutorApplication = {
   photo: { photoUrl: '' },
   certification: { hasNone: false, certificates: [] },
   education: { hasNone: false, educations: [] },
-  description: { headline: '', introduction: '', teachingStyle: '' },
+  description: { introduction: '', experience: '', motivation: '', headline: '' },
   video: { url: '' },
-  availability: { availability: EMPTY_AVAILABILITY },
+  availability: { timezone: 'Europe/Istanbul', schedule: defaultSchedule() },
   pricing: { hourlyRate: 0, currency: 'USD' },
   completedSteps: [],
   submitted: false,
@@ -94,8 +94,8 @@ export function saveVideo(value: VideoInput): TutorApplication {
   return application;
 }
 
-export function saveAvailability(value: Availability): TutorApplication {
-  application = { ...application, availability: { availability: value } };
+export function saveAvailability(value: AvailabilityValue): TutorApplication {
+  application = { ...application, availability: value };
   markComplete('availability');
   return application;
 }

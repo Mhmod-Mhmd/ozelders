@@ -484,6 +484,15 @@
     "Sat": "Cmt",
     "Sun": "Paz"
   },
+  "weekdaysLong": {
+    "Mon": "Pazartesi",
+    "Tue": "Salı",
+    "Wed": "Çarşamba",
+    "Thu": "Perşembe",
+    "Fri": "Cuma",
+    "Sat": "Cumartesi",
+    "Sun": "Pazar"
+  },
   "student": {
     "heading": "Profesyonel olarak gelişmenize yardımcı olan İngilizce öğretmenleri",
     "searchPlaceholder": "İsme veya anahtar kelimeye göre ara",
@@ -785,54 +794,103 @@
       "addAnother": "Başka bir eğitim ekle"
     },
     "description": {
-      "title": "Açıklama",
-      "subtitle": "Öğrencilerin seni tanımasına yardımcı ol — profilinde okudukları ilk şey budur.",
-      "headline": "Profil başlığı",
-      "headlineHint": "En az 10 karakter.",
-      "headlinePlaceholder": "Örn. 5 yıl deneyimli sertifikalı İngilizce öğretmeni",
-      "introduction": "Kendini tanıt",
-      "introductionHint": "En az 50 karakter.",
-      "introductionPlaceholder": "Öğrencilere geçmişini, deneyimini ve derslerini etkili kılan şeyleri anlat.",
-      "teachingStyle": "Öğretim tarzını anlat",
-      "teachingStyleHint": "En az 50 karakter.",
-      "teachingStylePlaceholder": "Derslerinin nasıl yapılandırıldığını ve öğrencilerin hedeflerine ulaşmasına nasıl yardımcı olduğunu açıkla."
+      "title": "Profil açıklaması",
+      "subtitle": "Bu bilgiler herkese açık profilinde yer alır. Ders vereceğin dilde yaz ve onaylanmak için yönergelerimize uy.",
+      "continue": "Devam et",
+      "sections": {
+        "introduction": {
+          "title": "Kendini tanıt",
+          "prompt": "Mesleki deneyimini, eğitimini ve temel becerilerini anlat. Öğrencilere neler sunabileceğini belirt.",
+          "placeholder": "Öğrencilerin hedeflerine ulaşmasına yardımcı olmayı seven sertifikalı bir öğretmenim…"
+        },
+        "experience": {
+          "title": "Öğretim deneyimini anlat",
+          "prompt": "Ne kadar süredir öğrettiğini, kullandığın yöntem ve materyalleri ve çalıştığın öğrenci türlerini paylaş.",
+          "placeholder": "Her seviyeden öğrenciye 1.000'den fazla ders verdim…"
+        },
+        "motivation": {
+          "title": "Potansiyel öğrenciyi motive et",
+          "prompt": "Öğrencileri seninle deneme dersi almaya teşvik et ve birlikte neler başaracağınızı anlat.",
+          "placeholder": "Benimle bir deneme dersi al, hedeflerine ulaşman için bir plan oluşturalım…"
+        },
+        "headline": {
+          "title": "İlgi çekici bir başlık yaz",
+          "prompt": "Başlığın, öğrencilerin gördüğü ilk şeydir. İlgi çekici yap ve öğrencileri tüm açıklamanı okumaya teşvik etmek için öğrettiğin dili belirt.",
+          "placeholder": "5 yılı aşkın deneyime sahip sertifikalı öğretmen"
+        }
+      }
     },
     "video": {
-      "title": "Tanıtım videosu",
-      "subtitle": "Kısa bir tanıtım videosu, öğrencilerin seni seçmesine yardımcı olur. Bir bağlantı ekle veya daha sonra kaydet.",
-      "placeholder": "1–3 dakikalık bir tanıtım videosu kaydet veya yükle",
+      "title": "Video tanıtımı",
+      "subtitle": "Kısa bir tanıtım videosu öğrencilerin seni seçmesine yardımcı olur. Şimdi veya daha sonra ekleyebilirsin.",
+      "testCamera": "Kamerayı test et",
+      "addVideoTitle": "En fazla 2 dakikalık yatay bir video ekle",
+      "addVideoHint": "Yüklemek için bir video dosyası seç. Yönergelerimize uyduğundan emin ol.",
+      "uploadVideo": "Video yükle",
+      "orPasteLink": "Veya videonun bağlantısını yapıştır",
+      "learnHowPrefix": "Videoları nasıl yükleyeceğini öğren:",
+      "orConnector": "veya",
       "urlLabel": "Video bağlantısı",
-      "urlHint": "Bir YouTube veya Vimeo bağlantısı yapıştır. Bunu daha sonra da ekleyebilirsin.",
-      "urlPlaceholder": "https://youtube.com/watch?v=…",
-      "tipsTitle": "Harika bir tanıtım videosu için ipuçları",
-      "tips": {
-        "keepShort": "Kısa tut — 1 ila 3 dakika idealdir",
-        "goodLighting": "Sessiz ve iyi aydınlatılmış bir yerde çek",
-        "faceCamera": "Kameraya bak ve gülümse",
-        "introYourself": "Kendini ve nasıl öğrettiğini tanıt"
-      }
+      "urlPlaceholder": "www.youtube.com/watch?v=…",
+      "thumbnailTitle": "Küçük resim ekle (isteğe bağlı)",
+      "thumbnailHint": "Hazır bir küçük resmin yoksa endişelenme — yukarıdaki önizlemeyi kullanırız.",
+      "uploadThumbnail": "Küçük resim yükle",
+      "requirementsTitle": "Video gereksinimleri",
+      "requirementsHint": "Onaylanmak için videonun gereksinimleri karşıladığından emin ol.",
+      "doLabel": "Yapılması gerekenler",
+      "dontLabel": "Yapılmaması gerekenler",
+      "do": [
+        "Videon 30 saniye ile 2 dakika arasında olmalı",
+        "Yatay modda ve göz hizasında kaydet",
+        "İyi aydınlatma ve sade bir arka plan kullan",
+        "Videonun sarsıntılı görünmemesi için sabit bir yüzey kullan",
+        "Yüzünün ve gözlerinin tamamen görünür olduğundan emin ol (dini sebepler hariç)",
+        "Öğretim deneyimini ve ilgili sertifikalarını vurgula",
+        "Öğrencilerini sıcak bir şekilde selamla ve ders almaya davet et"
+      ],
+      "dont": [
+        "Soyadını veya iletişim bilgilerini ekleme",
+        "Logo veya bağlantı ekleme",
+        "Slayt veya sunum kullanma",
+        "Videoda başka kişilerin görünmesine izin verme"
+      ]
     },
     "availability": {
       "title": "Uygunluk",
-      "subtitle": "Genellikle ders verebileceğin zaman aralıklarını seç. Bunu istediğin zaman değiştirebilirsin.",
-      "selectedLegend": "Seçili"
+      "confirmTimezone": "Mevcut saat dilimin bu mu?",
+      "yes": "Evet",
+      "no": "Hayır",
+      "setTimezone": "Saat dilimini ayarla",
+      "timezoneHint": "Uluslararası öğrencilerle dersleri düzenlemek için doğru saat dilimi şarttır.",
+      "chooseTimezone": "Saat dilimini seç",
+      "change": "Değiştir",
+      "setAvailability": "Uygunluğunu ayarla",
+      "availabilityHint": "Uygunluk, olası çalışma saatlerini gösterir. Öğrenciler bu saatlerde ders alabilir.",
+      "from": "Başlangıç",
+      "to": "Bitiş",
+      "addTimeslot": "Başka bir zaman aralığı ekle",
+      "removeTimeslot": "Zaman aralığını kaldır"
     },
     "pricing": {
-      "title": "Ücretlendirme",
-      "subtitle": "Saatlik ücretini belirle. İstediğin zaman değiştirebilirsin.",
-      "rateLabel": "Saatlik ücret",
-      "rateHint": "3 ile 200 arasında bir ücret seç.",
-      "perHour": "saat",
+      "title": "50 dakikalık ders ücretini belirle",
+      "subtitle": "Rekabetçi bir fiyatla başlamak daha fazla öğrenci çekmene yardımcı olabilir. İlk birkaç deneme dersini başarıyla verdikten sonra bu fiyatı hedeflerine göre serbestçe ayarlayabilirsin.",
+      "recommend": "Başlamana yardımcı olmak için, ilk ders ücretini {{price}} olarak belirlemeni öneririz.",
+      "rateLabel": "Ders ücreti",
+      "currencyNote": "Yalnızca {{currency}} cinsinden fiyat.",
+      "statNote": "Fiyat önerimize uyan öğretmenlerin, onaydan sonraki bir hafta içinde ilk deneme dersini verme olasılığı %40 daha yüksektir.",
+      "commissionTitle": "{{brand}} komisyonu",
+      "commissionBody": "Her ders için güvenli ödemeleri, müşteri desteğini ve seni yeni öğrencilerle eşleştirmeyi kapsayan bir hizmet bedeli alıyoruz. Daha yüksek başlar ve daha fazla saat ders verdikçe azalır.",
       "studentsPay": "Öğrencilerin ödediği",
       "youKeep": "Sana kalan",
-      "feeNote": "Ödemeleri, desteği ve öğrenci eşleştirmeyi kapsayan %18 hizmet bedelinden sonra.",
-      "submit": "Profili gönder"
+      "finalDetailsTitle": "Son ayrıntılar",
+      "terms": "Kaydı tamamlayarak, kurumsal öğrencilere ders verme erişimi sağlayan {{brand}} Öğretmen Programı'nın şartlarını ve koşullarını da kabul etmiş olursun. Bu öğrencilerle eşleştirilmemeyi istediğin zaman seçebilirsin.",
+      "submit": "Kaydı tamamla"
     },
     "submitted": {
-      "title": "Profilin gönderildi!",
-      "body": "Başvurduğun için teşekkürler. Ekibimiz profilini 5 iş günü içinde inceleyecek ve onaylandığında sana e-posta gönderecek.",
-      "goHome": "Ana sayfaya dön",
-      "browseTutors": "Öğretmenlere göz at"
+      "title": "Başarıyla gönderildi",
+      "body": "5 iş günü içinde başvuru durumunla ilgili bir güncelleme e-postası alacaksın.",
+      "okay": "Tamam, anladım",
+      "close": "Kapat"
     },
     "errors": {
       "firstNameRequired": "Ad zorunludur.",
@@ -850,11 +908,15 @@
       "degreeRequired": "Dereceni gir.",
       "degreeTypeRequired": "Bir derece türü seç.",
       "educationRequired": "Bir eğitim girişi ekle veya “Yükseköğrenim diplomam yok” seçeneğini işaretle.",
-      "headlineTooShort": "Başlığın en az 10 karakter olmalıdır.",
       "introductionTooShort": "Tanıtımın en az 50 karakter olmalıdır.",
-      "teachingStyleTooShort": "Bu alan en az 50 karakter olmalıdır.",
+      "experienceTooShort": "Öğretim deneyimin en az 50 karakter olmalıdır.",
+      "motivationTooShort": "Bu alan en az 50 karakter olmalıdır.",
+      "headlineTooShort": "Başlığın en az 10 karakter olmalıdır.",
+      "descriptionTooLong": "Maksimum uzunluğa ulaştın.",
       "videoUrlInvalid": "http:// veya https:// ile başlayan geçerli bir bağlantı girin.",
+      "timezoneRequired": "Saat dilimini seç.",
       "availabilityRequired": "En az bir zaman aralığı seç.",
+      "timeRangeInvalid": "Bitiş saati, başlangıç saatinden sonra olmalıdır.",
       "rateInvalid": "Tam bir sayı girin.",
       "rateTooLow": "Ücret en az 3 olmalıdır.",
       "rateTooHigh": "Ücret en fazla 200 olabilir."
